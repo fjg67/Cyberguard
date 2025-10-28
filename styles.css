@@ -1172,6 +1172,99 @@ footer {
     color: var(--text-muted);
 }
 
+/* ===== CREATOR SIGNATURE ===== */
+.creator-signature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: rgba(0, 255, 0, 0.03);
+    border: 2px solid var(--border-color);
+    clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
+    position: relative;
+    overflow: hidden;
+}
+
+.creator-signature::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+    animation: signature-scan 3s ease-in-out infinite;
+}
+
+@keyframes signature-scan {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
+}
+
+.signature-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+.signature-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.signature-icon {
+    font-size: 24px;
+    color: var(--neon-green);
+    text-shadow: var(--glow);
+    animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.signature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+
+.created-by {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+}
+
+.creator-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--neon-green);
+    text-shadow: var(--glow-strong);
+    letter-spacing: 2px;
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green); }
+    50% { text-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-green), 0 0 60px var(--neon-green); }
+}
+
+.creator-title {
+    font-size: 13px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+    letter-spacing: 1px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+
 /* ===== SCROLL TO TOP ===== */
 .scroll-top {
     position: fixed;
@@ -1222,46 +1315,65 @@ footer {
         transition: 0.3s;
         border-top: 2px solid var(--neon-green);
     }
-    
+
     .nav-menu.active {
         left: 0;
     }
-    
+
     .nav-menu ul {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .mobile-menu-btn {
         display: flex;
     }
-    
+
     .hero-title {
         font-size: 36px;
     }
-    
+
     .hero-title .highlight {
         font-size: 48px;
     }
-    
+
     .threat-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .section-title {
         font-size: 32px;
     }
-    
+
     .cards-grid,
     .scan-grid,
     .tools-cat,
     .protocol-steps {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .creator-signature {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .signature-line {
+        width: 80%;
+        height: 2px;
+    }
+
+    .creator-name {
+        font-size: 16px;
+    }
+
+    .creator-title {
+        font-size: 11px;
     }
 }
 
