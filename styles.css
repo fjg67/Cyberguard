@@ -604,10 +604,12 @@ header {
 .cyber-card {
     background: var(--card-bg);
     border: 2px solid var(--border-color);
-    padding: 30px;
+    padding: 35px;
     position: relative;
     clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
     transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .cyber-card:hover {
@@ -656,7 +658,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .card-hex {
@@ -752,7 +754,9 @@ header {
     font-family: 'Orbitron', sans-serif;
     font-size: 20px;
     color: var(--neon-green);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 .code-block {
