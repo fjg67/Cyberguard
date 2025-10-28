@@ -676,6 +676,26 @@ header {
     text-shadow: var(--glow);
 }
 
+.card-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.card-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-logo svg {
+    filter: drop-shadow(0 0 5px currentColor);
+    transition: filter 0.3s;
+}
+
+.card-logo svg:hover {
+    filter: drop-shadow(0 0 15px currentColor);
+}
+
 .card-stat {
     display: flex;
     align-items: center;
@@ -819,6 +839,21 @@ header {
     font-size: 36px;
 }
 
+.scan-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.scan-logo:hover {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+.scan-logo svg {
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
 .scan-header h3 {
     font-family: 'Orbitron', sans-serif;
     color: var(--neon-green);
@@ -864,6 +899,22 @@ header {
     color: var(--neon-green);
     display: block;
     margin-bottom: 10px;
+}
+
+.tool-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.tool-logo-container:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.tool-logo-container svg {
+    filter: drop-shadow(0 0 5px currentColor);
 }
 
 .tool-info strong {
@@ -933,6 +984,22 @@ header {
 .cat-icon {
     font-size: 48px;
     margin-bottom: 20px;
+}
+
+.cat-icon-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.cat-icon-svg:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.cat-icon-svg svg {
+    filter: drop-shadow(0 0 10px currentColor);
 }
 
 .tool-cat h3 {

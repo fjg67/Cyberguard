@@ -155,15 +155,19 @@
                     <div class="card-scan"></div>
                     
                     <div class="card-top">
-                        <div class="card-hex">
-                            <span>⚡</span>
+                        <div class="card-logo">
+                            <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.1)"/>
+                                <path d="M50 25L70 37.5V62.5L50 75L30 62.5V37.5L50 25Z" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.2)"/>
+                                <text x="50" y="55" font-family="Orbitron" font-size="16" fill="#00ff00" text-anchor="middle" font-weight="bold">BD</text>
+                            </svg>
                         </div>
                         <div class="card-stat">
                             <span class="dot"></span>
                             <span>ONLINE</span>
                         </div>
                     </div>
-                    
+
                     <h3>[ANTIVIRUS_BITDEFENDER]</h3>
                     
                     <div class="code-block">
@@ -199,15 +203,20 @@ if (malware.detected) {
                     <div class="card-scan"></div>
                     
                     <div class="card-top">
-                        <div class="card-hex">
-                            <span>◈</span>
+                        <div class="card-logo">
+                            <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="35" stroke="#00ffff" stroke-width="2" fill="rgba(0,255,255,0.1)"/>
+                                <path d="M50 20 L50 35 M35 50 L20 50 M80 50 L65 50 M50 65 L50 80" stroke="#00ffff" stroke-width="2"/>
+                                <circle cx="50" cy="50" r="15" stroke="#00ffff" stroke-width="2" fill="rgba(0,255,255,0.2)"/>
+                                <path d="M50 30 L60 40 L50 50 L40 40 Z" fill="#00ffff"/>
+                            </svg>
                         </div>
                         <div class="card-stat">
                             <span class="dot"></span>
                             <span>ENCRYPTED</span>
                         </div>
                     </div>
-                    
+
                     <h3>[VPN_CRYPTÉ]</h3>
                     
                     <div class="code-block">
@@ -241,15 +250,20 @@ hideIP();</code>
                     <div class="card-scan"></div>
                     
                     <div class="card-top">
-                        <div class="card-hex">
-                            <span>◉</span>
+                        <div class="card-logo">
+                            <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="15" y="30" width="70" height="40" rx="5" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.1)"/>
+                                <rect x="20" y="45" width="30" height="4" fill="#00ff00"/>
+                                <rect x="20" y="55" width="20" height="4" fill="#00ff00" opacity="0.6"/>
+                                <circle cx="70" cy="55" r="8" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.2)"/>
+                            </svg>
                         </div>
                         <div class="card-stat">
                             <span class="dot"></span>
                             <span>SECURE</span>
                         </div>
                     </div>
-                    
+
                     <h3>[E-CARTES_VIRTUELLES]</h3>
                     
                     <div class="code-block">
@@ -294,7 +308,13 @@ generateCard({
                 <!-- Scam-Doc -->
                 <div class="scan-card">
                     <div class="scan-header">
-                        <span class="scan-icon">🔍</span>
+                        <div class="scan-logo">
+                            <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="40" r="25" stroke="#ff0040" stroke-width="3"/>
+                                <line x1="58" y1="58" x2="80" y2="80" stroke="#ff0040" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M30 40 L35 45 L50 30" stroke="#ff0040" stroke-width="3" fill="none"/>
+                            </svg>
+                        </div>
                         <h3>SCAM-DOC.COM</h3>
                     </div>
                     <p>Vérifiez la fiabilité des sites web. Scam-Doc analyse les liens et détecte les arnaques.</p>
@@ -311,14 +331,28 @@ generateCard({
                 <!-- File Analysis -->
                 <div class="scan-card large">
                     <div class="scan-header">
-                        <span class="scan-icon">🔬</span>
+                        <div class="scan-logo">
+                            <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M30 10 L70 10 L85 25 L85 90 L30 90 Z" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.1)"/>
+                                <path d="M70 10 L70 25 L85 25" stroke="#00ff00" stroke-width="2"/>
+                                <line x1="40" y1="40" x2="65" y2="40" stroke="#00ff00" stroke-width="2"/>
+                                <line x1="40" y1="55" x2="75" y2="55" stroke="#00ff00" stroke-width="2"/>
+                                <line x1="40" y1="70" x2="70" y2="70" stroke="#00ff00" stroke-width="2"/>
+                            </svg>
+                        </div>
                         <h3>ANALYSE_FICHIERS.EXE</h3>
                     </div>
                     <p>Analysez les exécutables avant ouverture. Protection virus, trojans, malwares.</p>
                     
                     <div class="tools-grid">
                         <div class="tool">
-                            <span class="tool-icon">⚔</span>
+                            <div class="tool-logo-container">
+                                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.1)"/>
+                                    <path d="M50 30 L70 50 L50 70 L30 50 Z" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.2)"/>
+                                    <text x="50" y="58" font-family="monospace" font-size="18" fill="#00ff00" text-anchor="middle" font-weight="bold">VT</text>
+                                </svg>
+                            </div>
                             <div class="tool-info">
                                 <strong>VirusTotal</strong>
                                 <span>70+ antivirus</span>
@@ -326,7 +360,15 @@ generateCard({
                             </div>
                         </div>
                         <div class="tool">
-                            <span class="tool-icon">⚗</span>
+                            <div class="tool-logo-container">
+                                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="30" r="12" stroke="#ff0040" stroke-width="2" fill="rgba(255,0,64,0.1)"/>
+                                    <circle cx="35" cy="60" r="12" stroke="#00ffff" stroke-width="2" fill="rgba(0,255,255,0.1)"/>
+                                    <circle cx="65" cy="60" r="12" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.1)"/>
+                                    <line x1="50" y1="35" x2="40" y2="53" stroke="#00ff00" stroke-width="2"/>
+                                    <line x1="50" y1="35" x2="60" y2="53" stroke="#00ff00" stroke-width="2"/>
+                                </svg>
+                            </div>
                             <div class="tool-info">
                                 <strong>Hybrid Analysis</strong>
                                 <span>Comportemental</span>
@@ -334,7 +376,13 @@ generateCard({
                             </div>
                         </div>
                         <div class="tool">
-                            <span class="tool-icon">⚡</span>
+                            <div class="tool-logo-container">
+                                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="20" y="20" width="60" height="60" rx="5" stroke="#00ffff" stroke-width="2" fill="rgba(0,255,255,0.1)"/>
+                                    <path d="M35 50 L45 60 L65 40" stroke="#00ffff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                                    <circle cx="70" cy="30" r="8" fill="#00ffff"/>
+                                </svg>
+                            </div>
                             <div class="tool-info">
                                 <strong>Any.Run</strong>
                                 <span>Sandbox live</span>
@@ -342,7 +390,14 @@ generateCard({
                             </div>
                         </div>
                         <div class="tool">
-                            <span class="tool-icon">⚙</span>
+                            <div class="tool-logo-container">
+                                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="25" y="15" width="50" height="70" rx="3" stroke="#ffff00" stroke-width="2" fill="rgba(255,255,0,0.1)"/>
+                                    <line x1="35" y1="30" x2="65" y2="30" stroke="#ffff00" stroke-width="2"/>
+                                    <line x1="35" y1="45" x2="65" y2="45" stroke="#ffff00" stroke-width="2"/>
+                                    <line x1="35" y1="60" x2="55" y2="60" stroke="#ffff00" stroke-width="2"/>
+                                </svg>
+                            </div>
                             <div class="tool-info">
                                 <strong>Joe Sandbox</strong>
                                 <span>Analyse profonde</span>
@@ -355,7 +410,15 @@ generateCard({
                 <!-- URL Scanner -->
                 <div class="scan-card">
                     <div class="scan-header">
-                        <span class="scan-icon">🌐</span>
+                        <div class="scan-logo">
+                            <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="35" stroke="#00ffff" stroke-width="2"/>
+                                <path d="M30 50 L45 35 M55 35 L70 50 M70 50 L55 65 M45 65 L30 50" stroke="#00ffff" stroke-width="2" fill="none"/>
+                                <circle cx="35" cy="35" r="8" stroke="#00ffff" stroke-width="2"/>
+                                <circle cx="65" cy="35" r="8" stroke="#00ffff" stroke-width="2"/>
+                                <circle cx="35" cy="65" r="8" stroke="#00ffff" stroke-width="2"/>
+                            </svg>
+                        </div>
                         <h3>SCANNER_URL</h3>
                     </div>
                     <p>Vérification sécurité URLs et domaines.</p>
@@ -387,7 +450,14 @@ generateCard({
 
             <div class="tools-cat">
                 <div class="tool-cat">
-                    <div class="cat-icon">🔐</div>
+                    <div class="cat-icon-svg">
+                        <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="45" width="40" height="35" rx="3" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.1)"/>
+                            <path d="M40 45 V35 Q40 25 50 25 Q60 25 60 35 V45" stroke="#00ff00" stroke-width="2" fill="none"/>
+                            <circle cx="50" cy="62" r="4" fill="#00ff00"/>
+                            <line x1="50" y1="66" x2="50" y2="72" stroke="#00ff00" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3>GESTIONNAIRES_MDP</h3>
                     <ul>
                         <li>▸ Bitwarden (Open Source)</li>
@@ -398,7 +468,13 @@ generateCard({
                 </div>
 
                 <div class="tool-cat">
-                    <div class="cat-icon">🛡</div>
+                    <div class="cat-icon-svg">
+                        <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 15 L75 30 L75 55 Q75 75 50 85 Q25 75 25 55 L25 30 Z" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.1)"/>
+                            <path d="M50 30 L65 40 L65 55 Q65 68 50 75 Q35 68 35 55 L35 40 Z" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.15)"/>
+                            <path d="M43 52 L48 57 L60 45" stroke="#00ff00" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <h3>PARE-FEU</h3>
                     <ul>
                         <li>▸ Windows Defender</li>
@@ -409,7 +485,14 @@ generateCard({
                 </div>
 
                 <div class="tool-cat">
-                    <div class="cat-icon">📧</div>
+                    <div class="cat-icon-svg">
+                        <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="30" width="60" height="40" rx="3" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.1)"/>
+                            <path d="M20 35 L50 55 L80 35" stroke="#00ff00" stroke-width="2" fill="none"/>
+                            <circle cx="70" cy="40" r="8" stroke="#00ff00" stroke-width="2" fill="rgba(0,255,0,0.2)"/>
+                            <path d="M67 40 L69 42 L73 38" stroke="#00ff00" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
                     <h3>EMAIL_SÉCURISÉ</h3>
                     <ul>
                         <li>▸ ProtonMail (Chiffré)</li>
