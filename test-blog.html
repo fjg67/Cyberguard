@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Blog System</title>
+</head>
+<body>
+    <h1>Test du système de blog</h1>
+    <button onclick="testBlog()">Tester</button>
+    <div id="result"></div>
+    
+    <script src="blog.js"></script>
+    <script>
+        function testBlog() {
+            const result = document.getElementById('result');
+            result.innerHTML = '<h2>Résultats:</h2>';
+            
+            // Test 1: Le système est-il chargé?
+            if (typeof blogArticles !== 'undefined') {
+                result.innerHTML += '<p>✓ blogArticles chargé: ' + blogArticles.length + ' articles</p>';
+            } else {
+                result.innerHTML += '<p>✗ blogArticles NON chargé</p>';
+                return;
+            }
+            
+            // Test 2: BlogSystem existe?
+            if (typeof BlogSystem !== 'undefined') {
+                result.innerHTML += '<p>✓ BlogSystem class existe</p>';
+            } else {
+                result.innerHTML += '<p>✗ BlogSystem class NON définie</p>';
+                return;
+            }
+            
+            // Test 3: Instance créée?
+            if (window.blogSystem) {
+                result.innerHTML += '<p>✓ window.blogSystem créé</p>';
+            } else {
+                result.innerHTML += '<p>✗ window.blogSystem NON créé</p>';
+            }
+            
+            // Test 4: Lister les articles
+            result.innerHTML += '<h3>Articles disponibles:</h3><ul>';
+            blogArticles.forEach(article => {
+                result.innerHTML += '<li>' + article.id + ': ' + article.title + '</li>';
+            });
+            result.innerHTML += '</ul>';
+        }
+        
+        // Auto-test au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(testBlog, 500);
+        });
+    </script>
+</body>
+</html>

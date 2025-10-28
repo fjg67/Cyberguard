@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réinitialiser Dashboard - CyberGuard Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #00ffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(10, 14, 39, 0.9);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #00ffff;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #8899ff;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff0040 0%, #ff4466 100%);
+            color: white;
+            border: 2px solid #ff0040;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 0, 64, 0.5);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #00ffff 0%, #0099cc 100%);
+            border-color: #00ffff;
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .status {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 255, 0, 0.1);
+            border-left: 4px solid #00ff00;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .status.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🔄</div>
+        <h1>RÉINITIALISER LE DASHBOARD</h1>
+        <p>
+            Cette action va supprimer toutes les données sauvegardées du dashboard :
+            <br><br>
+            • Historique des scans<br>
+            • Statistiques du mois<br>
+            • Alertes personnalisées<br>
+            • Score de sécurité<br>
+            <br>
+            <strong>Cette action est irréversible !</strong>
+        </p>
+
+        <button class="btn" onclick="resetDashboard()">
+            🗑️ RÉINITIALISER
+        </button>
+
+        <button class="btn btn-secondary" onclick="goBack()">
+            ← RETOUR
+        </button>
+
+        <div class="status" id="status">
+            ✓ Dashboard réinitialisé avec succès !<br>
+            Redirection vers le site principal...
+        </div>
+    </div>
+
+    <script>
+        function resetDashboard() {
+            if (confirm('⚠️ CONFIRMATION\n\nÊtes-vous absolument sûr de vouloir réinitialiser le dashboard ?\n\nCette action supprimera toutes vos données.')) {
+                // Supprimer les données du localStorage
+                localStorage.removeItem('cyberguard_dashboard_data');
+
+                // Afficher le message de succès
+                document.getElementById('status').classList.add('show');
+
+                console.log('%c✓ Dashboard réinitialisé', 'color: #00ff00; font-weight: bold; font-size: 16px;');
+
+                // Rediriger vers la page principale après 2 secondes
+                setTimeout(() => {
+                    window.location.href = 'index.html#dashboard';
+                }, 2000);
+            }
+        }
+
+        function goBack() {
+            window.location.href = 'index.html#dashboard';
+        }
+
+        // Afficher les données actuelles dans la console
+        const currentData = localStorage.getItem('cyberguard_dashboard_data');
+        if (currentData) {
+            console.log('%c📊 Données actuelles du dashboard:', 'color: #00ffff; font-weight: bold;');
+            console.log(JSON.parse(currentData));
+        } else {
+            console.log('%c⚠️ Aucune donnée trouvée', 'color: #ff0040; font-weight: bold;');
+        }
+    </script>
+</body>
+</html>

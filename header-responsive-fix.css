@@ -1,0 +1,372 @@
+/**
+ * ═══════════════════════════════════════════════════════════════
+ * HEADER RESPONSIVE FIX - Optimisation de l'espace
+ * ═══════════════════════════════════════════════════════════════
+ */
+
+/* Réorganisation du header pour plus d'espace */
+.header-content {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
+    grid-template-rows: auto;
+    gap: 1.5rem !important;
+    align-items: center !important;
+}
+
+/* Logo à gauche */
+.logo-cyber {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Navigation au centre */
+.nav-menu {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+}
+
+/* Actions à droite - Container pour tous les boutons UX */
+.header-ux-actions {
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Réduire la taille des boutons UX dans le header */
+.theme-toggle-container,
+.language-switcher-container,
+.notification-center-btn-container,
+.achievement-btn-container {
+    margin-right: 0 !important;
+}
+
+/* Boutons UX plus compacts */
+.theme-toggle-btn,
+.language-switcher,
+.notification-center-btn,
+.achievement-btn {
+    padding: 0.4rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    height: 42px !important;
+    min-height: 42px !important;
+}
+
+.theme-toggle-track {
+    width: 38px !important;
+    height: 20px !important;
+}
+
+.theme-toggle-thumb {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.theme-toggle-thumb.light {
+    transform: translateX(18px) !important;
+}
+
+.theme-toggle-label {
+    font-size: 0.8rem !important;
+}
+
+/* Language switcher compact */
+.lang-btn {
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.8rem !important;
+}
+
+.lang-btn .flag {
+    font-size: 1rem !important;
+}
+
+/* Notification button compact */
+.notification-center-btn {
+    width: 42px !important;
+    height: 42px !important;
+}
+
+.notification-icon {
+    font-size: 1.3rem !important;
+}
+
+.notification-badge {
+    min-width: 18px !important;
+    height: 18px !important;
+    font-size: 0.65rem !important;
+}
+
+/* Achievement button compact */
+.achievement-btn {
+    gap: 0.4rem !important;
+}
+
+.achievement-icon {
+    font-size: 1.3rem !important;
+}
+
+.achievement-level {
+    font-size: 0.75rem !important;
+}
+
+/* Navigation links plus compacts */
+.nav-menu ul {
+    gap: 1rem !important;
+}
+
+.nav-link {
+    font-size: 0.85rem !important;
+    padding: 0.5rem 0.75rem !important;
+}
+
+/* Responsive - Desktop Large (pour garantir tout rentre) */
+@media (min-width: 1400px) {
+    .header-content {
+        gap: 2rem !important;
+    }
+
+    .header-ux-actions {
+        gap: 1rem;
+    }
+
+    /* Boutons normaux sur grands écrans */
+    .theme-toggle-btn,
+    .language-switcher,
+    .notification-center-btn,
+    .achievement-btn {
+        padding: 0.5rem 1rem !important;
+        height: 48px !important;
+        font-size: 0.9rem !important;
+    }
+
+    .nav-link {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1rem !important;
+    }
+}
+
+/* Responsive - Laptop */
+@media (max-width: 1200px) {
+    .header-content {
+        gap: 1rem !important;
+    }
+
+    .header-ux-actions {
+        gap: 0.5rem;
+    }
+
+    /* Masquer les labels pour gagner de l'espace */
+    .theme-toggle-label {
+        display: none !important;
+    }
+
+    .lang-code {
+        display: none !important;
+    }
+
+    /* Boutons icon-only */
+    .theme-toggle-btn,
+    .achievement-btn {
+        padding: 0.4rem !important;
+    }
+
+    /* Navigation plus compacte */
+    .nav-menu ul {
+        gap: 0.75rem !important;
+    }
+
+    .nav-link {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.6rem !important;
+    }
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .header-content {
+        grid-template-columns: auto auto !important;
+        grid-template-rows: auto auto !important;
+        gap: 1rem !important;
+    }
+
+    .logo-cyber {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .header-ux-actions {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+    }
+
+    .nav-menu {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: center;
+    }
+
+    .cyber-header {
+        padding: 15px 0 !important;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .header-content {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto auto !important;
+        gap: 0.75rem !important;
+    }
+
+    .logo-cyber {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: center;
+    }
+
+    .header-ux-actions {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: center;
+        gap: 0.5rem;
+    }
+
+    .nav-menu {
+        grid-column: 1;
+        grid-row: 3;
+        justify-self: center;
+    }
+
+    /* Tous les boutons en mode compact */
+    .theme-toggle-btn,
+    .notification-center-btn,
+    .achievement-btn {
+        width: 40px !important;
+        height: 40px !important;
+        padding: 0.35rem !important;
+    }
+
+    .language-switcher {
+        padding: 0.3rem !important;
+    }
+
+    .lang-btn {
+        padding: 0.3rem 0.5rem !important;
+    }
+
+    /* Navigation verticale sur mobile */
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 0.5rem !important;
+    }
+
+    .nav-link {
+        font-size: 0.85rem !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .cyber-header {
+        padding: 12px 0 !important;
+    }
+}
+
+/* Small Mobile - Ultra compact */
+@media (max-width: 480px) {
+    .header-ux-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .theme-toggle-btn,
+    .notification-center-btn,
+    .achievement-btn {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .language-switcher {
+        padding: 0.25rem !important;
+    }
+}
+
+/* Menu hamburger pour très petits écrans */
+@media (max-width: 640px) {
+    /* Cacher le menu navigation complet sur mobile */
+    .nav-menu {
+        display: none;
+    }
+
+    /* Afficher uniquement avec burger menu (à implémenter si nécessaire) */
+    .mobile-menu-toggle {
+        display: block !important;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 2px solid var(--cyber-cyan);
+        border-radius: 8px;
+        cursor: pointer;
+        padding: 0.5rem;
+        position: relative;
+    }
+
+    .mobile-menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--cyber-cyan);
+        margin: 4px 0;
+        transition: all 0.3s ease;
+    }
+}
+
+/* Header actions wrapper - regrouper tous les boutons UX */
+.header-ux-actions-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+}
+
+/* Garantir que tous les éléments restent sur une ligne */
+@media (min-width: 769px) {
+    .header-ux-actions {
+        flex-wrap: nowrap !important;
+        white-space: nowrap;
+    }
+
+    .nav-menu ul {
+        flex-wrap: nowrap !important;
+    }
+}
+
+/* Ajustements de la navigation pour éviter le wrap */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 1200px) {
+    .nav-menu ul {
+        flex-wrap: nowrap !important;
+    }
+}
+
+/* Fix pour éviter que le header soit trop haut */
+.cyber-header {
+    min-height: auto !important;
+}
+
+/* Assurer que tout tient sur une ligne sur desktop */
+@media (min-width: 1024px) {
+    .header-content {
+        grid-template-rows: auto !important;
+        align-items: center !important;
+    }
+}

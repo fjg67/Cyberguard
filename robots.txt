@@ -1,0 +1,32 @@
+# CyberGuard Pro - robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /backend/
+Disallow: /reset.html
+Disallow: /force-reset.html
+Disallow: /test-*.html
+Disallow: /quiz-modal.html
+
+# Sitemap
+Sitemap: https://www.cyberguard-pro.com/sitemap.xml
+
+# Crawl delay (secondes entre 2 pages)
+Crawl-delay: 1
+
+# Bots spécifiques
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Bloquer les scrapers agressifs
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

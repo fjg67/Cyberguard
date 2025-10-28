@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Blog System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0a0a1a;
+            color: #fff;
+        }
+        .test-card {
+            background: #1a1a2e;
+            border: 2px solid #00ffff;
+            padding: 20px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .blog-title {
+            color: #00ffff;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .blog-link {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .blog-link:hover {
+            text-shadow: 0 0 10px #00ffff;
+        }
+        .status {
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success { background: rgba(0, 255, 0, 0.2); border: 1px solid #0f0; }
+        .error { background: rgba(255, 0, 0, 0.2); border: 1px solid #f00; }
+        .info { background: rgba(0, 255, 255, 0.2); border: 1px solid #0ff; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test du Système de Blog</h1>
+
+    <div id="status" class="status info">
+        Chargement du système de blog...
+    </div>
+
+    <h2>📚 Articles de test (cliquez sur une carte)</h2>
+
+    <div class="test-card blog-card">
+        <div class="blog-icon">🔐</div>
+        <h4 class="blog-title">Top 10 des gestionnaires de mots de passe en 2025</h4>
+        <p>Ceci est un test de l'article 1</p>
+        <a href="#" class="blog-link">Lire →</a>
+    </div>
+
+    <div class="test-card blog-card">
+        <div class="blog-icon">🎯</div>
+        <h4 class="blog-title">Configuration d'un VPN pour débutants</h4>
+        <p>Ceci est un test de l'article 2</p>
+        <a href="#" class="blog-link">Lire →</a>
+    </div>
+
+    <div class="test-card blog-card">
+        <div class="blog-icon">⚠️</div>
+        <h4 class="blog-title">Nouvelle vague d'attaques par ransomware : Comment se protéger</h4>
+        <p>Ceci est un test de l'article 3</p>
+        <a href="#" class="blog-link">Lire →</a>
+    </div>
+
+    <script src="blog.js"></script>
+    <script>
+        // Vérifier que le système est chargé
+        window.addEventListener('DOMContentLoaded', () => {
+            const statusDiv = document.getElementById('status');
+
+            setTimeout(() => {
+                if (typeof blogArticles !== 'undefined' && window.blogSystem) {
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `
+                        ✅ <strong>Système de blog chargé avec succès!</strong><br>
+                        📚 ${blogArticles.length} articles disponibles<br>
+                        🎯 BlogSystem initialisé<br>
+                        💡 Cliquez sur une carte pour tester
+                    `;
+                } else {
+                    statusDiv.className = 'status error';
+                    statusDiv.innerHTML = `
+                        ❌ <strong>Erreur de chargement</strong><br>
+                        blogArticles: ${typeof blogArticles !== 'undefined' ? '✓' : '✗'}<br>
+                        window.blogSystem: ${window.blogSystem ? '✓' : '✗'}
+                    `;
+                }
+            }, 500);
+        });
+
+        // Log des clics pour debug
+        document.addEventListener('click', (e) => {
+            const blogLink = e.target.closest('.blog-link');
+            if (blogLink) {
+                const blogCard = blogLink.closest('.blog-card');
+                const title = blogCard.querySelector('.blog-title').textContent;
+                console.log('🔍 Clic détecté sur:', title);
+
+                const article = window.blogSystem?.articles.find(a => a.title === title);
+                if (article) {
+                    console.log('✅ Article trouvé:', article.id, article.title);
+                } else {
+                    console.error('❌ Article non trouvé. Titres disponibles:',
+                        window.blogSystem?.articles.map(a => a.title));
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CyberGuard Pro - Solution Premium de Cybersécurité">
-    <title>⚡ CyberGuard Pro - Cybersécurité Premium</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Protégez-vous contre les cybermenaces avec CyberGuard Pro. Scanner de sécurité gratuit, comparateur antivirus & VPN, blog cybersécurité, alertes temps réel.">
+    <meta name="keywords" content="cybersécurité, antivirus, scanner sécurité, phishing, ransomware, VPN, protection internet, malware, test antivirus, comparateur VPN">
+    <meta name="author" content="CyberGuard Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.cyberguard-pro.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cyberguard-pro.com">
+    <meta property="og:title" content="CyberGuard Pro - Protection Cybersécurité Premium">
+    <meta property="og:description" content="Scanner de sécurité gratuit, alertes menaces temps réel, comparateur antivirus & VPN. Protégez votre vie numérique.">
+    <meta property="og:image" content="https://www.cyberguard-pro.com/og-image.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CyberGuardPro">
+    <meta name="twitter:title" content="CyberGuard Pro - Protection Cybersécurité">
+    <meta name="twitter:description" content="Scanner gratuit, alertes temps réel, blog expert cybersécurité.">
+    <meta name="twitter:image" content="https://www.cyberguard-pro.com/twitter-image.jpg">
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#0a0a1a">
+
+    <title>⚡ CyberGuard Pro - Cybersécurité Premium | Scanner Gratuit</title>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC3BVQX51V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WC3BVQX51V', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog-styles.css">
+    <link rel="stylesheet" href="world-map-styles.css">
+    <link rel="stylesheet" href="quiz-styles.css">
+    <link rel="stylesheet" href="theme-styles.css">
+    <link rel="stylesheet" href="i18n-styles.css">
+    <link rel="stylesheet" href="notification-styles.css">
+    <link rel="stylesheet" href="achievement-styles.css">
+    <link rel="stylesheet" href="cyberguard-ai-styles.css">
+    <link rel="stylesheet" href="mobile-menu-styles.css">
+    <link rel="stylesheet" href="header-responsive-fix.css">
 </head>
 <body>
     <!-- Effets de fond cyber -->
@@ -36,7 +87,66 @@
             <div class="header-content">
                 <div class="logo-cyber">
                     <div class="logo-glitch">
-                        <span class="logo-icon">⚡</span>
+                        <svg class="logo-icon-svg" width="45" height="45" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Bouclier principal -->
+                            <defs>
+                                <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0088ff;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="lockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00ffff;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Bouclier extérieur avec effet cyber -->
+                            <path d="M50 5 L85 20 L85 50 Q85 80 50 95 Q15 80 15 50 L15 20 Z"
+                                  fill="url(#shieldGradient)"
+                                  opacity="0.2"
+                                  filter="url(#glow)"/>
+
+                            <!-- Bouclier principal -->
+                            <path d="M50 10 L80 23 L80 50 Q80 75 50 88 Q20 75 20 50 L20 23 Z"
+                                  fill="none"
+                                  stroke="url(#shieldGradient)"
+                                  stroke-width="2.5"
+                                  class="shield-outline"/>
+
+                            <!-- Cadenas central -->
+                            <g class="lock-icon">
+                                <!-- Arc du cadenas -->
+                                <path d="M 40 40 Q 40 30 50 30 Q 60 30 60 40 L 60 45"
+                                      fill="none"
+                                      stroke="url(#lockGradient)"
+                                      stroke-width="3"
+                                      stroke-linecap="round"/>
+
+                                <!-- Corps du cadenas -->
+                                <rect x="38" y="45" width="24" height="20" rx="2"
+                                      fill="url(#lockGradient)"
+                                      opacity="0.8"/>
+
+                                <!-- Point clé -->
+                                <circle cx="50" cy="55" r="3" fill="#00ffff"/>
+                                <rect x="49" y="55" width="2" height="6" rx="1" fill="#00ffff"/>
+                            </g>
+
+                            <!-- Éléments cyber décoratifs -->
+                            <circle cx="50" cy="50" r="35" fill="none" stroke="#00ffff" stroke-width="0.5" opacity="0.3" stroke-dasharray="5,5" class="cyber-circle"/>
+
+                            <!-- Points d'angle cyber -->
+                            <circle cx="50" cy="10" r="2" fill="#00ffff" class="corner-dot"/>
+                            <circle cx="80" cy="23" r="2" fill="#00ffff" class="corner-dot"/>
+                            <circle cx="20" cy="23" r="2" fill="#00ffff" class="corner-dot"/>
+                        </svg>
                         <span class="logo-text" data-text="CyberGuard Pro">CyberGuard Pro</span>
                     </div>
                     <div class="logo-subtitle">SECURITY SYSTEM v4.5</div>
@@ -47,7 +157,12 @@
                         <li><a href="#protection" class="nav-link" data-text="PROTECTION">PROTECTION</a></li>
                         <li><a href="#verification" class="nav-link" data-text="SCAN">SCAN</a></li>
                         <li><a href="#interactive" class="nav-link" data-text="INTERACTIF">INTERACTIF</a></li>
-                        <li><a href="#outils" class="nav-link" data-text="OUTILS">OUTILS</a></li>
+                        <li><a href="#dashboard" class="nav-link" data-text="DASHBOARD">DASHBOARD</a></li>
+                        <li><a href="#blog" class="nav-link" data-text="BLOG">BLOG</a></li>
+                        <li><a href="#comparateur" class="nav-link" data-text="COMPARATEUR">COMPARATEUR</a></li>
+                        <li><a href="#menaces" class="nav-link" data-text="MENACES">MENACES</a></li>
+                        <li><a href="#guides" class="nav-link" data-text="GUIDES">GUIDES</a></li>
+                        <li><a href="#temoignages" class="nav-link" data-text="AVIS">AVIS</a></li>
                         <li><a href="#contact" class="nav-link cyber-button" data-text="CONNEXION">
                             <span class="button-content">CONNEXION</span>
                             <span class="button-glitch"></span>
@@ -710,6 +825,1096 @@
         </div>
     </section>
 
+    <!-- Section Dashboard -->
+    <section id="dashboard" class="section-cyber section-dashboard">
+        <div class="section-bg-pattern"></div>
+
+        <div class="container">
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ TABLEAU DE BORD ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="DASHBOARD">DASHBOARD</span>
+                    <span class="title-accent">PERSONNEL</span>
+                </h2>
+                <p class="section-subtitle-cyber">SURVEILLEZ VOTRE SÉCURITÉ EN TEMPS RÉEL</p>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Status Overview -->
+                <div class="dashboard-card" data-aos="fade-up">
+                    <div class="dashboard-card-header">
+                        <span class="dashboard-icon">🛡️</span>
+                        <h3>STATUT DE SÉCURITÉ</h3>
+                    </div>
+                    <div class="security-score">
+                        <div class="score-circle">
+                            <svg viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="90" class="score-bg"></circle>
+                                <circle cx="100" cy="100" r="90" class="score-progress" style="stroke-dasharray: 565; stroke-dashoffset: 85;"></circle>
+                            </svg>
+                            <div class="score-value">85%</div>
+                        </div>
+                        <div class="score-label">Score de sécurité global</div>
+                    </div>
+                    <div class="security-items">
+                        <div class="security-item">
+                            <span class="item-icon">✓</span>
+                            <span class="item-text">Antivirus actif</span>
+                            <span class="item-status ok">OK</span>
+                        </div>
+                        <div class="security-item">
+                            <span class="item-icon">✓</span>
+                            <span class="item-text">VPN connecté</span>
+                            <span class="item-status ok">OK</span>
+                        </div>
+                        <div class="security-item">
+                            <span class="item-icon">⚠</span>
+                            <span class="item-text">Mises à jour système</span>
+                            <span class="item-status warning">ATTENTION</span>
+                        </div>
+                        <div class="security-item">
+                            <span class="item-icon">✓</span>
+                            <span class="item-text">Pare-feu activé</span>
+                            <span class="item-status ok">OK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Scans -->
+                <div class="dashboard-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="dashboard-card-header">
+                        <span class="dashboard-icon">📊</span>
+                        <h3>HISTORIQUE DES SCANS</h3>
+                    </div>
+                    <div class="scan-history">
+                        <div class="scan-item">
+                            <div class="scan-date">Aujourd'hui, 14:32</div>
+                            <div class="scan-type">Scan URL</div>
+                            <div class="scan-result safe">SÉCURISÉ</div>
+                        </div>
+                        <div class="scan-item">
+                            <div class="scan-date">Hier, 09:15</div>
+                            <div class="scan-type">Scan fichier</div>
+                            <div class="scan-result safe">SÉCURISÉ</div>
+                        </div>
+                        <div class="scan-item">
+                            <div class="scan-date">Il y a 2 jours</div>
+                            <div class="scan-type">Vérif. email</div>
+                            <div class="scan-result warning">COMPROMIS</div>
+                        </div>
+                        <div class="scan-item">
+                            <div class="scan-date">Il y a 3 jours</div>
+                            <div class="scan-type">Scan URL</div>
+                            <div class="scan-result danger">MENACE</div>
+                        </div>
+                    </div>
+                    <button class="dashboard-btn">Voir tout l'historique →</button>
+                </div>
+
+                <!-- Alerts -->
+                <div class="dashboard-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="dashboard-card-header">
+                        <span class="dashboard-icon">⚠️</span>
+                        <h3>ALERTES PERSONNALISÉES</h3>
+                    </div>
+                    <div class="alerts-list">
+                        <div class="alert-item high">
+                            <span class="alert-badge">URGENT</span>
+                            <p class="alert-text">3 tentatives de connexion suspectes détectées</p>
+                            <span class="alert-time">Il y a 2h</span>
+                        </div>
+                        <div class="alert-item medium">
+                            <span class="alert-badge">MOYEN</span>
+                            <p class="alert-text">Mise à jour de sécurité disponible</p>
+                            <span class="alert-time">Il y a 5h</span>
+                        </div>
+                        <div class="alert-item low">
+                            <span class="alert-badge">INFO</span>
+                            <p class="alert-text">Votre abonnement VPN expire dans 15 jours</p>
+                            <span class="alert-time">Il y a 1j</span>
+                        </div>
+                    </div>
+                    <button class="dashboard-btn">Gérer les alertes →</button>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="dashboard-card wide" data-aos="fade-up" data-aos-delay="300">
+                    <div class="dashboard-card-header">
+                        <span class="dashboard-icon">📈</span>
+                        <h3>STATISTIQUES DU MOIS</h3>
+                    </div>
+                    <div class="quick-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">127</div>
+                            <div class="stat-label">Menaces bloquées</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">45</div>
+                            <div class="stat-label">URLs analysées</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Scans fichiers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98.5%</div>
+                            <div class="stat-label">Disponibilité VPN</div>
+                        </div>
+                    </div>
+                    <button class="dashboard-btn" id="reset-dashboard-btn" style="margin-top: 20px; background: rgba(255, 0, 64, 0.2); border-color: #ff0040;">
+                        🔄 Réinitialiser le Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Blog -->
+    <section id="blog" class="section-cyber section-blog">
+        <div class="section-bg-pattern"></div>
+
+        <div class="container">
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ CENTRE D'INFORMATION ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="BLOG">BLOG</span>
+                    <span class="title-accent">CYBERSÉCURITÉ</span>
+                </h2>
+                <p class="section-subtitle-cyber">ACTUALITÉS, CONSEILS & TUTORIELS</p>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Blog Filters -->
+            <div class="blog-filters" data-aos="fade-up">
+                <button class="blog-filter-btn active" data-category="all">
+                    <span class="filter-icon">📊</span>
+                    <span>Tous</span>
+                </button>
+                <button class="blog-filter-btn" data-category="PROTECTION">
+                    <span class="filter-icon">🔐</span>
+                    <span>Protection</span>
+                </button>
+                <button class="blog-filter-btn" data-category="GUIDE">
+                    <span class="filter-icon">🎯</span>
+                    <span>Guides</span>
+                </button>
+                <button class="blog-filter-btn" data-category="ALERTE">
+                    <span class="filter-icon">⚠️</span>
+                    <span>Alertes</span>
+                </button>
+                <button class="blog-filter-btn" data-category="ACTUALITÉ">
+                    <span class="filter-icon">📰</span>
+                    <span>Actualités</span>
+                </button>
+                <button class="blog-filter-btn" data-category="ENTREPRISE">
+                    <span class="filter-icon">💼</span>
+                    <span>Entreprise</span>
+                </button>
+            </div>
+
+            <!-- Featured Article -->
+            <div class="featured-article" id="featured-article" data-aos="fade-up">
+                <!-- Will be populated by JavaScript -->
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="blog-grid" id="blog-articles-grid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+
+            <div class="blog-cta" data-aos="fade-up">
+                <button class="cyber-btn primary-btn" id="load-more-articles">
+                    <span class="btn-border"></span>
+                    <span class="btn-content">
+                        <span class="btn-text">CHARGER PLUS D'ARTICLES</span>
+                        <span class="btn-arrow">→</span>
+                    </span>
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Article Modal -->
+    <div id="blog-modal" class="blog-modal">
+        <div class="blog-modal-overlay"></div>
+        <div class="blog-modal-content">
+            <button class="blog-modal-close">&times;</button>
+            <div class="blog-modal-body">
+                <div class="blog-modal-header">
+                    <span class="modal-category" id="modal-category"></span>
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <div class="modal-meta">
+                        <span id="modal-date"></span>
+                        <span id="modal-read-time"></span>
+                        <span id="modal-author"></span>
+                    </div>
+                    <div class="modal-tags" id="modal-tags"></div>
+                </div>
+                <div class="blog-modal-article" id="modal-content">
+                    <!-- Article content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Comparateur -->
+    <section id="comparateur" class="section-cyber section-comparateur">
+        <div class="section-bg-pattern"></div>
+
+        <div class="container">
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ OUTIL DE COMPARAISON ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="COMPARATEUR">COMPARATEUR</span>
+                    <span class="title-accent">ANTIVIRUS & VPN</span>
+                </h2>
+                <p class="section-subtitle-cyber">TROUVEZ LA SOLUTION PARFAITE POUR VOUS</p>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Filters -->
+            <div class="comparator-filters" data-aos="fade-up">
+                <div class="filter-group">
+                    <label>Type de produit</label>
+                    <select class="cyber-select" id="product-type">
+                        <option>Tous les produits</option>
+                        <option>Antivirus</option>
+                        <option>VPN</option>
+                        <option>Suite complète</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Budget</label>
+                    <select class="cyber-select" id="budget-filter">
+                        <option>Tous les prix</option>
+                        <option>Gratuit</option>
+                        <option>< 50€/an</option>
+                        <option>50€ - 100€/an</option>
+                        <option>> 100€/an</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Plateforme</label>
+                    <select class="cyber-select" id="platform-filter">
+                        <option>Toutes plateformes</option>
+                        <option>Windows</option>
+                        <option>Mac</option>
+                        <option>Linux</option>
+                        <option>Mobile</option>
+                    </select>
+                </div>
+                <button class="filter-reset">⟲ Réinitialiser</button>
+            </div>
+
+            <!-- Recommendation Quiz CTA -->
+            <div class="quiz-cta-banner" data-aos="fade-up">
+                <div class="quiz-cta-content">
+                    <div class="quiz-cta-icon">🎯</div>
+                    <div class="quiz-cta-text">
+                        <h3>Pas sûr de votre choix ?</h3>
+                        <p>Répondez à 5 questions et obtenez une recommandation personnalisée</p>
+                    </div>
+                    <button class="quiz-cta-btn" id="start-quiz-btn">
+                        <span class="btn-icon">▶</span>
+                        <span>Démarrer le quiz</span>
+                        <span class="btn-time">⏱ 1 min</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-table" data-aos="fade-up">
+                <div class="comparison-row header-row">
+                    <div class="comparison-cell feature-cell">FONCTIONNALITÉS</div>
+                    <div class="comparison-cell">
+                        <div class="product-header">
+                            <div class="product-logo-text">🌐</div>
+                            <h4>NordVPN</h4>
+                            <div class="product-rating">★★★★★ 4.7/5</div>
+                            <div class="product-price-wrapper">
+                                <span class="price-badge">-69%</span>
+                                <div class="product-price">39.48€/an</div>
+                                <div class="price-detail">3.29€/mois</div>
+                                <div class="price-original">127.08€</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-cell">
+                        <div class="product-header">
+                            <div class="product-logo-text">⚡</div>
+                            <h4>ExpressVPN</h4>
+                            <div class="product-rating">★★★★★ 4.6/5</div>
+                            <div class="product-price-wrapper">
+                                <span class="price-badge">-49%</span>
+                                <div class="product-price">100.05€/an</div>
+                                <div class="price-detail">6.67€/mois (15 mois)</div>
+                                <div class="price-original">194.25€</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-cell">
+                        <div class="product-header">
+                            <div class="product-logo-text">🦈</div>
+                            <h4>Surfshark</h4>
+                            <div class="product-rating">★★★★★ 4.5/5</div>
+                            <div class="product-price-wrapper">
+                                <span class="price-badge recommended">-83% MEILLEUR PRIX</span>
+                                <div class="product-price">52.56€/2ans</div>
+                                <div class="price-detail">2.19€/mois</div>
+                                <div class="price-original">310.80€</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Serveurs</div>
+                    <div class="comparison-cell"><strong>5800+</strong> dans 60 pays</div>
+                    <div class="comparison-cell"><strong>3000+</strong> dans 94 pays</div>
+                    <div class="comparison-cell"><strong>3200+</strong> dans 100 pays</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Appareils simultanés</div>
+                    <div class="comparison-cell">6 appareils</div>
+                    <div class="comparison-cell">5 appareils</div>
+                    <div class="comparison-cell">♾️ <strong>ILLIMITÉS</strong></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Vitesse</div>
+                    <div class="comparison-cell">⚡⚡⚡ Excellent (WireGuard)</div>
+                    <div class="comparison-cell">⚡⚡⚡⚡ Exceptionnel (Lightway)</div>
+                    <div class="comparison-cell">⚡⚡ Très bon</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Politique No-Logs</div>
+                    <div class="comparison-cell">✓ Audité (indépendant)</div>
+                    <div class="comparison-cell">✓ Audité PwC</div>
+                    <div class="comparison-cell">✓ Audité (Cure53)</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Kill Switch</div>
+                    <div class="comparison-cell">✓</div>
+                    <div class="comparison-cell">✓</div>
+                    <div class="comparison-cell">✓</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Bloqueur pubs/malware</div>
+                    <div class="comparison-cell">✓ Threat Protection</div>
+                    <div class="comparison-cell">✗</div>
+                    <div class="comparison-cell">✓ CleanWeb</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Double VPN</div>
+                    <div class="comparison-cell">✓</div>
+                    <div class="comparison-cell">✗</div>
+                    <div class="comparison-cell">✓ MultiHop</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Streaming</div>
+                    <div class="comparison-cell">✓ Netflix, Disney+, etc.</div>
+                    <div class="comparison-cell">✓✓ Excellent</div>
+                    <div class="comparison-cell">✓ Netflix, Disney+, etc.</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Garantie remboursement</div>
+                    <div class="comparison-cell">30 jours</div>
+                    <div class="comparison-cell">30 jours</div>
+                    <div class="comparison-cell">30 jours</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Support client</div>
+                    <div class="comparison-cell">24/7 Chat FR</div>
+                    <div class="comparison-cell">24/7 Chat FR</div>
+                    <div class="comparison-cell">24/7 Chat FR</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature-cell">Idéal pour</div>
+                    <div class="comparison-cell">⭐ Meilleur global</div>
+                    <div class="comparison-cell">🚀 Vitesse maximale</div>
+                    <div class="comparison-cell">💰 Meilleur prix</div>
+                </div>
+
+                <div class="comparison-row action-row">
+                    <div class="comparison-cell feature-cell"></div>
+                    <div class="comparison-cell">
+                        <a href="https://nordvpn.com/fr/" target="_blank" rel="noopener" class="comparison-btn">Choisir NordVPN →</a>
+                        <div class="promo-note">🎁 +3 mois offerts</div>
+                    </div>
+                    <div class="comparison-cell">
+                        <a href="https://www.expressvpn.com/fr" target="_blank" rel="noopener" class="comparison-btn">Choisir ExpressVPN →</a>
+                        <div class="promo-note">🎁 +3 mois offerts</div>
+                    </div>
+                    <div class="comparison-cell">
+                        <a href="https://surfshark.com/fr" target="_blank" rel="noopener" class="comparison-btn primary">Choisir Surfshark →</a>
+                        <div class="promo-note">🎁 +2 mois offerts + appareils illimités</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Reviews -->
+            <div class="user-reviews" data-aos="fade-up">
+                <h3 class="reviews-title">AVIS UTILISATEURS</h3>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <span class="author-avatar">👤</span>
+                                <div>
+                                    <div class="author-name">Alexandre M.</div>
+                                    <div class="review-rating">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="review-product">Bitdefender</div>
+                        </div>
+                        <p class="review-text">"Excellent antivirus, détection rapide et peu gourmand en ressources. Je recommande !"</p>
+                        <div class="review-date">Il y a 2 jours</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <span class="author-avatar">👤</span>
+                                <div>
+                                    <div class="author-name">Sophie L.</div>
+                                    <div class="review-rating">★★★★★</div>
+                                </div>
+                            </div>
+                            <div class="review-product">NordVPN</div>
+                        </div>
+                        <p class="review-text">"Connexion stable et rapide. Parfait pour le streaming et le télétravail sécurisé."</p>
+                        <div class="review-date">Il y a 5 jours</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <span class="author-avatar">👤</span>
+                                <div>
+                                    <div class="author-name">Thomas R.</div>
+                                    <div class="review-rating">★★★★☆</div>
+                                </div>
+                            </div>
+                            <div class="review-product">ExpressVPN</div>
+                        </div>
+                        <p class="review-text">"Très bon VPN mais un peu cher. La vitesse est exceptionnelle par contre."</p>
+                        <div class="review-date">Il y a 1 semaine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Menaces du jour -->
+    <section id="menaces" class="section-cyber section-menaces">
+        <div class="section-bg-pattern"></div>
+
+        <div class="container">
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ SURVEILLANCE GLOBALE ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="MENACES">MENACES</span>
+                    <span class="title-accent">DU JOUR</span>
+                </h2>
+                <p class="section-subtitle-cyber">ALERTES & CYBERATTAQUES EN TEMPS RÉEL</p>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Threat Level -->
+            <div class="threat-level-card" data-aos="fade-up">
+                <div class="threat-level-header">
+                    <span class="threat-icon">🌡️</span>
+                    <h3>NIVEAU DE MENACE GLOBAL</h3>
+                </div>
+                <div class="threat-gauge">
+                    <div class="gauge-container">
+                        <div class="gauge-fill" style="width: 68%"></div>
+                    </div>
+                    <div class="gauge-labels">
+                        <span>BAS</span>
+                        <span>MOYEN</span>
+                        <span class="active">ÉLEVÉ</span>
+                        <span>CRITIQUE</span>
+                    </div>
+                </div>
+                <p class="threat-description">Activité cybercriminelle accrue détectée dans 15 pays. Vigilance recommandée.</p>
+            </div>
+
+            <!-- Live Attacks Map -->
+            <div class="attacks-map-container" data-aos="fade-up">
+                <h3 class="map-title">CARTE DES CYBERATTAQUES EN DIRECT</h3>
+                <div class="cyber-map">
+                    <div class="map-placeholder">
+                        <div class="map-point activity-medium" style="top: 30%; left: 20%" data-location="France">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>France</strong><br>0 attaques<br>🟡 Moyenne</div>
+                        </div>
+                        <div class="map-point activity-high" style="top: 25%; left: 80%" data-location="Chine">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>Chine</strong><br>0 attaques<br>🔴 Élevée</div>
+                        </div>
+                        <div class="map-point activity-high" style="top: 35%; left: 45%" data-location="Russie">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>Russie</strong><br>0 attaques<br>🔴 Élevée</div>
+                        </div>
+                        <div class="map-point activity-high" style="top: 40%; left: 15%" data-location="USA">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>USA</strong><br>0 attaques<br>🔴 Élevée</div>
+                        </div>
+                        <div class="map-point activity-medium" style="top: 60%; left: 25%" data-location="Brésil">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>Brésil</strong><br>0 attaques<br>🟡 Moyenne</div>
+                        </div>
+                        <div class="map-point activity-medium" style="top: 45%; left: 72%" data-location="Inde">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>Inde</strong><br>0 attaques<br>🟡 Moyenne</div>
+                        </div>
+                        <div class="map-point activity-low" style="top: 70%; left: 70%" data-location="Australie">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>Australie</strong><br>0 attaques<br>🟢 Faible</div>
+                        </div>
+                        <div class="map-point activity-medium" style="top: 28%; left: 24%" data-location="Allemagne">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>Allemagne</strong><br>0 attaques<br>🟡 Moyenne</div>
+                        </div>
+                        <div class="map-point activity-high" style="top: 35%; left: 85%" data-location="Japon">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>Japon</strong><br>0 attaques<br>🔴 Élevée</div>
+                        </div>
+                        <div class="map-point activity-medium" style="top: 27%; left: 19%" data-location="UK">
+                            <span class="pulse"></span>
+                            <div class="map-tooltip"><strong>UK</strong><br>0 attaques<br>🟡 Moyenne</div>
+                        </div>
+                    </div>
+                    <div class="map-legend">
+                        <span class="legend-item"><span class="legend-dot high"></span> Activité élevée</span>
+                        <span class="legend-item"><span class="legend-dot medium"></span> Activité moyenne</span>
+                        <span class="legend-item"><span class="legend-dot low"></span> Activité faible</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Threats -->
+            <div class="threats-grid">
+                <div class="threat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="threat-badge critical">CRITIQUE</div>
+                    <h4 class="threat-title">🔴 Ransomware "BlackCat" v2.0</h4>
+                    <p class="threat-desc">Nouvelle variante du ransomware BlackCat ciblant les PME européennes. Chiffrement en 15 minutes.</p>
+                    <div class="threat-stats">
+                        <span>📊 2,847 infections</span>
+                        <span>🌍 18 pays</span>
+                        <span>⏰ Il y a 3h</span>
+                    </div>
+                    <div class="threat-actions">
+                        <button class="threat-btn">En savoir plus →</button>
+                    </div>
+                </div>
+
+                <div class="threat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="threat-badge high">ÉLEVÉ</div>
+                    <h4 class="threat-title">🟠 Campagne de phishing bancaire</h4>
+                    <p class="threat-desc">Emails frauduleux imitant les principales banques françaises. Taux de réussite de 12%.</p>
+                    <div class="threat-stats">
+                        <span>📊 45,000 emails</span>
+                        <span>🌍 France, Belgique</span>
+                        <span>⏰ Il y a 6h</span>
+                    </div>
+                    <div class="threat-actions">
+                        <button class="threat-btn">En savoir plus →</button>
+                    </div>
+                </div>
+
+                <div class="threat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="threat-badge medium">MOYEN</div>
+                    <h4 class="threat-title">🟡 Faille de sécurité WordPress</h4>
+                    <p class="threat-desc">Vulnérabilité critique découverte dans le plugin "WP Forms" affectant 2M+ de sites.</p>
+                    <div class="threat-stats">
+                        <span>📊 2.1M sites</span>
+                        <span>🌍 Mondial</span>
+                        <span>⏰ Il y a 12h</span>
+                    </div>
+                    <div class="threat-actions">
+                        <button class="threat-btn">En savoir plus →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Stats -->
+            <div class="realtime-stats" data-aos="fade-up">
+                <h3 class="stats-title">STATISTIQUES EN TEMPS RÉEL (24H)</h3>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-number" id="threats-blocked">15,847</div>
+                        <div class="stat-label">Menaces détectées</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">📧</div>
+                        <div class="stat-number" id="phishing-attempts">3,241</div>
+                        <div class="stat-label">Tentatives de phishing</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">🔒</div>
+                        <div class="stat-number" id="ransomware-blocked">127</div>
+                        <div class="stat-label">Ransomwares bloqués</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">🌐</div>
+                        <div class="stat-number" id="sites-infected">892</div>
+                        <div class="stat-label">Sites compromis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Guides/Tutoriels -->
+    <section id="guides" class="section-cyber section-guides">
+        <div class="section-bg-pattern"></div>
+
+        <div class="container">
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ FORMATION & APPRENTISSAGE ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="GUIDES">GUIDES</span>
+                    <span class="title-accent">& TUTORIELS</span>
+                </h2>
+                <p class="section-subtitle-cyber">DEVENEZ UN EXPERT EN CYBERSÉCURITÉ</p>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Video Tutorials -->
+            <div class="tutorials-section" data-aos="fade-up">
+                <h3 class="section-subtitle">📹 TUTORIELS VIDÉO</h3>
+                <div class="tutorials-grid">
+                    <div class="tutorial-card" data-video-id="dQw4w9WgXcQ">
+                        <div class="tutorial-video">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Video thumbnail" class="video-thumbnail">
+                            <div class="video-overlay">
+                                <span class="play-icon">▶</span>
+                                <div class="video-duration">12:34</div>
+                            </div>
+                        </div>
+                        <div class="tutorial-content">
+                            <h4>Configurer Bitdefender de A à Z</h4>
+                            <p>Guide complet pour installer et optimiser Bitdefender sur Windows</p>
+                            <div class="tutorial-meta">
+                                <span>👁 2.5k vues</span>
+                                <span>👍 187</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-card" data-video-id="dQw4w9WgXcQ">
+                        <div class="tutorial-video">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Video thumbnail" class="video-thumbnail">
+                            <div class="video-overlay">
+                                <span class="play-icon">▶</span>
+                                <div class="video-duration">8:45</div>
+                            </div>
+                        </div>
+                        <div class="tutorial-content">
+                            <h4>Installer et utiliser un VPN</h4>
+                            <p>Tutoriel pas à pas pour sécuriser votre connexion avec NordVPN</p>
+                            <div class="tutorial-meta">
+                                <span>👁 4.2k vues</span>
+                                <span>👍 298</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-card" data-video-id="dQw4w9WgXcQ">
+                        <div class="tutorial-video">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Video thumbnail" class="video-thumbnail">
+                            <div class="video-overlay">
+                                <span class="play-icon">▶</span>
+                                <div class="video-duration">15:20</div>
+                            </div>
+                        </div>
+                        <div class="tutorial-content">
+                            <h4>Détecter et éviter le phishing</h4>
+                            <p>Apprenez à reconnaître les emails et sites frauduleux</p>
+                            <div class="tutorial-meta">
+                                <span>👁 6.8k vues</span>
+                                <span>👍 421</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step-by-step Guides -->
+            <div class="guides-section" data-aos="fade-up">
+                <h3 class="section-subtitle">📋 GUIDES PAS À PAS</h3>
+                <div class="guides-list">
+                    <div class="guide-item">
+                        <div class="guide-number">01</div>
+                        <div class="guide-content">
+                            <h4>Sécuriser son réseau WiFi domestique</h4>
+                            <p>Apprenez à configurer votre routeur pour une protection optimale</p>
+                            <ul class="guide-steps">
+                                <li>✓ Changer le mot de passe par défaut</li>
+                                <li>✓ Activer le chiffrement WPA3</li>
+                                <li>✓ Désactiver le WPS</li>
+                                <li>✓ Configurer le réseau invité</li>
+                            </ul>
+                            <button class="guide-btn">Voir le guide complet →</button>
+                        </div>
+                    </div>
+
+                    <div class="guide-item">
+                        <div class="guide-number">02</div>
+                        <div class="guide-content">
+                            <h4>Créer des mots de passe inviolables</h4>
+                            <p>Méthode pour générer et gérer des mots de passe ultra-sécurisés</p>
+                            <ul class="guide-steps">
+                                <li>✓ Utiliser au moins 16 caractères</li>
+                                <li>✓ Mélanger majuscules, chiffres et symboles</li>
+                                <li>✓ Éviter les mots du dictionnaire</li>
+                                <li>✓ Utiliser un gestionnaire de mots de passe</li>
+                            </ul>
+                            <button class="guide-btn">Voir le guide complet →</button>
+                        </div>
+                    </div>
+
+                    <div class="guide-item">
+                        <div class="guide-number">03</div>
+                        <div class="guide-content">
+                            <h4>Activer l'authentification à deux facteurs (2FA)</h4>
+                            <p>Renforcez la sécurité de tous vos comptes en ligne</p>
+                            <ul class="guide-steps">
+                                <li>✓ Choisir une app d'authentification</li>
+                                <li>✓ Configurer 2FA sur Gmail</li>
+                                <li>✓ Activer 2FA sur les réseaux sociaux</li>
+                                <li>✓ Sauvegarder les codes de secours</li>
+                            </ul>
+                            <button class="guide-btn">Voir le guide complet →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="faq-section" data-aos="fade-up">
+                <h3 class="section-subtitle">❓ FAQ INTERACTIVE</h3>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">▶</span>
+                            <span>Ai-je vraiment besoin d'un VPN ?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Oui, un VPN est essentiel pour protéger votre vie privée en ligne. Il chiffre votre connexion, masque votre adresse IP et vous protège sur les réseaux WiFi publics. Si vous voyagez souvent, utilisez des WiFi publics ou souhaitez accéder à du contenu géo-restreint, un VPN est indispensable.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">▶</span>
+                            <span>Windows Defender suffit-il ou faut-il un antivirus payant ?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Windows Defender offre une protection de base correcte, mais les antivirus payants comme Bitdefender offrent des fonctionnalités avancées : protection web en temps réel, anti-ransomware, VPN, gestionnaire de mots de passe, et des taux de détection supérieurs. Pour une protection optimale, un antivirus payant est recommandé.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">▶</span>
+                            <span>Comment reconnaître un email de phishing ?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Vérifiez ces signes : adresse email suspecte, fautes d'orthographe, urgence artificielle, liens raccourcis, demandes d'informations personnelles. Passez votre souris sur les liens sans cliquer pour voir la vraie destination. En cas de doute, contactez directement l'organisation via leurs canaux officiels.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">▶</span>
+                            <span>Quelle est la différence entre HTTP et HTTPS ?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>HTTPS (S pour Secure) chiffre les données échangées entre votre navigateur et le site web. HTTP transmet les données en clair, visibles par quiconque intercepte la connexion. Vérifiez toujours le cadenas dans la barre d'adresse avant d'entrer des informations sensibles. Ne faites JAMAIS de paiement sur un site HTTP.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">▶</span>
+                            <span>Combien de temps faut-il pour qu'un hacker devine mon mot de passe ?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Cela dépend de la complexité :
+                            - 8 caractères (lettres minuscules) : quelques secondes
+                            - 8 caractères (alphanumériques) : quelques heures
+                            - 12 caractères (mixtes) : plusieurs années
+                            - 16 caractères (mixtes + symboles) : des milliers d'années
+                            Utilisez toujours 16+ caractères avec un mélange de types.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages -->
+    <section id="temoignages" class="section-cyber section-testimonials">
+        <div class="section-bg-pattern"></div>
+
+        <div class="container">
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ RETOURS D'EXPÉRIENCE ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="TÉMOIGNAGES">TÉMOIGNAGES</span>
+                    <span class="title-accent">& AVIS</span>
+                </h2>
+                <p class="section-subtitle-cyber">CE QUE NOS UTILISATEURS DISENT DE NOUS</p>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Overall Rating -->
+            <div class="overall-rating" data-aos="fade-up">
+                <div class="rating-score">
+                    <div class="score-big">4.8</div>
+                    <div class="score-stars">★★★★★</div>
+                    <div class="score-text">Basé sur 2,847 avis vérifiés</div>
+                </div>
+                <div class="rating-breakdown">
+                    <div class="rating-bar-item">
+                        <span>5 ★</span>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 78%"></div>
+                        </div>
+                        <span>78%</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>4 ★</span>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 15%"></div>
+                        </div>
+                        <span>15%</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>3 ★</span>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 5%"></div>
+                        </div>
+                        <span>5%</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>2 ★</span>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 1%"></div>
+                        </div>
+                        <span>1%</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>1 ★</span>
+                        <div class="rating-bar-bg">
+                            <div class="rating-bar-fill" style="width: 1%"></div>
+                        </div>
+                        <span>1%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2300ffff'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='40' fill='%23000'%3EJM%3C/text%3E%3C/svg%3E" alt="Avatar" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Jean-Marc D.</div>
+                            <div class="testimonial-role">CEO, StartupTech</div>
+                            <div class="testimonial-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"CyberGuard a transformé notre approche de la cybersécurité. Grâce à leurs outils et conseils, nous avons pu sécuriser toute notre infrastructure. Le scanner d'URL nous a évité plusieurs attaques de phishing !"</p>
+                    <div class="testimonial-footer">
+                        <span>✓ Avis vérifié</span>
+                        <span>Il y a 3 jours</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%239933ff'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='40' fill='%23fff'%3EML%3C/text%3E%3C/svg%3E" alt="Avatar" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Marie L.</div>
+                            <div class="testimonial-role">Freelance Web Designer</div>
+                            <div class="testimonial-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Interface intuitive et fonctionnalités ultra complètes. Le générateur de mots de passe et le dashboard de sécurité sont mes outils préférés. Je me sens beaucoup plus en sécurité depuis que j'utilise CyberGuard."</p>
+                    <div class="testimonial-footer">
+                        <span>✓ Avis vérifié</span>
+                        <span>Il y a 1 semaine</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ff00ff'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='40' fill='%23fff'%3EPR%3C/text%3E%3C/svg%3E" alt="Avatar" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Pierre R.</div>
+                            <div class="testimonial-role">Responsable IT</div>
+                            <div class="testimonial-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Le comparateur d'antivirus m'a permis de choisir la meilleure solution pour mon entreprise. Économie de temps considérable et décision éclairée grâce aux avis détaillés."</p>
+                    <div class="testimonial-footer">
+                        <span>✓ Avis vérifié</span>
+                        <span>Il y a 2 semaines</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2300ff00'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='40' fill='%23000'%3ESB%3C/text%3E%3C/svg%3E" alt="Avatar" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sophie B.</div>
+                            <div class="testimonial-role">E-commerce Manager</div>
+                            <div class="testimonial-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Les alertes en temps réel sur les menaces m'ont sauvé plusieurs fois. La section blog est une mine d'or d'informations. Je recommande vivement à tous les professionnels !"</p>
+                    <div class="testimonial-footer">
+                        <span>✓ Avis vérifié</span>
+                        <span>Il y a 3 semaines</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ffff00'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='40' fill='%23000'%3ELC%3C/text%3E%3C/svg%3E" alt="Avatar" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Lucas C.</div>
+                            <div class="testimonial-role">Étudiant en Informatique</div>
+                            <div class="testimonial-rating">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Super ressources pour apprendre la cybersécurité. Les tutoriels vidéo sont clairs et la FAQ répond à toutes mes questions. Parfait pour les débutants comme pour les experts."</p>
+                    <div class="testimonial-footer">
+                        <span>✓ Avis vérifié</span>
+                        <span>Il y a 1 mois</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-header">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ff0000'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='40' fill='%23fff'%3EAM%3C/text%3E%3C/svg%3E" alt="Avatar" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Amandine M.</div>
+                            <div class="testimonial-role">Consultante</div>
+                            <div class="testimonial-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"La carte des cyberattaques en temps réel est fascinante ! Ça m'a vraiment sensibilisée aux risques. Les guides pas à pas sont très bien faits et faciles à suivre."</p>
+                    <div class="testimonial-footer">
+                        <span>✓ Avis vérifié</span>
+                        <span>Il y a 1 mois</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Stories -->
+            <div class="success-stories" data-aos="fade-up">
+                <h3 class="section-subtitle">🏆 SUCCESS STORIES</h3>
+                <div class="stories-grid">
+                    <div class="story-card">
+                        <div class="story-number">01</div>
+                        <h4>"Nous avons évité une attaque majeure"</h4>
+                        <p>Grâce aux alertes de CyberGuard, nous avons détecté et bloqué une tentative de ransomware qui aurait pu nous coûter des millions.</p>
+                        <div class="story-author">- TechCorp Industries</div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-number">02</div>
+                        <h4>"Formation réussie de toute l'équipe"</h4>
+                        <p>Les tutoriels et guides nous ont permis de former nos 50 employés aux bonnes pratiques de cybersécurité en seulement 2 semaines.</p>
+                        <div class="story-author">- Digital Solutions SARL</div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-number">03</div>
+                        <h4>"Protection familiale complète"</h4>
+                        <p>J'ai pu sécuriser tous les appareils de ma famille facilement. Mes enfants sont maintenant protégés en ligne.</p>
+                        <div class="story-author">- Famille Dupont</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Newsletter -->
+    <section id="newsletter" class="section-cyber section-newsletter">
+        <div class="section-bg-pattern"></div>
+
+        <div class="container">
+            <div class="newsletter-content" data-aos="zoom-in">
+                <div class="newsletter-icon">📧</div>
+                <h2 class="newsletter-title">RESTEZ INFORMÉ DES DERNIÈRES MENACES</h2>
+                <p class="newsletter-subtitle">Recevez nos alertes de sécurité et conseils d'experts directement dans votre boîte mail</p>
+
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="votre@email.com" required>
+                    <button type="submit" class="newsletter-btn">
+                        <span class="btn-border"></span>
+                        <span class="btn-content">
+                            <span>S'ABONNER</span>
+                            <span class="btn-icon">→</span>
+                        </span>
+                    </button>
+                </form>
+
+                <div class="newsletter-features">
+                    <div class="newsletter-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Alertes menaces en temps réel</span>
+                    </div>
+                    <div class="newsletter-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Conseils de sécurité hebdomadaires</span>
+                    </div>
+                    <div class="newsletter-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Guides exclusifs</span>
+                    </div>
+                    <div class="newsletter-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Aucun spam, désinscription facile</span>
+                    </div>
+                </div>
+
+                <div class="newsletter-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" data-target="25000" data-suffix="+">0</div>
+                        <div class="stat-label">Abonnés</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" data-target="98" data-suffix="%">0</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" data-target="2" data-suffix="x/sem">0</div>
+                        <div class="stat-label">Newsletters</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section Outils -->
     <section id="outils" class="section-cyber section-tools">
         <div class="section-bg-pattern"></div>
@@ -940,6 +2145,46 @@
         </div>
     </section>
 
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbot-widget">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">🤖</div>
+            <div class="chatbot-title">
+                <div class="chatbot-name">Assistant CyberGuard</div>
+                <div class="chatbot-status">● En ligne</div>
+            </div>
+            <button class="chatbot-minimize" id="chatbot-minimize">−</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>Bonjour! Je suis votre assistant virtuel CyberGuard. Comment puis-je vous aider aujourd'hui?</p>
+                    <div class="quick-replies">
+                        <button class="quick-reply" data-message="Quelle est la différence entre un antivirus et un VPN?">Antivirus vs VPN</button>
+                        <button class="quick-reply" data-message="Comment créer un mot de passe sûr?">Mots de passe sûrs</button>
+                        <button class="quick-reply" data-message="Que faire si je reçois un email suspect?">Email suspect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input-field" placeholder="Posez votre question...">
+            <button id="chatbot-send">▶</button>
+        </div>
+    </div>
+
+    <button class="chatbot-toggle" id="chatbot-toggle">
+        <span class="chatbot-toggle-icon">💬</span>
+        <span class="chatbot-badge">1</span>
+    </button>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="dark-mode-toggle" title="Mode sombre">
+        <span class="dark-mode-icon sun">☀️</span>
+        <span class="dark-mode-icon moon">🌙</span>
+    </button>
+
     <!-- Footer Cyber -->
     <footer class="footer-cyber">
         <div class="footer-scan-line"></div>
@@ -999,6 +2244,291 @@
         <span class="scroll-text">TOP</span>
     </button>
 
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="quiz-modal">
+        <div class="quiz-modal-overlay"></div>
+        <div class="quiz-modal-content">
+            <button class="quiz-modal-close">&times;</button>
+
+            <!-- Progress Bar -->
+            <div class="quiz-progress-bar">
+                <div class="quiz-progress-fill" style="width: 20%"></div>
+            </div>
+            <div class="quiz-progress-text">Question 1/5</div>
+
+            <!-- Question 1: Usage -->
+            <div class="quiz-question active" data-question="1">
+                <div class="quiz-question-header">
+                    <div class="quiz-icon">🎯</div>
+                    <h2>Comment allez-vous utiliser votre solution de sécurité ?</h2>
+                </div>
+                <div class="quiz-answers">
+                    <button class="quiz-answer-btn" data-value="personal" data-next="2">
+                        <span class="answer-icon">👤</span>
+                        <span class="answer-text">
+                            <strong>Usage personnel</strong>
+                            <small>Pour mon ordinateur personnel</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="family" data-next="2">
+                        <span class="answer-icon">👨‍👩‍👧‍👦</span>
+                        <span class="answer-text">
+                            <strong>Usage familial</strong>
+                            <small>Pour protéger toute la famille</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="business" data-next="2">
+                        <span class="answer-icon">💼</span>
+                        <span class="answer-text">
+                            <strong>Usage professionnel</strong>
+                            <small>Pour mon entreprise ou mes employés</small>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 2: Budget -->
+            <div class="quiz-question" data-question="2">
+                <div class="quiz-question-header">
+                    <div class="quiz-icon">💰</div>
+                    <h2>Quel est votre budget annuel ?</h2>
+                </div>
+                <div class="quiz-answers">
+                    <button class="quiz-answer-btn" data-value="low" data-next="3">
+                        <span class="answer-icon">💵</span>
+                        <span class="answer-text">
+                            <strong>Budget limité</strong>
+                            <small>Moins de 50€/an</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="medium" data-next="3">
+                        <span class="answer-icon">💳</span>
+                        <span class="answer-text">
+                            <strong>Budget moyen</strong>
+                            <small>50€ - 100€/an</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="high" data-next="3">
+                        <span class="answer-icon">💎</span>
+                        <span class="answer-text">
+                            <strong>Budget flexible</strong>
+                            <small>Plus de 100€/an</small>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 3: Priority -->
+            <div class="quiz-question" data-question="3">
+                <div class="quiz-question-header">
+                    <div class="quiz-icon">⭐</div>
+                    <h2>Quelle est votre priorité principale ?</h2>
+                </div>
+                <div class="quiz-answers">
+                    <button class="quiz-answer-btn" data-value="security" data-next="4">
+                        <span class="answer-icon">🛡️</span>
+                        <span class="answer-text">
+                            <strong>Sécurité maximale</strong>
+                            <small>La meilleure protection possible</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="performance" data-next="4">
+                        <span class="answer-icon">⚡</span>
+                        <span class="answer-text">
+                            <strong>Performance</strong>
+                            <small>Impact minimal sur mon système</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="features" data-next="4">
+                        <span class="answer-icon">🎁</span>
+                        <span class="answer-text">
+                            <strong>Fonctionnalités</strong>
+                            <small>Le maximum d'outils inclus</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="price" data-next="4">
+                        <span class="answer-icon">💰</span>
+                        <span class="answer-text">
+                            <strong>Meilleur prix</strong>
+                            <small>Le meilleur rapport qualité/prix</small>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 4: Devices -->
+            <div class="quiz-question" data-question="4">
+                <div class="quiz-question-header">
+                    <div class="quiz-icon">📱</div>
+                    <h2>Combien d'appareils souhaitez-vous protéger ?</h2>
+                </div>
+                <div class="quiz-answers">
+                    <button class="quiz-answer-btn" data-value="1" data-next="5">
+                        <span class="answer-icon">💻</span>
+                        <span class="answer-text">
+                            <strong>1 appareil</strong>
+                            <small>Un seul ordinateur</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="3" data-next="5">
+                        <span class="answer-icon">📱</span>
+                        <span class="answer-text">
+                            <strong>2-3 appareils</strong>
+                            <small>PC + téléphone</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="5" data-next="5">
+                        <span class="answer-icon">🏠</span>
+                        <span class="answer-text">
+                            <strong>4-5 appareils</strong>
+                            <small>Toute la maison</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="10" data-next="5">
+                        <span class="answer-icon">♾️</span>
+                        <span class="answer-text">
+                            <strong>6+ appareils</strong>
+                            <small>Famille nombreuse ou entreprise</small>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 5: Platform -->
+            <div class="quiz-question" data-question="5">
+                <div class="quiz-question-header">
+                    <div class="quiz-icon">💻</div>
+                    <h2>Quelle est votre plateforme principale ?</h2>
+                </div>
+                <div class="quiz-answers">
+                    <button class="quiz-answer-btn" data-value="windows" data-next="results">
+                        <span class="answer-icon">🪟</span>
+                        <span class="answer-text">
+                            <strong>Windows</strong>
+                            <small>PC Windows uniquement</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="mac" data-next="results">
+                        <span class="answer-icon">🍎</span>
+                        <span class="answer-text">
+                            <strong>macOS</strong>
+                            <small>Mac uniquement</small>
+                        </span>
+                    </button>
+                    <button class="quiz-answer-btn" data-value="multi" data-next="results">
+                        <span class="answer-icon">🌐</span>
+                        <span class="answer-text">
+                            <strong>Multi-plateforme</strong>
+                            <small>Windows, Mac, Mobile, etc.</small>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Container -->
+            <div id="quiz-results" class="quiz-results">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- API Client (doit être chargé en premier) -->
+    <script src="api-client.js"></script>
+
     <script src="script.js"></script>
+    <script src="threats.js"></script>
+    <script src="world-map-interactive.js"></script>
+    <script src="blog.js"></script>
+    <script src="blog-renderer.js"></script>
+    <script src="comparator-data.js"></script>
+    <script src="comparator-enhanced.js"></script>
+
+    <!-- UX Enhancement Systems -->
+    <script src="theme-manager.js"></script>
+    <script src="i18n.js"></script>
+    <script src="notification-system.js"></script>
+    <script src="achievement-system.js"></script>
+
+    <!-- CyberGuard AI Assistant -->
+    <script src="cyberguard-ai-assistant.js"></script>
+
+    <!-- Mobile Menu & Header Optimizer (MUST be last) -->
+    <script src="mobile-menu.js"></script>
+    <script src="header-optimizer.js"></script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CyberGuard Pro",
+      "url": "https://www.cyberguard-pro.com",
+      "logo": "https://www.cyberguard-pro.com/logo.png",
+      "description": "Solution premium de cybersécurité avec scanner gratuit, alertes temps réel et comparateur antivirus & VPN",
+      "sameAs": [
+        "https://twitter.com/CyberGuardPro",
+        "https://facebook.com/CyberGuardPro",
+        "https://linkedin.com/company/cyberguard-pro"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "contact@cyberguard-pro.com",
+        "availableLanguage": ["French", "English"]
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CyberGuard Pro Security Scanner",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1247",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "description": "Scanner de sécurité gratuit pour vérifier URLs et emails, avec détection malware en temps réel"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Ai-je vraiment besoin d'un VPN ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, un VPN est essentiel pour protéger votre vie privée en ligne. Il chiffre votre connexion, masque votre adresse IP et vous protège sur les réseaux WiFi publics."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Windows Defender suffit-il ou faut-il un antivirus payant ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Windows Defender offre une protection de base correcte, mais les antivirus payants comme Bitdefender offrent des fonctionnalités avancées : protection web en temps réel, anti-ransomware, VPN, gestionnaire de mots de passe, et des taux de détection supérieurs."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Comment reconnaître un email de phishing ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vérifiez ces signes : adresse email suspecte, fautes d'orthographe, urgence artificielle, liens raccourcis, demandes d'informations personnelles. Passez votre souris sur les liens sans cliquer pour voir la vraie destination."
+        }
+      }]
+    }
+    </script>
 </body>
 </html>

@@ -317,6 +317,7 @@ class CounterAnimation {
 
     animateCounter(counter) {
         const target = parseInt(counter.getAttribute('data-target'));
+        const suffix = counter.getAttribute('data-suffix') || '';
         const duration = 2000;
         const step = target / (duration / 16);
         let current = 0;
@@ -324,10 +325,10 @@ class CounterAnimation {
         const updateCounter = () => {
             current += step;
             if (current < target) {
-                counter.textContent = Math.floor(current).toLocaleString();
+                counter.textContent = Math.floor(current).toLocaleString() + suffix;
                 requestAnimationFrame(updateCounter);
             } else {
-                counter.textContent = target.toLocaleString();
+                counter.textContent = target.toLocaleString() + suffix;
             }
         };
 
@@ -764,6 +765,193 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// ===== VIDEO TUTORIALS =====
+class VideoTutorials {
+    constructor() {
+        this.tutorialCards = document.querySelectorAll('.tutorial-card[data-video-id]');
+        this.modal = null;
+        this.createModal();
+        this.init();
+    }
+
+    createModal() {
+        // Create video modal
+        this.modal = document.createElement('div');
+        this.modal.className = 'video-modal';
+        this.modal.innerHTML = `
+            <div class="video-modal-overlay"></div>
+            <div class="video-modal-content">
+                <button class="video-modal-close">&times;</button>
+                <div class="video-modal-container">
+                    <iframe
+                        id="video-player"
+                        frameborder="0"
+                        allowfullscreen
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    ></iframe>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(this.modal);
+
+        // Add modal styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .video-modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10000;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .video-modal.active {
+                display: flex;
+            }
+
+            .video-modal-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+            }
+
+            .video-modal-content {
+                position: relative;
+                width: 90%;
+                max-width: 1200px;
+                z-index: 10001;
+                animation: modalSlideIn 0.3s ease-out;
+            }
+
+            @keyframes modalSlideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .video-modal-close {
+                position: absolute;
+                top: -50px;
+                right: 0;
+                background: transparent;
+                border: 2px solid var(--primary-cyan);
+                color: var(--primary-cyan);
+                font-size: 32px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 1;
+            }
+
+            .video-modal-close:hover {
+                background: var(--primary-cyan);
+                color: var(--bg-dark);
+                transform: rotate(90deg);
+                box-shadow: 0 0 20px var(--primary-cyan);
+            }
+
+            .video-modal-container {
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                height: 0;
+                overflow: hidden;
+                border-radius: 10px;
+                box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+                border: 2px solid var(--primary-cyan);
+            }
+
+            .video-modal-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .tutorial-card {
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
+
+            .tutorial-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .tutorial-card:hover .play-icon {
+                transform: scale(1.2);
+                box-shadow: 0 0 30px var(--primary-cyan);
+            }
+
+            @media (max-width: 768px) {
+                .video-modal-content {
+                    width: 95%;
+                }
+
+                .video-modal-close {
+                    top: -40px;
+                    width: 40px;
+                    height: 40px;
+                    font-size: 24px;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    init() {
+        this.tutorialCards.forEach(card => {
+            card.addEventListener('click', () => this.openVideo(card));
+        });
+
+        // Close modal on overlay click
+        this.modal.querySelector('.video-modal-overlay').addEventListener('click', () => this.closeVideo());
+
+        // Close modal on close button
+        this.modal.querySelector('.video-modal-close').addEventListener('click', () => this.closeVideo());
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                this.closeVideo();
+            }
+        });
+    }
+
+    openVideo(card) {
+        const videoId = card.dataset.videoId;
+        if (!videoId) return;
+
+        // Ouvrir la vidéo directement sur YouTube dans un nouvel onglet
+        window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+    }
+
+    closeVideo() {
+        const iframe = this.modal.querySelector('#video-player');
+        iframe.src = '';
+
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
 // ===== INTERACTIVE TOOLS =====
 
 // 1. URL Scanner (REAL SECURITY CHECK)
@@ -952,83 +1140,48 @@ class URLScanner {
     }
 
     async checkGoogleSafeBrowsing(url) {
-        // Google Safe Browsing API v4
-        const API_KEY = 'AIzaSyAQ15btYga3TIU6f8_KGD3qjz1DpnaQ0Ts';
-        const API_URL = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${API_KEY}`;
-
+        // ✅ SÉCURISÉ: Utilisation du backend proxy au lieu d'exposer l'API key
         try {
-            const requestBody = {
-                client: {
-                    clientId: "cyberguard-pro",
-                    clientVersion: "1.0.0"
-                },
-                threatInfo: {
-                    threatTypes: ["MALWARE", "SOCIAL_ENGINEERING", "UNWANTED_SOFTWARE", "POTENTIALLY_HARMFUL_APPLICATION"],
-                    platformTypes: ["ANY_PLATFORM"],
-                    threatEntryTypes: ["URL"],
-                    threatEntries: [
-                        { url: url }
-                    ]
-                }
-            };
+            // Appeler le backend sécurisé via le client API
+            const result = await window.cyberGuardAPI.checkUrlSafety(url);
 
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody)
-            });
+            if (!result.success) {
+                console.error('URL check failed:', result.error);
+                return { unsafe: false };
+            }
 
-            const data = await response.json();
-
-            // Si des menaces sont trouvées
-            if (data.matches && data.matches.length > 0) {
-                const threats = data.matches.map(match => match.threatType).join(', ');
+            // Convertir le format de réponse du backend
+            if (!result.safe && result.threats.length > 0) {
+                const threats = result.threats.map(t => t.threatType).join(', ');
                 return {
                     unsafe: true,
                     threats: threats,
-                    details: data.matches
+                    details: result.threats
                 };
             }
 
             return { unsafe: false };
 
-        } catch (e) {
-            console.error('Google Safe Browsing API error:', e);
-            // Fallback to basic check if API fails
-            return await this.fallbackSecurityCheck(url);
-        }
-    }
-
-    async fallbackSecurityCheck(url) {
-        // Fallback si l'API ne fonctionne pas
-        try {
-            const knownDangerousDomains = [
-                'malware-test.com',
-                'phishing-test.com',
-                'fake-paypal',
-                'fake-bank',
-                'testsafebrowsing.appspot.com' // Site de test Google
-            ];
-
-            const urlObj = new URL(url);
-            const hostname = urlObj.hostname.toLowerCase();
-
-            for (const dangerous of knownDangerousDomains) {
-                if (hostname.includes(dangerous)) {
-                    return { unsafe: true, threats: 'DETECTED_BY_PATTERN' };
-                }
-            }
-
-            return { unsafe: false };
-        } catch (e) {
+        } catch (error) {
+            console.error('Backend API error:', error);
+            // Le fallback est géré automatiquement par cyberGuardAPI
             return { unsafe: false };
         }
     }
 
     displayResults(results) {
         const isSafe = results.score >= 40 && !results.malware && !results.phishing;
+
+        // Send event to dashboard
+        const scanResult = isSafe ? 'safe' : 'danger';
+        document.dispatchEvent(new CustomEvent('cyberguard:scan-complete', {
+            detail: {
+                type: 'Scan URL',
+                result: scanResult,
+                url: this.urlInput.value.trim(),
+                score: results.score
+            }
+        }));
 
         if (isSafe) {
             this.scanStatus.textContent = '✓ SCAN COMPLETED';
@@ -1365,6 +1518,16 @@ class EmailBreachChecker {
         const breached = Math.random() > 0.5;
         const breachCount = Math.floor(Math.random() * 10) + 1;
 
+        // Send event to dashboard
+        const emailResult = breached ? 'warning' : 'safe';
+        document.dispatchEvent(new CustomEvent('cyberguard:scan-complete', {
+            detail: {
+                type: 'Vérif. email',
+                result: emailResult,
+                email: email
+            }
+        }));
+
         if (breached) {
             this.breachStatus.textContent = '⚠ EMAIL COMPROMIS';
             this.breachOutput.innerHTML = `
@@ -1401,12 +1564,1124 @@ class EmailBreachChecker {
 
 // Initialize all interactive tools
 document.addEventListener('DOMContentLoaded', () => {
+    new VideoTutorials();
     new URLScanner();
     new PasswordGenerator();
     new SecurityQuiz();
     new EmailBreachChecker();
 
     console.log('%c⚡ INTERACTIVE TOOLS LOADED', 'color: #00ff00; font-weight: bold; font-size: 14px;');
+});
+
+// ===== FAQ ACCORDION =====
+document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            // Close all FAQ items
+            faqItems.forEach(faqItem => {
+                faqItem.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
+
+// ===== CHATBOT =====
+class Chatbot {
+    constructor() {
+        this.chatbotWidget = document.getElementById('chatbot-widget');
+        this.chatbotToggle = document.getElementById('chatbot-toggle');
+        this.chatbotMinimize = document.getElementById('chatbot-minimize');
+        this.chatbotMessages = document.getElementById('chatbot-messages');
+        this.chatbotInputField = document.getElementById('chatbot-input-field');
+        this.chatbotSend = document.getElementById('chatbot-send');
+        this.chatbotBadge = document.querySelector('.chatbot-badge');
+
+        if (this.chatbotToggle) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Toggle chatbot
+        this.chatbotToggle.addEventListener('click', () => {
+            this.chatbotWidget.classList.toggle('active');
+            if (this.chatbotWidget.classList.contains('active')) {
+                this.chatbotBadge.style.display = 'none';
+                this.chatbotInputField.focus();
+            }
+        });
+
+        // Minimize chatbot
+        this.chatbotMinimize.addEventListener('click', () => {
+            this.chatbotWidget.classList.remove('active');
+        });
+
+        // Send message
+        this.chatbotSend.addEventListener('click', () => this.sendMessage());
+        this.chatbotInputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.sendMessage();
+        });
+
+        // Quick replies
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('quick-reply')) {
+                const message = e.target.dataset.message;
+                this.sendMessage(message);
+            }
+        });
+    }
+
+    sendMessage(message = null) {
+        const text = message || this.chatbotInputField.value.trim();
+
+        if (!text) return;
+
+        // Add user message
+        this.addMessage(text, 'user');
+
+        // Clear input
+        this.chatbotInputField.value = '';
+
+        // Simulate bot response
+        setTimeout(() => {
+            const response = this.getBotResponse(text);
+            this.addMessage(response, 'bot');
+        }, 1000);
+    }
+
+    addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = sender === 'user' ? 'user-message' : 'bot-message';
+
+        messageDiv.innerHTML = `
+            <div class="message-avatar">${sender === 'user' ? '👤' : '🤖'}</div>
+            <div class="message-content">
+                <p>${text}</p>
+            </div>
+        `;
+
+        this.chatbotMessages.appendChild(messageDiv);
+        this.chatbotMessages.scrollTop = this.chatbotMessages.scrollHeight;
+    }
+
+    getBotResponse(message) {
+        const lowerMessage = message.toLowerCase();
+
+        if (lowerMessage.includes('antivirus') && lowerMessage.includes('vpn')) {
+            return "Un antivirus protège votre appareil contre les logiciels malveillants, tandis qu'un VPN chiffre votre connexion Internet et masque votre adresse IP. Pour une protection optimale, il est recommandé d'utiliser les deux!";
+        } else if (lowerMessage.includes('mot de passe')) {
+            return "Un mot de passe sûr doit contenir au moins 16 caractères avec des majuscules, minuscules, chiffres et symboles. Évitez les mots du dictionnaire et utilisez un gestionnaire de mots de passe pour les stocker en toute sécurité!";
+        } else if (lowerMessage.includes('email suspect') || lowerMessage.includes('phishing')) {
+            return "Si vous recevez un email suspect : ne cliquez sur aucun lien, vérifiez l'adresse de l'expéditeur, recherchez les fautes d'orthographe, et contactez directement l'organisation via leurs canaux officiels. En cas de doute, supprimez l'email!";
+        } else if (lowerMessage.includes('vpn')) {
+            return "Un VPN (Virtual Private Network) chiffre votre connexion et masque votre IP. Il est essentiel sur les WiFi publics et protège votre vie privée en ligne. Je recommande NordVPN ou ExpressVPN!";
+        } else if (lowerMessage.includes('antivirus')) {
+            return "Windows Defender offre une protection de base, mais un antivirus premium comme Bitdefender offre une protection plus avancée avec anti-ransomware, VPN intégré et protection web en temps réel.";
+        } else if (lowerMessage.includes('2fa') || lowerMessage.includes('authentification')) {
+            return "L'authentification à deux facteurs (2FA) ajoute une couche de sécurité supplémentaire. Même si votre mot de passe est compromis, l'attaquant ne pourra pas accéder à votre compte sans le second facteur!";
+        } else if (lowerMessage.includes('ransomware')) {
+            return "Un ransomware chiffre vos fichiers et demande une rançon. Protection : sauvegardes régulières, antivirus à jour, ne jamais ouvrir de pièces jointes suspectes. Ne payez JAMAIS la rançon!";
+        } else {
+            return "Je suis là pour vous aider avec toutes vos questions de cybersécurité! Vous pouvez me demander des informations sur les antivirus, VPN, mots de passe, phishing, et bien plus encore.";
+        }
+    }
+}
+
+// ===== DARK MODE =====
+class DarkModeToggle {
+    constructor() {
+        this.darkModeToggle = document.getElementById('dark-mode-toggle');
+        this.body = document.body;
+
+        // Check saved preference
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'light') {
+            this.body.classList.add('light-mode');
+        }
+
+        if (this.darkModeToggle) {
+            this.init();
+        }
+    }
+
+    init() {
+        this.darkModeToggle.addEventListener('click', () => {
+            this.body.classList.toggle('light-mode');
+
+            // Save preference
+            const isLightMode = this.body.classList.contains('light-mode');
+            localStorage.setItem('darkMode', isLightMode ? 'light' : 'dark');
+        });
+    }
+}
+
+// ===== NEWSLETTER FORM =====
+class NewsletterForm {
+    constructor() {
+        this.form = document.getElementById('newsletter-form');
+
+        if (this.form) {
+            this.init();
+        }
+    }
+
+    init() {
+        this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const emailInput = this.form.querySelector('.newsletter-input');
+            const email = emailInput.value.trim();
+
+            if (!email || !email.includes('@')) {
+                alert('Veuillez entrer un email valide');
+                return;
+            }
+
+            // Simulate submission
+            alert(`✓ Merci! Vous êtes maintenant abonné à notre newsletter avec l'adresse: ${email}`);
+            emailInput.value = '';
+        });
+    }
+}
+
+// ===== REALTIME STATS ANIMATION =====
+class RealtimeStats {
+    constructor() {
+        this.statsElements = {
+            threatsBlocked: document.getElementById('threats-blocked'),
+            phishingAttempts: document.getElementById('phishing-attempts'),
+            ransomwareBlocked: document.getElementById('ransomware-blocked'),
+            sitesInfected: document.getElementById('sites-infected')
+        };
+
+        if (this.statsElements.threatsBlocked) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Animate numbers on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (this.statsElements.threatsBlocked) {
+            observer.observe(this.statsElements.threatsBlocked.closest('.realtime-stats'));
+        }
+
+        // Update stats periodically
+        setInterval(() => this.updateStats(), 5000);
+    }
+
+    animateStats() {
+        this.animateValue(this.statsElements.threatsBlocked, 0, 15847, 2000);
+        this.animateValue(this.statsElements.phishingAttempts, 0, 3241, 2000);
+        this.animateValue(this.statsElements.ransomwareBlocked, 0, 127, 2000);
+        this.animateValue(this.statsElements.sitesInfected, 0, 892, 2000);
+    }
+
+    animateValue(element, start, end, duration) {
+        if (!element) return;
+
+        const range = end - start;
+        const increment = range / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= end) {
+                element.textContent = this.formatNumber(end);
+                clearInterval(timer);
+            } else {
+                element.textContent = this.formatNumber(Math.floor(current));
+            }
+        }, 16);
+    }
+
+    formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    updateStats() {
+        // Increment stats slightly
+        Object.values(this.statsElements).forEach(element => {
+            if (element) {
+                const current = parseInt(element.textContent.replace(/,/g, ''));
+                const increment = Math.floor(Math.random() * 10) + 1;
+                element.textContent = this.formatNumber(current + increment);
+            }
+        });
+    }
+}
+
+// ===== COMPARISON TABLE FILTERS =====
+class ComparisonFilters {
+    constructor() {
+        this.productTypeFilter = document.getElementById('product-type');
+        this.budgetFilter = document.getElementById('budget-filter');
+        this.platformFilter = document.getElementById('platform-filter');
+        this.resetBtn = document.querySelector('.filter-reset');
+        this.comparisonTable = document.querySelector('.comparison-table');
+        this.products = [];
+
+        if (this.productTypeFilter) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Store all product columns (skip the first column which is features)
+        if (this.comparisonTable) {
+            const headerRow = this.comparisonTable.querySelector('.header-row');
+            if (headerRow) {
+                // Get all product cells (skip first cell which is "FONCTIONNALITÉS")
+                const productCells = Array.from(headerRow.querySelectorAll('.comparison-cell')).slice(1);
+
+                productCells.forEach((cell, index) => {
+                    const productName = cell.querySelector('h4')?.textContent || '';
+                    const priceText = cell.querySelector('.product-price')?.textContent || '';
+                    const price = this.extractPrice(priceText);
+
+                    this.products.push({
+                        index: index + 1, // +1 because we skip first column
+                        name: productName,
+                        price: price,
+                        element: cell,
+                        type: this.detectProductType(productName)
+                    });
+                });
+            }
+        }
+
+        // Add filter event listeners
+        [this.productTypeFilter, this.budgetFilter, this.platformFilter].forEach(filter => {
+            if (filter) {
+                filter.addEventListener('change', () => this.applyFilters());
+            }
+        });
+
+        // Reset button
+        if (this.resetBtn) {
+            this.resetBtn.addEventListener('click', () => this.resetFilters());
+        }
+
+        console.log('%c🔍 Comparateur initialisé avec ' + this.products.length + ' produits', 'color: #00ffff; font-weight: bold;');
+    }
+
+    detectProductType(productName) {
+        const name = productName.toLowerCase();
+        if (name.includes('vpn') || name.includes('nord') || name.includes('express') || name.includes('surfshark') || name.includes('proton')) {
+            return 'VPN';
+        } else if (name.includes('antivirus') || name.includes('bitdefender') || name.includes('norton') || name.includes('kaspersky')) {
+            return 'Antivirus';
+        } else {
+            return 'Suite complète';
+        }
+    }
+
+    extractPrice(priceText) {
+        // Extract number from text like "39.48€/an" or "100.05€/an"
+        const match = priceText.match(/(\d+\.?\d*)/);
+        return match ? parseFloat(match[1]) : 0;
+    }
+
+    applyFilters() {
+        const productType = this.productTypeFilter.value;
+        const budget = this.budgetFilter.value;
+        const platform = this.platformFilter.value;
+
+        console.log('%c🔍 Filtres appliqués:', 'color: #00ffff;', {
+            productType,
+            budget,
+            platform
+        });
+
+        // Get all rows in the comparison table
+        const rows = this.comparisonTable.querySelectorAll('.comparison-row');
+
+        // For each product, check if it should be visible
+        this.products.forEach(product => {
+            let visible = true;
+
+            // Filter by product type
+            if (productType !== 'Tous les produits') {
+                visible = visible && product.type === productType;
+            }
+
+            // Filter by budget (yearly price)
+            if (budget !== 'Tous les prix') {
+                if (budget === 'Gratuit') {
+                    visible = visible && product.price === 0;
+                } else if (budget === '< 50€/an') {
+                    visible = visible && product.price < 50;
+                } else if (budget === '50€ - 100€/an') {
+                    visible = visible && product.price >= 50 && product.price <= 100;
+                } else if (budget === '> 100€/an') {
+                    visible = visible && product.price > 100;
+                }
+            }
+
+            // Platform filter - for now, show all products for all platforms
+            // (you can extend this if you have platform-specific data)
+
+            // Apply visibility to all cells in this product's column
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('.comparison-cell');
+                if (cells[product.index]) {
+                    if (visible) {
+                        cells[product.index].style.display = '';
+                        cells[product.index].style.opacity = '1';
+                    } else {
+                        cells[product.index].style.display = 'none';
+                        cells[product.index].style.opacity = '0';
+                    }
+                }
+            });
+        });
+
+        // Count visible products
+        const visibleCount = this.products.filter((product) => {
+            const firstCell = rows[0].querySelectorAll('.comparison-cell')[product.index];
+            return firstCell && firstCell.style.display !== 'none';
+        }).length;
+
+        console.log('%c✓ ' + visibleCount + ' produit(s) affiché(s)', 'color: #00ff00;');
+
+        // Show message if no products match
+        if (visibleCount === 0) {
+            this.showNoResultsMessage();
+        } else {
+            this.hideNoResultsMessage();
+        }
+    }
+
+    showNoResultsMessage() {
+        // Check if message already exists
+        let message = document.querySelector('.no-results-message');
+        if (!message) {
+            message = document.createElement('div');
+            message.className = 'no-results-message';
+            message.style.cssText = `
+                text-align: center;
+                padding: 40px;
+                color: var(--text-secondary);
+                font-size: 18px;
+                grid-column: 1 / -1;
+            `;
+            message.innerHTML = `
+                <div style="font-size: 48px; margin-bottom: 20px;">🔍</div>
+                <div style="font-size: 20px; margin-bottom: 10px;">Aucun produit ne correspond à vos critères</div>
+                <div style="font-size: 14px;">Essayez de modifier vos filtres</div>
+            `;
+            this.comparisonTable.appendChild(message);
+        }
+        message.style.display = 'block';
+    }
+
+    hideNoResultsMessage() {
+        const message = document.querySelector('.no-results-message');
+        if (message) {
+            message.style.display = 'none';
+        }
+    }
+
+    resetFilters() {
+        this.productTypeFilter.selectedIndex = 0;
+        this.budgetFilter.selectedIndex = 0;
+        this.platformFilter.selectedIndex = 0;
+        this.applyFilters();
+
+        console.log('%c🔄 Filtres réinitialisés', 'color: #ffff00;');
+    }
+}
+
+// ===== INTERACTIVE MAP ANIMATIONS =====
+class CyberMapAnimation {
+    constructor() {
+        this.mapPoints = document.querySelectorAll('.map-point');
+
+        if (this.mapPoints.length > 0) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Add random pulses to map points
+        this.mapPoints.forEach(point => {
+            const pulse = point.querySelector('.pulse');
+            const randomDelay = Math.random() * 2;
+            pulse.style.animationDelay = `${randomDelay}s`;
+        });
+
+        // Periodically add new attack points
+        setInterval(() => {
+            this.simulateNewAttack();
+        }, 3000);
+    }
+
+    simulateNewAttack() {
+        // Random flash effect on a random map point
+        const randomPoint = this.mapPoints[Math.floor(Math.random() * this.mapPoints.length)];
+        const pulse = randomPoint.querySelector('.pulse');
+
+        pulse.style.animation = 'none';
+        setTimeout(() => {
+            pulse.style.animation = '';
+        }, 10);
+    }
+}
+
+// ===== DASHBOARD SCORE ANIMATION =====
+class DashboardScoreAnimation {
+    constructor() {
+        this.scoreProgress = document.querySelector('.score-progress');
+
+        if (this.scoreProgress) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Animate on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animateScore();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(this.scoreProgress);
+    }
+
+    animateScore() {
+        // Score animation is handled by CSS keyframes
+        // This method can be extended for more complex animations
+    }
+}
+
+// ===== DASHBOARD PERSONNEL INTERACTIF =====
+class DashboardPersonnel {
+    constructor() {
+        this.storageKey = 'cyberguard_dashboard_data';
+        this.scoreValue = document.querySelector('.score-value');
+        this.scoreProgress = document.querySelector('.score-progress');
+        this.securityItems = document.querySelectorAll('.security-item');
+        this.scanHistory = document.querySelector('.scan-history');
+        this.alertsList = document.querySelector('.alerts-list');
+        this.quickStats = document.querySelectorAll('.stat-number');
+
+        if (this.scoreValue) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Load saved data or create fresh data
+        const savedData = this.loadData();
+
+        // Si pas de données sauvegardées, créer des données vierges
+        if (!savedData) {
+            this.data = this.createDefaultData();
+            console.log('%c🆕 Nouveau dashboard créé - Données vierges', 'color: #00ffff; font-weight: bold;');
+        } else {
+            this.data = savedData;
+            console.log('%c📊 Dashboard chargé depuis localStorage', 'color: #00ffff; font-weight: bold;');
+        }
+
+        // Render dashboard
+        this.render();
+
+        // Setup auto-refresh
+        this.startAutoRefresh();
+
+        // Listen for new scan events
+        this.setupEventListeners();
+
+        // Setup keyboard shortcut for reset (Ctrl+Shift+R)
+        this.setupKeyboardShortcuts();
+
+        console.log('%c⚡ DASHBOARD PERSONNEL ACTIVÉ', 'color: #00ffff; font-weight: bold;');
+        console.log('%c💡 Astuce: Appuyez sur Ctrl+Shift+R pour réinitialiser le dashboard', 'color: #ffff00;');
+    }
+
+    setupKeyboardShortcuts() {
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+Shift+R to reset dashboard
+            if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+                e.preventDefault();
+                this.resetDashboard();
+            }
+        });
+    }
+
+    createDefaultData() {
+        // Start with real, clean data
+        return {
+            securityScore: 100, // Start at 100, will be recalculated
+            lastUpdate: Date.now(),
+            securityStatus: this.detectSystemSecurity(),
+            scanHistory: [], // Empty - will be populated with real scans
+            alerts: this.generateInitialAlerts(),
+            monthlyStats: {
+                threatsBlocked: 0,
+                urlsScanned: 0,
+                filesScanned: 0,
+                vpnUptime: 100
+            }
+        };
+    }
+
+    detectSystemSecurity() {
+        // Detect real browser and system security features
+        const status = {
+            antivirus: {
+                active: true, // Assume active by default
+                status: 'ok',
+                label: 'Protection navigateur'
+            },
+            vpn: {
+                active: false, // Detect if using VPN/proxy
+                status: 'warning',
+                label: 'VPN non détecté'
+            },
+            updates: {
+                active: this.isBrowserUpdated(),
+                status: this.isBrowserUpdated() ? 'ok' : 'warning',
+                label: 'Navigateur à jour'
+            },
+            firewall: {
+                active: navigator.onLine,
+                status: navigator.onLine ? 'ok' : 'warning',
+                label: 'Connexion sécurisée'
+            }
+        };
+
+        return status;
+    }
+
+    isBrowserUpdated() {
+        // Check if browser is modern/updated
+        const modernFeatures = [
+            'fetch' in window,
+            'Promise' in window,
+            'localStorage' in window,
+            'crypto' in window
+        ];
+        return modernFeatures.every(feature => feature === true);
+    }
+
+    generateInitialAlerts() {
+        const alerts = [];
+
+        // Check browser security
+        if (!this.isBrowserUpdated()) {
+            alerts.push({
+                type: 'high',
+                badge: 'URGENT',
+                text: 'Votre navigateur nécessite une mise à jour de sécurité',
+                time: Date.now()
+            });
+        }
+
+        // Check HTTPS
+        if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+            alerts.push({
+                type: 'medium',
+                badge: 'MOYEN',
+                text: 'Site non sécurisé - Utilisez HTTPS pour plus de sécurité',
+                time: Date.now()
+            });
+        }
+
+        // Check cookies
+        if (!navigator.cookieEnabled) {
+            alerts.push({
+                type: 'low',
+                badge: 'INFO',
+                text: 'Les cookies sont désactivés - Certaines fonctionnalités peuvent ne pas fonctionner',
+                time: Date.now()
+            });
+        }
+
+        // Welcome message if no alerts
+        if (alerts.length === 0) {
+            alerts.push({
+                type: 'low',
+                badge: 'INFO',
+                text: 'Bienvenue sur votre dashboard de sécurité CyberGuard Pro',
+                time: Date.now()
+            });
+        }
+
+        return alerts;
+    }
+
+    loadData() {
+        try {
+            const saved = localStorage.getItem(this.storageKey);
+            return saved ? JSON.parse(saved) : null;
+        } catch (e) {
+            console.error('Error loading dashboard data:', e);
+            return null;
+        }
+    }
+
+    saveData() {
+        try {
+            this.data.lastUpdate = Date.now();
+            localStorage.setItem(this.storageKey, JSON.stringify(this.data));
+        } catch (e) {
+            console.error('Error saving dashboard data:', e);
+        }
+    }
+
+    render() {
+        this.renderSecurityScore();
+        this.renderSecurityStatus();
+        this.renderScanHistory();
+        this.renderAlerts();
+        this.renderMonthlyStats();
+    }
+
+    renderSecurityScore() {
+        const score = this.data.securityScore;
+
+        // Animate score value
+        this.animateNumber(this.scoreValue, 0, score, 2000, '%');
+
+        // Animate circle progress
+        const circumference = 2 * Math.PI * 90; // r=90
+        const offset = circumference - (score / 100) * circumference;
+
+        if (this.scoreProgress) {
+            this.scoreProgress.style.strokeDasharray = circumference;
+            this.scoreProgress.style.strokeDashoffset = circumference;
+
+            setTimeout(() => {
+                this.scoreProgress.style.transition = 'stroke-dashoffset 2s ease-out';
+                this.scoreProgress.style.strokeDashoffset = offset;
+            }, 100);
+        }
+    }
+
+    renderSecurityStatus() {
+        const statusData = this.data.securityStatus;
+
+        this.securityItems.forEach((item, index) => {
+            const keys = Object.keys(statusData);
+            if (keys[index]) {
+                const data = statusData[keys[index]];
+                const icon = item.querySelector('.item-icon');
+                const text = item.querySelector('.item-text');
+                const status = item.querySelector('.item-status');
+
+                icon.textContent = data.active ? '✓' : '⚠';
+                text.textContent = data.label;
+                status.textContent = data.status === 'ok' ? 'OK' : 'ATTENTION';
+                status.className = `item-status ${data.status}`;
+            }
+        });
+    }
+
+    renderScanHistory() {
+        if (!this.scanHistory) return;
+
+        this.scanHistory.innerHTML = '';
+
+        if (this.data.scanHistory.length === 0) {
+            // Show empty state
+            const emptyState = document.createElement('div');
+            emptyState.className = 'scan-item';
+            emptyState.style.textAlign = 'center';
+            emptyState.style.padding = '30px 20px';
+            emptyState.style.color = 'var(--text-secondary)';
+            emptyState.innerHTML = `
+                <div style="font-size: 14px; margin-bottom: 10px;">📊</div>
+                <div>Aucun scan effectué pour le moment</div>
+                <div style="font-size: 12px; margin-top: 10px;">
+                    Utilisez les outils de scan ci-dessus pour commencer
+                </div>
+            `;
+            this.scanHistory.appendChild(emptyState);
+            return;
+        }
+
+        this.data.scanHistory.slice(0, 4).forEach(scan => {
+            const scanItem = document.createElement('div');
+            scanItem.className = 'scan-item';
+
+            const formattedDate = this.formatDate(scan.date);
+            const resultText = this.getResultText(scan.result);
+
+            scanItem.innerHTML = `
+                <div class="scan-date">${formattedDate}</div>
+                <div class="scan-type">${scan.type}</div>
+                <div class="scan-result ${scan.result}">${resultText}</div>
+            `;
+
+            this.scanHistory.appendChild(scanItem);
+        });
+    }
+
+    renderAlerts() {
+        if (!this.alertsList) return;
+
+        this.alertsList.innerHTML = '';
+
+        this.data.alerts.forEach(alert => {
+            const alertItem = document.createElement('div');
+            alertItem.className = `alert-item ${alert.type}`;
+
+            const timeAgo = this.getTimeAgo(alert.time);
+
+            alertItem.innerHTML = `
+                <span class="alert-badge">${alert.badge}</span>
+                <p class="alert-text">${alert.text}</p>
+                <span class="alert-time">${timeAgo}</span>
+            `;
+
+            this.alertsList.appendChild(alertItem);
+        });
+    }
+
+    renderMonthlyStats() {
+        const stats = this.data.monthlyStats;
+        const statValues = [
+            stats.threatsBlocked,
+            stats.urlsScanned,
+            stats.filesScanned,
+            Math.round(stats.vpnUptime * 10) / 10 // Arrondir à 1 décimale max
+        ];
+
+        this.quickStats.forEach((statEl, index) => {
+            if (index < statValues.length) {
+                const value = statValues[index];
+                const suffix = index === 3 ? '%' : ''; // VPN uptime has %
+
+                this.animateNumber(statEl, 0, value, 1500, suffix);
+            }
+        });
+    }
+
+    animateNumber(element, start, end, duration, suffix = '') {
+        if (!element) return;
+
+        const range = end - start;
+        const increment = range / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= end) {
+                // Format final value properly
+                const finalValue = suffix === '%'
+                    ? (Math.round(end * 10) / 10) // 1 decimal for percentages
+                    : Math.round(end); // Integer for counts
+                element.textContent = finalValue + suffix;
+                clearInterval(timer);
+            } else {
+                const value = suffix === '%'
+                    ? (Math.round(current * 10) / 10)
+                    : Math.floor(current);
+                element.textContent = value + suffix;
+            }
+        }, 16);
+    }
+
+    formatDate(timestamp) {
+        const now = Date.now();
+        const diff = now - timestamp;
+        const hours = Math.floor(diff / 3600000);
+        const days = Math.floor(diff / 86400000);
+
+        if (hours < 24) {
+            const date = new Date(timestamp);
+            return `Aujourd'hui, ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+        } else if (days === 1) {
+            const date = new Date(timestamp);
+            return `Hier, ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+        } else {
+            return `Il y a ${days} jours`;
+        }
+    }
+
+    getResultText(result) {
+        const texts = {
+            'safe': 'SÉCURISÉ',
+            'warning': 'COMPROMIS',
+            'danger': 'MENACE'
+        };
+        return texts[result] || 'INCONNU';
+    }
+
+    getTimeAgo(timestamp) {
+        const now = Date.now();
+        const diff = now - timestamp;
+        const hours = Math.floor(diff / 3600000);
+        const days = Math.floor(diff / 86400000);
+
+        if (hours < 1) {
+            const minutes = Math.floor(diff / 60000);
+            return `Il y a ${minutes}min`;
+        } else if (hours < 24) {
+            return `Il y a ${hours}h`;
+        } else {
+            return `Il y a ${days}j`;
+        }
+    }
+
+    addScanToHistory(scanData) {
+        // Add new scan at the beginning
+        this.data.scanHistory.unshift({
+            date: Date.now(),
+            type: scanData.type,
+            result: scanData.result,
+            ...scanData
+        });
+
+        // Keep only last 20 scans
+        this.data.scanHistory = this.data.scanHistory.slice(0, 20);
+
+        // Update stats based on scan type
+        if (scanData.type === 'Scan URL') {
+            this.data.monthlyStats.urlsScanned++;
+        } else if (scanData.type === 'Scan fichier') {
+            this.data.monthlyStats.filesScanned++;
+        }
+
+        // If threat detected, increment counter and create alert
+        if (scanData.result === 'danger') {
+            this.data.monthlyStats.threatsBlocked++;
+
+            // Create alert for detected threat
+            this.addAlert({
+                type: 'high',
+                badge: 'MENACE',
+                text: `Menace détectée: ${scanData.url || scanData.email || scanData.file || 'source inconnue'}`,
+                time: Date.now()
+            });
+
+            console.log('%c⚠️ MENACE DÉTECTÉE ET ENREGISTRÉE', 'color: #ff0040; font-weight: bold;');
+        } else if (scanData.result === 'warning') {
+            // Create warning alert
+            this.addAlert({
+                type: 'medium',
+                badge: 'ATTENTION',
+                text: `Attention requise: ${scanData.email || scanData.url || 'vérifiez les détails'}`,
+                time: Date.now()
+            });
+        }
+
+        // Recalculate security score
+        this.updateSecurityScore();
+
+        // Save and re-render
+        this.saveData();
+        this.render();
+
+        console.log('%c✓ Scan ajouté au dashboard', 'color: #00ff00;');
+    }
+
+    updateSecurityScore() {
+        // Calculate score based on various factors
+        let score = 100;
+
+        // Check security status
+        Object.values(this.data.securityStatus).forEach(status => {
+            if (!status.active || status.status === 'warning') {
+                score -= 5;
+            }
+        });
+
+        // Check recent threats
+        const recentThreats = this.data.scanHistory.slice(0, 10).filter(s => s.result === 'danger').length;
+        score -= recentThreats * 3;
+
+        // Check alerts
+        const urgentAlerts = this.data.alerts.filter(a => a.type === 'high').length;
+        score -= urgentAlerts * 5;
+
+        // Keep score between 0 and 100
+        this.data.securityScore = Math.max(0, Math.min(100, score));
+    }
+
+    addAlert(alertData) {
+        this.data.alerts.unshift({
+            type: alertData.type || 'low',
+            badge: alertData.badge || 'INFO',
+            text: alertData.text,
+            time: Date.now()
+        });
+
+        // Keep only last 10 alerts
+        this.data.alerts = this.data.alerts.slice(0, 10);
+
+        this.saveData();
+        this.render();
+    }
+
+    startAutoRefresh() {
+        // Update time displays every minute to keep "Il y a X min/h" fresh
+        setInterval(() => {
+            this.renderScanHistory();
+            this.renderAlerts();
+        }, 60000);
+
+        // Check system status every 5 minutes (but don't auto-increment anything)
+        setInterval(() => {
+            this.refreshSystemStatus();
+        }, 300000);
+    }
+
+    refreshSystemStatus() {
+        // Re-detect system security status (only detection, no data creation)
+        this.data.securityStatus = this.detectSystemSecurity();
+        this.updateSecurityScore();
+        this.saveData();
+        this.renderSecurityStatus(); // Only re-render status, not everything
+
+        console.log('%c🔄 Statut de sécurité vérifié', 'color: #00ffff;');
+    }
+
+    setupEventListeners() {
+        // Listen for custom events from URL Scanner, etc.
+        document.addEventListener('cyberguard:scan-complete', (e) => {
+            if (e.detail) {
+                this.addScanToHistory(e.detail);
+            }
+        });
+
+        // Button interactions
+        const viewHistoryBtn = document.querySelector('.scan-history + .dashboard-btn');
+        if (viewHistoryBtn) {
+            viewHistoryBtn.addEventListener('click', () => {
+                this.showFullHistory();
+            });
+        }
+
+        const manageAlertsBtn = document.querySelector('.alerts-list + .dashboard-btn');
+        if (manageAlertsBtn) {
+            manageAlertsBtn.addEventListener('click', () => {
+                this.showAlertsManager();
+            });
+        }
+
+        // Reset dashboard button
+        const resetDashboardBtn = document.getElementById('reset-dashboard-btn');
+        if (resetDashboardBtn) {
+            resetDashboardBtn.addEventListener('click', () => {
+                this.resetDashboard();
+            });
+        }
+    }
+
+    showFullHistory() {
+        const totalScans = this.data.scanHistory.length;
+        const threats = this.data.scanHistory.filter(s => s.result === 'danger').length;
+        const safe = this.data.scanHistory.filter(s => s.result === 'safe').length;
+        const warnings = this.data.scanHistory.filter(s => s.result === 'warning').length;
+
+        const message = totalScans > 0
+            ? `📊 HISTORIQUE COMPLET\n\n` +
+              `Total de scans: ${totalScans}\n` +
+              `Menaces détectées: ${threats}\n` +
+              `Avertissements: ${warnings}\n` +
+              `Sites sécurisés: ${safe}\n\n` +
+              `Voulez-vous réinitialiser votre historique ?`
+            : `📊 HISTORIQUE VIDE\n\nAucun scan effectué pour le moment.\nCommencez par scanner une URL ou vérifier un email !`;
+
+        if (totalScans > 0 && confirm(message)) {
+            this.resetDashboard();
+        } else if (totalScans === 0) {
+            alert(message);
+        }
+    }
+
+    showAlertsManager() {
+        const totalAlerts = this.data.alerts.length;
+        const urgent = this.data.alerts.filter(a => a.type === 'high').length;
+        const medium = this.data.alerts.filter(a => a.type === 'medium').length;
+        const low = this.data.alerts.filter(a => a.type === 'low').length;
+
+        const message = `⚠️ GESTION DES ALERTES\n\n` +
+              `Alertes actives: ${totalAlerts}\n` +
+              `Urgentes: ${urgent}\n` +
+              `Moyennes: ${medium}\n` +
+              `Informations: ${low}\n\n` +
+              `Voulez-vous effacer toutes les alertes ?`;
+
+        if (confirm(message)) {
+            this.clearAlerts();
+        }
+    }
+
+    resetDashboard() {
+        if (confirm('⚠️ ATTENTION\n\nÊtes-vous sûr de vouloir réinitialiser complètement votre dashboard ?\n\nCette action est irréversible.')) {
+            localStorage.removeItem(this.storageKey);
+            location.reload();
+        }
+    }
+
+    clearAlerts() {
+        // Keep only the welcome message
+        this.data.alerts = [{
+            type: 'low',
+            badge: 'INFO',
+            text: 'Toutes les alertes ont été effacées',
+            time: Date.now()
+        }];
+        this.saveData();
+        this.render();
+
+        console.log('%c✓ Alertes effacées', 'color: #00ff00;');
+    }
+}
+
+// ===== INITIALIZE ALL NEW FEATURES =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize chatbot
+    new Chatbot();
+
+    // Initialize dark mode
+    new DarkModeToggle();
+
+    // Initialize newsletter form
+    new NewsletterForm();
+
+    // Initialize realtime stats
+    new RealtimeStats();
+
+    // Initialize comparison filters
+    new ComparisonFilters();
+
+    // Initialize cyber map
+    new CyberMapAnimation();
+
+    // Initialize dashboard animations
+    new DashboardScoreAnimation();
+
+    // Initialize dashboard personnel
+    window.dashboardPersonnel = new DashboardPersonnel();
+
+    console.log('%c⚡ ALL NEW FEATURES LOADED', 'color: #00ffff; font-weight: bold; font-size: 16px;');
 });
 
 // ===== EXPORT FOR MODULES (IF NEEDED) =====
@@ -1419,6 +2694,13 @@ if (typeof module !== 'undefined' && module.exports) {
         URLScanner,
         PasswordGenerator,
         SecurityQuiz,
-        EmailBreachChecker
+        EmailBreachChecker,
+        Chatbot,
+        DarkModeToggle,
+        NewsletterForm,
+        RealtimeStats,
+        ComparisonFilters,
+        CyberMapAnimation,
+        DashboardScoreAnimation
     };
 }

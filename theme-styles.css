@@ -1,0 +1,287 @@
+/**
+ * ═══════════════════════════════════════════════════════════════
+ * THEME STYLES - Dark/Light Mode CSS
+ * ═══════════════════════════════════════════════════════════════
+ */
+
+/* Theme Transition Animation */
+:root.theme-transitioning,
+:root.theme-transitioning * {
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Theme Toggle Button Container */
+.theme-toggle-container {
+    position: relative;
+    z-index: 100;
+    margin-right: 2rem;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--bg-card);
+    border: 2px solid var(--cyber-cyan);
+    border-radius: 50px;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 255, 255, 0.4);
+    border-color: var(--cyber-purple);
+}
+
+.theme-toggle-btn:hover::before {
+    left: 100%;
+}
+
+.theme-toggle-btn:active {
+    transform: translateY(0);
+}
+
+/* Toggle Track */
+.theme-toggle-track {
+    position: relative;
+    width: 45px;
+    height: 24px;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(153, 51, 255, 0.1));
+    border-radius: 12px;
+    border: 1px solid var(--cyber-cyan);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Toggle Thumb */
+.theme-toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-purple));
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 255, 255, 0.5);
+}
+
+.theme-toggle-thumb.light {
+    transform: translateX(21px);
+    background: linear-gradient(135deg, #f59e0b, #d946ef);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.5);
+}
+
+/* Theme Icons */
+.theme-icon {
+    font-size: 10px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-icon-dark {
+    opacity: 1;
+}
+
+.theme-toggle-thumb.light .theme-icon-dark {
+    opacity: 0;
+}
+
+.theme-toggle-thumb.light .theme-icon-light {
+    opacity: 1;
+}
+
+/* Toggle Label */
+.theme-toggle-label {
+    white-space: nowrap;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Light Mode Specific Overrides */
+[data-theme="light"] {
+    /* Update backgrounds */
+    --bg-dark: #f8fafc;
+    --bg-darker: #ffffff;
+    --bg-panel: rgba(255, 255, 255, 0.95);
+    --bg-card: rgba(248, 250, 252, 0.8);
+}
+
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+}
+
+[data-theme="light"] .cyber-grid {
+    background-image:
+        linear-gradient(rgba(0, 136, 204, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 136, 204, 0.02) 1px, transparent 1px);
+}
+
+[data-theme="light"] .scan-lines {
+    opacity: 0.5;
+}
+
+[data-theme="light"] .glitch-overlay {
+    opacity: 0.02;
+}
+
+[data-theme="light"] .vignette {
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
+}
+
+/* Light mode cards */
+[data-theme="light"] .product-card,
+[data-theme="light"] .protection-card,
+[data-theme="light"] .testimonial-card,
+[data-theme="light"] .blog-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 136, 204, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .product-card:hover,
+[data-theme="light"] .protection-card:hover,
+[data-theme="light"] .blog-card:hover {
+    box-shadow: 0 12px 48px rgba(0, 136, 204, 0.15);
+    border-color: var(--cyber-cyan);
+}
+
+/* Light mode header */
+[data-theme="light"] .cyber-header {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom-color: rgba(0, 136, 204, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Light mode buttons */
+[data-theme="light"] .cta-button,
+[data-theme="light"] .btn-primary {
+    background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-purple));
+    color: white;
+}
+
+[data-theme="light"] .cta-button:hover {
+    box-shadow: 0 8px 30px rgba(0, 136, 204, 0.3);
+}
+
+/* Light mode terminal/code blocks */
+[data-theme="light"] .terminal,
+[data-theme="light"] .boot-screen,
+[data-theme="light"] code {
+    background: rgba(15, 23, 42, 0.05);
+    border-color: rgba(0, 136, 204, 0.2);
+}
+
+/* Light mode pricing cards */
+[data-theme="light"] .pricing-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 136, 204, 0.3);
+}
+
+[data-theme="light"] .pricing-card.featured {
+    border-color: var(--cyber-purple);
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.2);
+}
+
+/* Light mode stats */
+[data-theme="light"] .stat-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 136, 204, 0.3);
+}
+
+/* Light mode footer */
+[data-theme="light"] .cyber-footer {
+    background: rgba(248, 250, 252, 0.98);
+    border-top-color: rgba(0, 136, 204, 0.2);
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .theme-toggle-container {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .theme-toggle-track {
+        width: 40px;
+        height: 22px;
+    }
+
+    .theme-toggle-thumb {
+        width: 16px;
+        height: 16px;
+    }
+
+    .theme-toggle-thumb.light {
+        transform: translateX(18px);
+    }
+
+    .theme-toggle-label {
+        display: none; /* Hide label on mobile to save space */
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    :root.theme-transitioning,
+    :root.theme-transitioning * {
+        transition: none !important;
+    }
+
+    .theme-toggle-thumb {
+        transition: none;
+    }
+}
+
+/* Print Styles - Force light theme */
+@media print {
+    :root {
+        --bg-dark: #ffffff;
+        --text-primary: #000000;
+    }
+
+    .theme-toggle-container,
+    #matrix-canvas,
+    #particles-canvas,
+    .cyber-grid,
+    .scan-lines,
+    .glitch-overlay {
+        display: none !important;
+    }
+}
