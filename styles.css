@@ -677,23 +677,31 @@ header {
 }
 
 .card-logo {
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: rgba(0, 255, 0, 0.05);
+    border: 2px solid var(--neon-green);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     transition: transform 0.3s;
 }
 
 .card-logo:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
 }
 
 .card-logo svg {
+    width: 40px;
+    height: 40px;
     filter: drop-shadow(0 0 5px currentColor);
     transition: filter 0.3s;
 }
 
-.card-logo svg:hover {
-    filter: drop-shadow(0 0 15px currentColor);
+.card-logo:hover svg {
+    filter: drop-shadow(0 0 10px currentColor);
 }
 
 .card-stat {
@@ -840,6 +848,8 @@ header {
 }
 
 .scan-logo {
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -847,10 +857,12 @@ header {
 }
 
 .scan-logo:hover {
-    transform: scale(1.15) rotate(-5deg);
+    transform: scale(1.1);
 }
 
 .scan-logo svg {
+    width: 50px;
+    height: 50px;
     filter: drop-shadow(0 0 8px currentColor);
 }
 
@@ -902,18 +914,22 @@ header {
 }
 
 .tool-logo-container {
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
+    margin: 0 auto 15px;
     transition: transform 0.3s;
 }
 
 .tool-logo-container:hover {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.15);
 }
 
 .tool-logo-container svg {
+    width: 40px;
+    height: 40px;
     filter: drop-shadow(0 0 5px currentColor);
 }
 
@@ -987,18 +1003,22 @@ header {
 }
 
 .cat-icon-svg {
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
     transition: transform 0.3s;
 }
 
 .cat-icon-svg:hover {
-    transform: scale(1.1) rotate(-5deg);
+    transform: scale(1.1);
 }
 
 .cat-icon-svg svg {
+    width: 60px;
+    height: 60px;
     filter: drop-shadow(0 0 10px currentColor);
 }
 
