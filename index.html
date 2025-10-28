@@ -3,53 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>▸ CYBERGUARD PRO | HACK THE PLANET ◂</title>
+    <meta name="description" content="CyberGuard Pro - Solution Premium de Cybersécurité">
+    <title>⚡ CyberGuard Pro - Cybersécurité Premium</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Matrix Rain Background -->
+    <!-- Effets de fond cyber -->
     <canvas id="matrix-canvas"></canvas>
-    
-    <!-- Scanlines Effect -->
-    <div class="scanlines"></div>
-    
-    <!-- Particles Canvas -->
     <canvas id="particles-canvas"></canvas>
-    
-    <!-- Terminal Boot Sequence -->
-    <div id="boot-sequence" class="boot-sequence">
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <span>root@cyberguard:~#</span>
-            </div>
-            <div class="terminal-body">
-                <p><span class="prompt">$</span> <span class="boot-text">Initializing CyberGuard System...</span></p>
-                <p><span class="prompt">$</span> <span class="boot-text">Loading encryption protocols...</span></p>
-                <p><span class="prompt">$</span> <span class="boot-text">Establishing secure connection...</span></p>
-                <p><span class="prompt">$</span> <span class="boot-text">System online. Access granted.</span></p>
-                <p class="success"><span class="prompt">[✓]</span> Welcome to CyberGuard Pro</p>
-            </div>
+    <div class="cyber-grid"></div>
+    <div class="scan-lines"></div>
+    <div class="glitch-overlay"></div>
+    <div class="vignette"></div>
+
+    <!-- Terminal de démarrage -->
+    <div id="boot-screen" class="boot-screen">
+        <div class="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> <span class="typing">Initialisation du système de sécurité...</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="typing" style="animation-delay: 0.5s">Chargement des protocoles de protection...</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="typing" style="animation-delay: 1s">Activation du pare-feu quantique...</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> <span class="success typing" style="animation-delay: 1.5s">✓ SYSTÈME SÉCURISÉ</span></div>
+        </div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
         </div>
     </div>
 
-    <!-- Header -->
-    <header id="header">
+    <!-- Header avec effet holographique -->
+    <header id="header" class="cyber-header">
+        <div class="header-hologram"></div>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <span class="logo-bracket">&lt;</span>
-                    <span class="logo-text glitch" data-text="CYBERGUARD">CYBERGUARD</span>
-                    <span class="logo-bracket">&gt;</span>
-                    <span class="logo-status">[ONLINE]</span>
+                <div class="logo-cyber">
+                    <div class="logo-glitch">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text" data-text="CyberGuard Pro">CyberGuard Pro</span>
+                    </div>
+                    <div class="logo-subtitle">SECURITY SYSTEM v4.5</div>
                 </div>
                 <nav class="nav-menu">
                     <ul>
-                        <li><a href="#home" class="nav-link"><span>[</span>HOME<span>]</span></a></li>
-                        <li><a href="#protection" class="nav-link"><span>[</span>PROTECTION<span>]</span></a></li>
-                        <li><a href="#scan" class="nav-link"><span>[</span>SCAN<span>]</span></a></li>
-                        <li><a href="#tools" class="nav-link"><span>[</span>TOOLS<span>]</span></a></li>
+                        <li><a href="#accueil" class="nav-link active" data-text="ACCUEIL">ACCUEIL</a></li>
+                        <li><a href="#protection" class="nav-link" data-text="PROTECTION">PROTECTION</a></li>
+                        <li><a href="#verification" class="nav-link" data-text="SCAN">SCAN</a></li>
+                        <li><a href="#interactive" class="nav-link" data-text="INTERACTIF">INTERACTIF</a></li>
+                        <li><a href="#outils" class="nav-link" data-text="OUTILS">OUTILS</a></li>
+                        <li><a href="#contact" class="nav-link cyber-button" data-text="CONNEXION">
+                            <span class="button-content">CONNEXION</span>
+                            <span class="button-glitch"></span>
+                        </a></li>
                     </ul>
                 </nav>
                 <button class="mobile-menu-btn" id="mobile-menu-btn">
@@ -59,490 +61,942 @@
                 </button>
             </div>
         </div>
+        <div class="header-scan-line"></div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="cyber-grid"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="access-tag">
-                    <span class="blink">▮</span> ACCESS_GRANTED <span class="blink">▮</span>
-                </div>
-                
-                <h1 class="hero-title">
-                    <span class="line">&gt;_ SYSTÈME DE</span>
-                    <span class="highlight glitch" data-text="[CYBER DÉFENSE]">[CYBER DÉFENSE]</span>
-                    <span class="line">NIVEAU: MAXIMUM</span>
-                </h1>
-                
-                <div class="terminal-output">
-                    <p><span class="prompt">root@security:~#</span> <span class="typing">Protection avancée contre les menaces numériques</span></p>
-                </div>
-                
-                <div class="hero-buttons">
-                    <a href="#protection" class="btn-cyber btn-primary">
-                        <span class="btn-icon">&gt;&gt;</span>
-                        <span>INITIALISER PROTECTION</span>
-                    </a>
-                    <a href="#scan" class="btn-cyber btn-secondary">
-                        <span class="btn-icon">◈</span>
-                        <span>SCANNER MENACES</span>
-                    </a>
-                </div>
-                
-                <!-- Threat Indicators -->
-                <div class="threat-grid">
-                    <div class="threat-item">
-                        <div class="threat-icon">⚠</div>
-                        <div class="threat-info">
-                            <div class="threat-label">MENACES_ACTIVES</div>
-                            <div class="threat-value" data-count="0">0</div>
-                        </div>
-                    </div>
-                    <div class="threat-item">
-                        <div class="threat-icon">◉</div>
-                        <div class="threat-info">
-                            <div class="threat-label">SYSTÈMES_SÉCURISÉS</div>
-                            <div class="threat-value" data-count="24">0</div>
-                        </div>
-                    </div>
-                    <div class="threat-item">
-                        <div class="threat-icon">▲</div>
-                        <div class="threat-info">
-                            <div class="threat-label">ATTAQUES_BLOQUÉES</div>
-                            <div class="threat-value" data-count="1000000">0</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Security Bar -->
-                <div class="security-bar">
-                    <div class="bar-container">
-                        <div class="bar-fill"></div>
-                    </div>
-                    <div class="bar-text">
-                        NIVEAU_SÉCURITÉ: <span class="bar-value">99.8%</span> <span class="bar-badge">[OPTIMAL]</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Section Hero Cyber -->
+    <section id="accueil" class="hero-cyber">
+        <div class="hero-radar"></div>
+        <div class="hero-data-stream"></div>
         
-        <div class="scroll-down">
-            <span>▼</span>
-            <span class="scroll-text">SCROLL_DOWN</span>
-        </div>
-    </section>
-
-    <!-- Protection Section -->
-    <section id="protection" class="section">
         <div class="container">
-            <div class="section-head">
-                <div class="section-tag">&lt;PROTECTION_LAYER&gt;</div>
-                <h2 class="section-title glitch" data-text="[ARSENAL NUMÉRIQUE]">[ARSENAL NUMÉRIQUE]</h2>
-                <p class="section-desc"><span class="prompt">$</span> Outils de guerre cybernétique</p>
-            </div>
-
-            <div class="cards-grid">
-                <!-- Bitdefender Card -->
-                <div class="cyber-card">
-                    <div class="card-corners">
-                        <span class="corner tl"></span>
-                        <span class="corner tr"></span>
-                        <span class="corner bl"></span>
-                        <span class="corner br"></span>
+            <div class="hero-content" data-aos="fade-up">
+                <!-- Terminal interactif -->
+                <div class="hero-terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">CYBERGUARD_DEFENSE_SYSTEM</span>
                     </div>
-                    <div class="card-scan"></div>
-                    
-                    <div class="card-top">
-                        <div class="card-hex">
-                            <span>🛡</span>
+                    <div class="terminal-body">
+                        <div class="cmd-line">
+                            <span class="prompt-symbol">root@cyberguard:~$</span>
+                            <span class="cmd-text">status --security-level</span>
                         </div>
-                        <div class="card-stat">
-                            <span class="dot"></span>
-                            <span>ONLINE</span>
+                        <div class="output-line success">
+                            <span class="icon">✓</span> PROTECTION ACTIVE: 99.9%
+                        </div>
+                        <div class="output-line success">
+                            <span class="icon">✓</span> THREATS BLOCKED: 1,547,893
+                        </div>
+                        <div class="output-line success">
+                            <span class="icon">✓</span> SYSTEMS MONITORED: 24/7
+                        </div>
+                        <div class="cmd-line">
+                            <span class="prompt-symbol">root@cyberguard:~$</span>
+                            <span class="cursor-blink">_</span>
                         </div>
                     </div>
+                </div>
 
-                    <h3>[ANTIVIRUS_BITDEFENDER]</h3>
-                    
-                    <div class="code-block">
-                        <code>// Protection multicouche
-if (malware.detected) {
-  quarantine();
-}</code>
+                <h1 class="hero-title-cyber">
+                    <div class="title-line">
+                        <span class="glitch-text" data-text="PROTECTION">PROTECTION</span>
                     </div>
-                    
-                    <p>Bouclier numérique ultime. Protection temps-réel contre virus, malwares, ransomwares. IA prédictive avancée.</p>
-                    
-                    <div class="features">
-                        <div class="feat">◆ Protection IA multicouche</div>
-                        <div class="feat">◆ Détection zero-day</div>
-                        <div class="feat">◆ Anti-ransomware</div>
+                    <div class="title-line title-highlight">
+                        <span class="cyber-text">CYBERSÉCURITÉ</span>
+                        <span class="hologram-effect"></span>
                     </div>
-                    
-                    <div class="badge">★ RECOMMANDÉ_ELITE</div>
-                    
-                    <a href="https://www.bitdefender.fr/" target="_blank" class="btn-cyber">
-                        &gt;&gt; DÉPLOYER
+                    <div class="title-line">
+                        <span class="glitch-text" data-text="QUANTIQUE">QUANTIQUE</span>
+                    </div>
+                </h1>
+
+                <div class="cyber-divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-icon">◆</span>
+                    <span class="divider-line"></span>
+                </div>
+
+                <p class="hero-subtitle-cyber">
+                    <span class="typing-effect">SYSTÈME DE DÉFENSE AVANCÉ CONTRE LES CYBERMENACES</span>
+                </p>
+
+                <div class="hero-buttons-cyber">
+                    <a href="#protection" class="cyber-btn primary-btn">
+                        <span class="btn-border"></span>
+                        <span class="btn-content">
+                            <span class="btn-icon">▶</span>
+                            <span class="btn-text">ACTIVER LA PROTECTION</span>
+                        </span>
+                        <span class="btn-glow"></span>
+                    </a>
+                    <a href="#verification" class="cyber-btn secondary-btn">
+                        <span class="btn-border"></span>
+                        <span class="btn-content">
+                            <span class="btn-icon">◉</span>
+                            <span class="btn-text">SCANNER MENACES</span>
+                        </span>
+                        <span class="btn-glow"></span>
                     </a>
                 </div>
 
-                <!-- VPN Card -->
-                <div class="cyber-card">
-                    <div class="card-corners">
-                        <span class="corner tl"></span>
-                        <span class="corner tr"></span>
-                        <span class="corner bl"></span>
-                        <span class="corner br"></span>
-                    </div>
-                    <div class="card-scan"></div>
-                    
-                    <div class="card-top">
-                        <div class="card-hex">
-                            <span>🔒</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="dot"></span>
-                            <span>ENCRYPTED</span>
+                <!-- Statistiques cyber -->
+                <div class="hero-stats-cyber">
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-value" data-target="99">0</div>
+                        <div class="stat-unit">.9%</div>
+                        <div class="stat-label">TAUX DE PROTECTION</div>
+                        <div class="stat-bar">
+                            <div class="stat-progress" style="width: 99.9%"></div>
                         </div>
                     </div>
-
-                    <h3>[VPN_CRYPTÉ]</h3>
-                    
-                    <div class="code-block">
-                        <code>// Tunnel sécurisé
-encrypt(connection);
-hideIP();</code>
-                    </div>
-                    
-                    <p>Tunnel chiffré militaire. Anonymat total, IP masquée, navigation fantôme. Protection contre surveillance.</p>
-                    
-                    <div class="vpn-list">
-                        <div class="vpn-item">▣ NordVPN <span>Protection complète</span></div>
-                        <div class="vpn-item">▣ ExpressVPN <span>Vitesse max</span></div>
-                        <div class="vpn-item">▣ ProtonVPN <span>Confidentialité</span></div>
-                        <div class="vpn-item">▣ Surfshark <span>Rapport qualité/prix</span></div>
-                    </div>
-                    
-                    <a href="#tools" class="btn-cyber">
-                        &gt;&gt; CONNECTER
-                    </a>
-                </div>
-
-                <!-- E-Cards Card -->
-                <div class="cyber-card">
-                    <div class="card-corners">
-                        <span class="corner tl"></span>
-                        <span class="corner tr"></span>
-                        <span class="corner bl"></span>
-                        <span class="corner br"></span>
-                    </div>
-                    <div class="card-scan"></div>
-                    
-                    <div class="card-top">
-                        <div class="card-hex">
-                            <span>💳</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="dot"></span>
-                            <span>SECURE</span>
+                    <div class="stat-card">
+                        <div class="stat-icon">🛡️</div>
+                        <div class="stat-value" data-target="24">0</div>
+                        <div class="stat-unit">/7</div>
+                        <div class="stat-label">SURVEILLANCE ACTIVE</div>
+                        <div class="stat-bar">
+                            <div class="stat-progress" style="width: 100%"></div>
                         </div>
                     </div>
-
-                    <h3>[E-CARTES_VIRTUELLES]</h3>
-                    
-                    <div class="code-block">
-                        <code>// Paiement anonyme
-generateCard({
-  temp: true
-});</code>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-value" data-target="1547893">0</div>
+                        <div class="stat-unit"></div>
+                        <div class="stat-label">MENACES BLOQUÉES</div>
+                        <div class="stat-bar">
+                            <div class="stat-progress" style="width: 95%"></div>
+                        </div>
                     </div>
-                    
-                    <p>Cartes bancaires fantômes. Une transaction = une carte. Protection anti-fraude maximale. Contrôle total.</p>
-                    
-                    <div class="features">
-                        <div class="feat">◆ Cartes jetables</div>
-                        <div class="feat">◆ Limites custom</div>
-                        <div class="feat">◆ Anti-fraude</div>
-                    </div>
-                    
-                    <div class="services">
-                        <span class="tag">Revolut</span>
-                        <span class="tag">N26</span>
-                        <span class="tag">Wise</span>
-                    </div>
-                    
-                    <a href="https://www.revolut.com/" target="_blank" class="btn-cyber">
-                        &gt;&gt; ACTIVER
-                    </a>
                 </div>
             </div>
         </div>
+
+        <!-- Indicateur de scroll cyber -->
+        <div class="scroll-indicator-cyber">
+            <div class="scroll-text">SCROLL DOWN</div>
+            <div class="scroll-arrow">▼</div>
+        </div>
     </section>
 
-    <!-- Scan Section -->
-    <section id="scan" class="section section-dark">
+    <!-- Section Protection -->
+    <section id="protection" class="section-cyber section-protection">
+        <div class="section-bg-pattern"></div>
+        
         <div class="container">
-            <div class="section-head">
-                <div class="section-tag">&lt;THREAT_SCANNER&gt;</div>
-                <h2 class="section-title glitch" data-text="[ANALYSE MENACES]">[ANALYSE MENACES]</h2>
-                <p class="section-desc"><span class="prompt">$</span> Scannez avant d'exécuter</p>
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ ARSENAL DE SÉCURITÉ ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="PROTOCOLES">PROTOCOLES</span>
+                    <span class="title-accent">DE PROTECTION</span>
+                </h2>
+                <p class="section-subtitle-cyber">TECHNOLOGIES DE DÉFENSE AVANCÉES</p>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="cyber-cards-grid">
+                <!-- Card Bitdefender -->
+                <div class="cyber-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-scan-effect"></div>
+                    <div class="card-corner tl"></div>
+                    <div class="card-corner tr"></div>
+                    <div class="card-corner bl"></div>
+                    <div class="card-corner br"></div>
+                    
+                    <div class="card-header-cyber">
+                        <div class="card-icon-cyber">
+                            <div class="icon-hexagon">
+                                <span class="icon-symbol">🛡️</span>
+                            </div>
+                            <div class="icon-pulse"></div>
+                        </div>
+                        <div class="card-status">
+                            <span class="status-dot active"></span>
+                            <span class="status-text">SYSTÈME ACTIF</span>
+                        </div>
+                    </div>
+
+                    <h3 class="card-title-cyber">BITDEFENDER SHIELD</h3>
+                    <div class="card-code">PROTOCOL: AV-BD-001</div>
+                    
+                    <p class="card-description-cyber">
+                        Protection en temps réel contre virus, malwares, ransomwares et menaces zero-day. 
+                        Intelligence artificielle avancée pour une détection proactive.
+                    </p>
+
+                    <div class="card-specs">
+                        <div class="spec-item">
+                            <span class="spec-icon">✓</span>
+                            <span class="spec-text">IA multicouche avancée</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-icon">✓</span>
+                            <span class="spec-text">Détection Zero-Day</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-icon">✓</span>
+                            <span class="spec-text">Anti-Ransomware quantique</span>
+                        </div>
+                    </div>
+
+                    <div class="card-rating">
+                        <div class="rating-label">NIVEAU DE SÉCURITÉ</div>
+                        <div class="rating-bar">
+                            <div class="rating-fill" style="width: 98%"></div>
+                            <div class="rating-value">98%</div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.bitdefender.fr/" target="_blank" class="card-button-cyber">
+                        <span class="btn-border"></span>
+                        <span class="btn-content">
+                            <span>DÉPLOYER LE SYSTÈME</span>
+                            <span class="btn-arrow">→</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Card VPN -->
+                <div class="cyber-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-scan-effect"></div>
+                    <div class="card-corner tl"></div>
+                    <div class="card-corner tr"></div>
+                    <div class="card-corner bl"></div>
+                    <div class="card-corner br"></div>
+                    
+                    <div class="card-header-cyber">
+                        <div class="card-icon-cyber">
+                            <div class="icon-hexagon">
+                                <span class="icon-symbol">🔒</span>
+                            </div>
+                            <div class="icon-pulse"></div>
+                        </div>
+                        <div class="card-status">
+                            <span class="status-dot active"></span>
+                            <span class="status-text">CHIFFREMENT ACTIF</span>
+                        </div>
+                    </div>
+
+                    <h3 class="card-title-cyber">RÉSEAU VPN QUANTIQUE</h3>
+                    <div class="card-code">PROTOCOL: VPN-QNT-002</div>
+                    
+                    <p class="card-description-cyber">
+                        Tunnel chiffré avec cryptographie quantique. Masquage IP absolu et protection 
+                        contre surveillance et tracking avancé.
+                    </p>
+
+                    <div class="vpn-providers">
+                        <div class="provider-item">
+                            <div class="provider-icon">🌐</div>
+                            <div class="provider-info">
+                                <div class="provider-name">NordVPN</div>
+                                <div class="provider-spec">Protection maximale</div>
+                            </div>
+                            <div class="provider-signal">
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                            </div>
+                        </div>
+                        <div class="provider-item">
+                            <div class="provider-icon">⚡</div>
+                            <div class="provider-info">
+                                <div class="provider-name">ExpressVPN</div>
+                                <div class="provider-spec">Vitesse optimale</div>
+                            </div>
+                            <div class="provider-signal">
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                            </div>
+                        </div>
+                        <div class="provider-item">
+                            <div class="provider-icon">🔐</div>
+                            <div class="provider-info">
+                                <div class="provider-name">ProtonVPN</div>
+                                <div class="provider-spec">Confidentialité suisse</div>
+                            </div>
+                            <div class="provider-signal">
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                            </div>
+                        </div>
+                        <div class="provider-item">
+                            <div class="provider-icon">💎</div>
+                            <div class="provider-info">
+                                <div class="provider-name">Surfshark</div>
+                                <div class="provider-spec">Performance/Prix</div>
+                            </div>
+                            <div class="provider-signal">
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                                <span class="signal-bar"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#outils" class="card-button-cyber">
+                        <span class="btn-border"></span>
+                        <span class="btn-content">
+                            <span>CONFIGURER VPN</span>
+                            <span class="btn-arrow">→</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Card E-Cartes -->
+                <div class="cyber-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-scan-effect"></div>
+                    <div class="card-corner tl"></div>
+                    <div class="card-corner tr"></div>
+                    <div class="card-corner bl"></div>
+                    <div class="card-corner br"></div>
+                    
+                    <div class="card-header-cyber">
+                        <div class="card-icon-cyber">
+                            <div class="icon-hexagon">
+                                <span class="icon-symbol">💳</span>
+                            </div>
+                            <div class="icon-pulse"></div>
+                        </div>
+                        <div class="card-status">
+                            <span class="status-dot active"></span>
+                            <span class="status-text">SÉCURISATION ACTIVE</span>
+                        </div>
+                    </div>
+
+                    <h3 class="card-title-cyber">E-CARTES VIRTUELLES</h3>
+                    <div class="card-code">PROTOCOL: VCARD-003</div>
+                    
+                    <p class="card-description-cyber">
+                        Cartes bancaires virtuelles jetables avec chiffrement end-to-end. 
+                        Protection absolue contre fraude et vol d'identité.
+                    </p>
+
+                    <div class="card-specs">
+                        <div class="spec-item">
+                            <span class="spec-icon">✓</span>
+                            <span class="spec-text">Cartes virtuelles jetables</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-icon">✓</span>
+                            <span class="spec-text">Limites personnalisables</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-icon">✓</span>
+                            <span class="spec-text">Anti-fraude IA</span>
+                        </div>
+                    </div>
+
+                    <div class="service-tags-cyber">
+                        <span class="cyber-tag">Revolut</span>
+                        <span class="cyber-tag">N26</span>
+                        <span class="cyber-tag">Wise</span>
+                    </div>
+
+                    <a href="https://www.revolut.com/" target="_blank" class="card-button-cyber">
+                        <span class="btn-border"></span>
+                        <span class="btn-content">
+                            <span>ACTIVER E-CARTES</span>
+                            <span class="btn-arrow">→</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Vérification / Scan -->
+    <section id="verification" class="section-cyber section-scan">
+        <div class="section-bg-pattern"></div>
+        
+        <div class="container">
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ SYSTÈME D'ANALYSE ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="SCANNER">SCANNER</span>
+                    <span class="title-accent">DE MENACES</span>
+                </h2>
+                <p class="section-subtitle-cyber">DÉTECTION ET ANALYSE EN TEMPS RÉEL</p>
+                <div class="section-line"></div>
             </div>
 
             <div class="scan-grid">
                 <!-- Scam-Doc -->
-                <div class="scan-card">
-                    <div class="scan-header">
-                        <span class="scan-icon">🔍</span>
-                        <h3>SCAM-DOC.COM</h3>
+                <div class="scan-panel" data-aos="fade-up" data-aos-delay="100">
+                    <div class="panel-header">
+                        <div class="panel-icon">🔍</div>
+                        <h3 class="panel-title">SCAM-DOC ANALYZER</h3>
+                        <div class="panel-code">SCAN-URL-001</div>
                     </div>
-                    <p>Vérifiez la fiabilité des sites web. Scam-Doc analyse les liens et détecte les arnaques.</p>
-                    <div class="warning">
-                        <span>⚠</span>
-                        <div>
-                            <strong>TOUJOURS_VÉRIFIER</strong>
-                            <p>Ne cliquez jamais sans scan</p>
-                        </div>
-                    </div>
-                    <a href="https://www.scamdoc.com/" target="_blank" class="btn-cyber">VÉRIFIER_LIEN</a>
-                </div>
-
-                <!-- File Analysis -->
-                <div class="scan-card large">
-                    <div class="scan-header">
-                        <span class="scan-icon">🔬</span>
-                        <h3>ANALYSE_FICHIERS.EXE</h3>
-                    </div>
-                    <p>Analysez les exécutables avant ouverture. Protection virus, trojans, malwares.</p>
                     
-                    <div class="tools-grid">
-                        <div class="tool">
-                            <span class="tool-icon">⚔</span>
-                            <div class="tool-info">
-                                <strong>VirusTotal</strong>
-                                <span>70+ antivirus</span>
-                                <a href="https://www.virustotal.com/" target="_blank">SCANNER →</a>
+                    <div class="panel-body">
+                        <p class="panel-description">
+                            Système d'analyse avancé pour vérifier la fiabilité des sites web. 
+                            Détection de phishing, scams et sites malveillants.
+                        </p>
+
+                        <div class="warning-panel">
+                            <div class="warning-icon">⚠️</div>
+                            <div class="warning-content">
+                                <div class="warning-title">PROTOCOLE DE SÉCURITÉ</div>
+                                <div class="warning-text">
+                                    Ne jamais cliquer sur un lien suspect sans vérification préalable
+                                </div>
                             </div>
                         </div>
-                        <div class="tool">
-                            <span class="tool-icon">⚗</span>
-                            <div class="tool-info">
-                                <strong>Hybrid Analysis</strong>
-                                <span>Comportemental</span>
-                                <a href="https://www.hybrid-analysis.com/" target="_blank">SCANNER →</a>
+
+                        <a href="https://www.scamdoc.com/" target="_blank" class="scan-button">
+                            <span class="btn-border"></span>
+                            <span class="btn-content">
+                                <span>LANCER LE SCAN</span>
+                                <span class="btn-icon">▶</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Analyse EXE -->
+                <div class="scan-panel large-panel" data-aos="fade-up" data-aos-delay="200">
+                    <div class="panel-header">
+                        <div class="panel-icon">🔬</div>
+                        <h3 class="panel-title">MALWARE DETECTION SYSTEM</h3>
+                        <div class="panel-code">SCAN-EXE-002</div>
+                    </div>
+                    
+                    <div class="panel-body">
+                        <p class="panel-description">
+                            Analysez les fichiers exécutables dans un environnement sandbox sécurisé. 
+                            Détection avancée de virus, trojans et malwares.
+                        </p>
+
+                        <div class="tools-matrix">
+                            <div class="tool-box">
+                                <div class="tool-header">
+                                    <span class="tool-icon">🛡️</span>
+                                    <span class="tool-name">VirusTotal</span>
+                                </div>
+                                <div class="tool-info">
+                                    <span class="tool-spec">70+ Engines</span>
+                                    <span class="tool-status">● ONLINE</span>
+                                </div>
+                                <a href="https://www.virustotal.com/" target="_blank" class="tool-link">
+                                    SCANNER →
+                                </a>
                             </div>
-                        </div>
-                        <div class="tool">
-                            <span class="tool-icon">⚡</span>
-                            <div class="tool-info">
-                                <strong>Any.Run</strong>
-                                <span>Sandbox live</span>
-                                <a href="https://any.run/" target="_blank">SCANNER →</a>
+
+                            <div class="tool-box">
+                                <div class="tool-header">
+                                    <span class="tool-icon">🧪</span>
+                                    <span class="tool-name">Hybrid Analysis</span>
+                                </div>
+                                <div class="tool-info">
+                                    <span class="tool-spec">Behavioral</span>
+                                    <span class="tool-status">● ONLINE</span>
+                                </div>
+                                <a href="https://www.hybrid-analysis.com/" target="_blank" class="tool-link">
+                                    SCANNER →
+                                </a>
                             </div>
-                        </div>
-                        <div class="tool">
-                            <span class="tool-icon">⚙</span>
-                            <div class="tool-info">
-                                <strong>Joe Sandbox</strong>
-                                <span>Analyse profonde</span>
-                                <a href="https://www.joesandbox.com/" target="_blank">SCANNER →</a>
+
+                            <div class="tool-box">
+                                <div class="tool-header">
+                                    <span class="tool-icon">⚡</span>
+                                    <span class="tool-name">Any.Run</span>
+                                </div>
+                                <div class="tool-info">
+                                    <span class="tool-spec">Interactive</span>
+                                    <span class="tool-status">● ONLINE</span>
+                                </div>
+                                <a href="https://any.run/" target="_blank" class="tool-link">
+                                    SCANNER →
+                                </a>
+                            </div>
+
+                            <div class="tool-box">
+                                <div class="tool-header">
+                                    <span class="tool-icon">🔎</span>
+                                    <span class="tool-name">Joe Sandbox</span>
+                                </div>
+                                <div class="tool-info">
+                                    <span class="tool-spec">Deep Scan</span>
+                                    <span class="tool-status">● ONLINE</span>
+                                </div>
+                                <a href="https://www.joesandbox.com/" target="_blank" class="tool-link">
+                                    SCANNER →
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- URL Scanner -->
-                <div class="scan-card">
-                    <div class="scan-header">
-                        <span class="scan-icon">🌐</span>
+                <!-- Vérification URL -->
+                <div class="scan-panel" data-aos="fade-up" data-aos-delay="300">
+                    <div class="panel-header">
+                        <div class="panel-icon">🌐</div>
+                        <h3 class="panel-title">URL VERIFICATION</h3>
+                        <div class="panel-code">SCAN-WEB-003</div>
+                    </div>
+                    
+                    <div class="panel-body">
+                        <p class="panel-description">
+                            Vérification approfondie des URLs et domaines suspects avant accès.
+                        </p>
+
+                        <div class="url-scanners">
+                            <div class="url-scanner-item">
+                                <div class="scanner-name">URLScan.io</div>
+                                <div class="scanner-desc">Scanner professionnel d'URLs</div>
+                                <a href="https://urlscan.io/" target="_blank" class="scanner-link">
+                                    ANALYSER →
+                                </a>
+                            </div>
+                            <div class="url-scanner-item">
+                                <div class="scanner-name">Google Safe Browsing</div>
+                                <div class="scanner-desc">Vérification Google</div>
+                                <a href="https://transparencyreport.google.com/safe-browsing/search" target="_blank" class="scanner-link">
+                                    VÉRIFIER →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Outils Interactifs -->
+    <section id="interactive" class="section-cyber section-interactive">
+        <div class="section-bg-pattern"></div>
+
+        <div class="container">
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag-cyber">&lt;INTERACTIVE_TOOLS&gt;</div>
+                <h2 class="section-title-cyber glitch" data-text="[OUTILS INTERACTIFS]">[OUTILS INTERACTIFS]</h2>
+                <p class="section-desc-cyber"><span class="prompt">$</span> Testez votre sécurité en temps réel</p>
+            </div>
+
+            <div class="interactive-grid">
+                <!-- Scanner URL -->
+                <div class="tool-interactive" data-aos="fade-up">
+                    <div class="tool-header-interactive">
+                        <span class="tool-icon-interactive">🔍</span>
                         <h3>SCANNER_URL</h3>
                     </div>
-                    <p>Vérification sécurité URLs et domaines.</p>
-                    <div class="url-tools">
-                        <div class="url-item">
-                            <strong>URLScan.io</strong>
-                            <span>Scanner professionnel</span>
-                            <a href="https://urlscan.io/" target="_blank">SCANNER →</a>
+
+                    <p class="tool-desc">Vérifiez la sécurité d'un site web en temps réel</p>
+
+                    <div class="scanner-form">
+                        <input type="text" id="url-input" class="cyber-input" placeholder="https://exemple.com" />
+                        <button id="scan-btn" class="btn-cyber btn-scan">
+                            <span>&gt;&gt; SCANNER</span>
+                        </button>
+                    </div>
+
+                    <div id="scan-result" class="scan-result hidden">
+                        <div class="scan-animation">
+                            <div class="scan-line"></div>
+                            <div class="scan-progress">
+                                <div class="scan-progress-bar"></div>
+                            </div>
+                            <div class="scan-status"></div>
                         </div>
-                        <div class="url-item">
-                            <strong>Google Safe Browsing</strong>
-                            <span>Vérification Google</span>
-                            <a href="https://transparencyreport.google.com/safe-browsing/search" target="_blank">VÉRIFIER →</a>
+                        <div class="scan-output"></div>
+                    </div>
+                </div>
+
+                <!-- Générateur de mot de passe -->
+                <div class="tool-interactive" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tool-header-interactive">
+                        <span class="tool-icon-interactive">🔐</span>
+                        <h3>GÉNÉRATEUR_MDP</h3>
+                    </div>
+
+                    <p class="tool-desc">Créez un mot de passe ultra-sécurisé</p>
+
+                    <div class="password-options">
+                        <div class="option-row">
+                            <label>Longueur: <span id="length-value">16</span></label>
+                            <input type="range" id="pwd-length" min="8" max="32" value="16" class="cyber-slider" />
                         </div>
+                        <div class="option-row">
+                            <label><input type="checkbox" id="pwd-uppercase" checked /> Majuscules</label>
+                            <label><input type="checkbox" id="pwd-numbers" checked /> Chiffres</label>
+                            <label><input type="checkbox" id="pwd-symbols" checked /> Symboles</label>
+                        </div>
+                    </div>
+
+                    <button id="generate-btn" class="btn-cyber">
+                        <span>&gt;&gt; GÉNÉRER</span>
+                    </button>
+
+                    <div id="password-output" class="password-output">
+                        <input type="text" id="generated-pwd" class="cyber-input" readonly />
+                        <button id="copy-btn" class="btn-cyber btn-small">
+                            <span>📋 COPIER</span>
+                        </button>
+                    </div>
+
+                    <div id="pwd-strength" class="pwd-strength">
+                        <div class="strength-bar">
+                            <div class="strength-fill"></div>
+                        </div>
+                        <span class="strength-text"></span>
+                    </div>
+                </div>
+
+                <!-- Test de sécurité -->
+                <div class="tool-interactive" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tool-header-interactive">
+                        <span class="tool-icon-interactive">🎯</span>
+                        <h3>TEST_SÉCURITÉ</h3>
+                    </div>
+
+                    <p class="tool-desc">Évaluez vos connaissances en cybersécurité</p>
+
+                    <div id="quiz-container" class="quiz-container">
+                        <div id="quiz-question" class="quiz-question"></div>
+                        <div id="quiz-answers" class="quiz-answers"></div>
+                        <div id="quiz-result" class="quiz-result hidden"></div>
+                    </div>
+
+                    <button id="start-quiz-btn" class="btn-cyber">
+                        <span>&gt;&gt; COMMENCER</span>
+                    </button>
+
+                    <div id="quiz-score" class="quiz-score hidden">
+                        <div class="score-display"></div>
+                        <button id="restart-quiz-btn" class="btn-cyber btn-small">
+                            <span>↻ RECOMMENCER</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vérificateur d'email -->
+                <div class="tool-interactive" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tool-header-interactive">
+                        <span class="tool-icon-interactive">📧</span>
+                        <h3>CHECK_EMAIL_BREACH</h3>
+                    </div>
+
+                    <p class="tool-desc">Vérifiez si votre email a été compromis</p>
+
+                    <div class="email-form">
+                        <input type="email" id="email-input" class="cyber-input" placeholder="votre@email.com" />
+                        <button id="check-email-btn" class="btn-cyber btn-scan">
+                            <span>&gt;&gt; VÉRIFIER</span>
+                        </button>
+                    </div>
+
+                    <div id="email-result" class="email-result hidden">
+                        <div class="breach-animation">
+                            <div class="breach-status"></div>
+                        </div>
+                        <div class="breach-output"></div>
+                    </div>
+
+                    <div class="tool-note">
+                        <span>⚠</span> Utilise l'API HaveIBeenPwned
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="section">
+    <!-- Section Outils -->
+    <section id="outils" class="section-cyber section-tools">
+        <div class="section-bg-pattern"></div>
+        
         <div class="container">
-            <div class="section-head">
-                <div class="section-tag">&lt;TOOLS_ARSENAL&gt;</div>
-                <h2 class="section-title glitch" data-text="[OUTILS AVANCÉS]">[OUTILS AVANCÉS]</h2>
-                <p class="section-desc"><span class="prompt">$</span> Arsenal complet</p>
+            <div class="section-header-cyber" data-aos="fade-up">
+                <div class="section-tag">[ ARSENAL COMPLÉMENTAIRE ]</div>
+                <h2 class="section-title-cyber">
+                    <span class="glitch-text" data-text="OUTILS">OUTILS</span>
+                    <span class="title-accent">TACTIQUES</span>
+                </h2>
+                <p class="section-subtitle-cyber">RENFORT DE VOTRE DÉFENSE NUMÉRIQUE</p>
+                <div class="section-line"></div>
             </div>
 
-            <div class="tools-cat">
-                <div class="tool-cat">
-                    <div class="cat-icon">🔐</div>
-                    <h3>GESTIONNAIRES_MDP</h3>
-                    <ul>
-                        <li>▸ Bitwarden (Open Source)</li>
-                        <li>▸ 1Password</li>
-                        <li>▸ LastPass</li>
-                        <li>▸ Dashlane</li>
-                    </ul>
+            <div class="tools-grid-cyber">
+                <div class="tool-category-cyber" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-header">
+                        <div class="category-icon-cyber">🔐</div>
+                        <h3 class="category-title">PASSWORD MANAGERS</h3>
+                    </div>
+                    <div class="category-items">
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">Bitwarden</span>
+                            <span class="item-badge">OPEN SOURCE</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">1Password</span>
+                            <span class="item-badge">PREMIUM</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">LastPass</span>
+                            <span class="item-badge">MULTI-DEVICE</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">Dashlane</span>
+                            <span class="item-badge">AI-POWERED</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="tool-cat">
-                    <div class="cat-icon">🛡</div>
-                    <h3>PARE-FEU</h3>
-                    <ul>
-                        <li>▸ Windows Defender</li>
-                        <li>▸ GlassWire</li>
-                        <li>▸ ZoneAlarm</li>
-                        <li>▸ Comodo Firewall</li>
-                    </ul>
+                <div class="tool-category-cyber" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-header">
+                        <div class="category-icon-cyber">🛡️</div>
+                        <h3 class="category-title">FIREWALL SYSTEMS</h3>
+                    </div>
+                    <div class="category-items">
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">Windows Defender</span>
+                            <span class="item-badge">NATIVE</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">GlassWire</span>
+                            <span class="item-badge">MONITOR</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">ZoneAlarm</span>
+                            <span class="item-badge">ADVANCED</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">Comodo</span>
+                            <span class="item-badge">ENTERPRISE</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="tool-cat">
-                    <div class="cat-icon">📧</div>
-                    <h3>EMAIL_SÉCURISÉ</h3>
-                    <ul>
-                        <li>▸ ProtonMail (Chiffré)</li>
-                        <li>▸ Tutanota</li>
-                        <li>▸ SpamTitan</li>
-                        <li>▸ MailWasher</li>
-                    </ul>
+                <div class="tool-category-cyber" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-header">
+                        <div class="category-icon-cyber">📧</div>
+                        <h3 class="category-title">SECURE EMAIL</h3>
+                    </div>
+                    <div class="category-items">
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">ProtonMail</span>
+                            <span class="item-badge">ENCRYPTED</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">Tutanota</span>
+                            <span class="item-badge">PRIVATE</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">SpamTitan</span>
+                            <span class="item-badge">FILTER</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="item-bullet">▸</span>
+                            <span class="item-name">MailWasher</span>
+                            <span class="item-badge">PROTECTION</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Security Protocol -->
-            <div class="protocol">
-                <h3>◉ PROTOCOLE_SÉCURITÉ</h3>
+            <!-- Protocole de sécurité -->
+            <div class="security-protocol" data-aos="fade-up">
+                <div class="protocol-header">
+                    <div class="protocol-icon">⚡</div>
+                    <h3 class="protocol-title">PROTOCOLE DE SÉCURITÉ OPTIMALE</h3>
+                    <div class="protocol-code">SECURITY-PROTOCOL-V4.5</div>
+                </div>
+
                 <div class="protocol-steps">
-                    <div class="step">
-                        <span class="num">01</span>
-                        <div class="step-info">
-                            <strong>INSTALLATION</strong>
-                            <p>Bitdefender comme antivirus</p>
+                    <div class="protocol-step">
+                        <div class="step-hex">
+                            <span class="step-num">01</span>
                         </div>
+                        <div class="step-info">
+                            <div class="step-title">INSTALLATION SYSTÈME</div>
+                            <div class="step-desc">Déploiement de Bitdefender comme défense principale</div>
+                        </div>
+                        <div class="step-status">✓</div>
                     </div>
-                    <div class="step">
-                        <span class="num">02</span>
-                        <div class="step-info">
-                            <strong>CONNEXION</strong>
-                            <p>VPN actif permanent</p>
+
+                    <div class="protocol-step">
+                        <div class="step-hex">
+                            <span class="step-num">02</span>
                         </div>
+                        <div class="step-info">
+                            <div class="step-title">ACTIVATION VPN</div>
+                            <div class="step-desc">Tunnel chiffré permanent pour toutes connexions</div>
+                        </div>
+                        <div class="step-status">✓</div>
                     </div>
-                    <div class="step">
-                        <span class="num">03</span>
-                        <div class="step-info">
-                            <strong>NAVIGATION</strong>
-                            <p>Vérifier liens Scam-Doc</p>
+
+                    <div class="protocol-step">
+                        <div class="step-hex">
+                            <span class="step-num">03</span>
                         </div>
+                        <div class="step-info">
+                            <div class="step-title">VÉRIFICATION LIENS</div>
+                            <div class="step-desc">Scan systématique avec Scam-Doc avant accès</div>
+                        </div>
+                        <div class="step-status">✓</div>
                     </div>
-                    <div class="step">
-                        <span class="num">04</span>
-                        <div class="step-info">
-                            <strong>TÉLÉCHARGEMENT</strong>
-                            <p>Scanner avec VirusTotal</p>
+
+                    <div class="protocol-step">
+                        <div class="step-hex">
+                            <span class="step-num">04</span>
                         </div>
+                        <div class="step-info">
+                            <div class="step-title">ANALYSE FICHIERS</div>
+                            <div class="step-desc">Scan VirusTotal pour tous téléchargements</div>
+                        </div>
+                        <div class="step-status">✓</div>
                     </div>
-                    <div class="step">
-                        <span class="num">05</span>
-                        <div class="step-info">
-                            <strong>ACHATS</strong>
-                            <p>E-cartes virtuelles</p>
+
+                    <div class="protocol-step">
+                        <div class="step-hex">
+                            <span class="step-num">05</span>
                         </div>
+                        <div class="step-info">
+                            <div class="step-title">PAIEMENTS SÉCURISÉS</div>
+                            <div class="step-desc">E-cartes virtuelles pour transactions en ligne</div>
+                        </div>
+                        <div class="step-status">✓</div>
                     </div>
-                    <div class="step">
-                        <span class="num">06</span>
-                        <div class="step-info">
-                            <strong>EMAILS</strong>
-                            <p>Ne jamais ouvrir suspects</p>
+
+                    <div class="protocol-step">
+                        <div class="step-hex">
+                            <span class="step-num">06</span>
                         </div>
+                        <div class="step-info">
+                            <div class="step-title">VIGILANCE EMAIL</div>
+                            <div class="step-desc">Zéro tolérance pour pièces jointes suspectes</div>
+                        </div>
+                        <div class="step-status">✓</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Section CTA -->
+    <section id="contact" class="section-cyber section-cta-cyber">
+        <div class="cta-radar"></div>
+        
         <div class="container">
-            <div class="cta-content">
-                <h2 class="glitch" data-text="[ACTIVEZ VOTRE PROTECTION]">[ACTIVEZ VOTRE PROTECTION]</h2>
-                <p>Ne laissez pas vos données exposées aux cybercriminels</p>
-                <div class="cta-btns">
-                    <a href="https://www.bitdefender.fr/" target="_blank" class="btn-cyber btn-large">
-                        &gt;&gt; BITDEFENDER
-                    </a>
-                    <a href="https://www.scamdoc.com/" target="_blank" class="btn-cyber btn-large">
-                        &gt;&gt; SCANNER_LIEN
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <span class="logo-bracket">&lt;</span>
-                        <span>CYBERGUARD</span>
-                        <span class="logo-bracket">&gt;</span>
-                    </div>
-                    <p>Votre sécurité numérique</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-col">
-                        <h4>PROTECTION</h4>
-                        <a href="#protection">Antivirus</a>
-                        <a href="#protection">VPN</a>
-                        <a href="#protection">E-Cartes</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>SCAN</h4>
-                        <a href="#scan">Scam-Doc</a>
-                        <a href="#scan">VirusTotal</a>
-                        <a href="#scan">URLScan</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>TOOLS</h4>
-                        <a href="#tools">Outils</a>
-                        <a href="#tools">Protocole</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="creator-signature">
-                    <div class="signature-line"></div>
-                    <div class="signature-content">
-                        <span class="signature-icon">◈</span>
-                        <span class="signature-text">
-                            <span class="created-by">CRÉÉ PAR</span>
-                            <span class="creator-name glitch" data-text="FLORIAN JOVE GARCIA">FLORIAN JOVE GARCIA</span>
-                            <span class="creator-title">[LE MEILLEUR EN INFORMATIQUE]</span>
+            <div class="cta-content-cyber" data-aos="zoom-in">
+                <div class="cta-icon">⚡</div>
+                <h2 class="cta-title">ACTIVEZ VOTRE PROTECTION</h2>
+                <p class="cta-subtitle">NE LAISSEZ PAS VOS DONNÉES EXPOSÉES AUX CYBERMENACES</p>
+                
+                <div class="cta-buttons-cyber">
+                    <a href="https://www.bitdefender.fr/" target="_blank" class="cyber-btn primary-btn">
+                        <span class="btn-border"></span>
+                        <span class="btn-content">
+                            <span class="btn-icon">▶</span>
+                            <span class="btn-text">DÉPLOYER BITDEFENDER</span>
                         </span>
-                        <span class="signature-icon">◈</span>
-                    </div>
-                    <div class="signature-line"></div>
+                        <span class="btn-glow"></span>
+                    </a>
+                    <a href="https://www.scamdoc.com/" target="_blank" class="cyber-btn secondary-btn">
+                        <span class="btn-border"></span>
+                        <span class="btn-content">
+                            <span class="btn-icon">◉</span>
+                            <span class="btn-text">SCANNER UN LIEN</span>
+                        </span>
+                        <span class="btn-glow"></span>
+                    </a>
                 </div>
-                <p>&copy; 2025 CYBERGUARD PRO | HACK THE PLANET</p>
+
+                <div class="cta-stats">
+                    <div class="cta-stat">
+                        <span class="stat-value-cta">99.9%</span>
+                        <span class="stat-label-cta">Protection</span>
+                    </div>
+                    <div class="cta-stat">
+                        <span class="stat-value-cta">24/7</span>
+                        <span class="stat-label-cta">Surveillance</span>
+                    </div>
+                    <div class="cta-stat">
+                        <span class="stat-value-cta">1.5M+</span>
+                        <span class="stat-label-cta">Menaces bloquées</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Cyber -->
+    <footer class="footer-cyber">
+        <div class="footer-scan-line"></div>
+        <div class="container">
+            <div class="footer-content-cyber">
+                <div class="footer-main">
+                    <div class="footer-brand-cyber">
+                        <div class="logo-cyber">
+                            <span class="logo-icon">⚡</span>
+                            <span class="logo-text">CyberGuard Pro</span>
+                        </div>
+                        <p class="footer-tagline">VOTRE SÉCURITÉ NUMÉRIQUE EST NOTRE PRIORITÉ</p>
+                        <div class="footer-code">SYSTEM v4.5.0 // BUILD 2025</div>
+                    </div>
+                </div>
+
+                <div class="footer-links-cyber">
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">PROTECTION</h4>
+                        <ul class="footer-list">
+                            <li><a href="#protection">▸ Antivirus</a></li>
+                            <li><a href="#protection">▸ VPN Quantum</a></li>
+                            <li><a href="#protection">▸ E-Cartes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">ANALYSE</h4>
+                        <ul class="footer-list">
+                            <li><a href="#verification">▸ Scam-Doc</a></li>
+                            <li><a href="#verification">▸ VirusTotal</a></li>
+                            <li><a href="#verification">▸ URLScan</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">RESSOURCES</h4>
+                        <ul class="footer-list">
+                            <li><a href="#outils">▸ Outils</a></li>
+                            <li><a href="#outils">▸ Protocole</a></li>
+                            <li><a href="#contact">▸ Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-cyber">
+                <div class="footer-line"></div>
+                <p class="copyright">© 2025 CYBERGUARD PRO // ALL SYSTEMS SECURED</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll to Top -->
-    <button id="scroll-top" class="scroll-top">
-        <span>▲</span>
+    <!-- Bouton scroll to top cyber -->
+    <button id="scroll-top" class="scroll-top-cyber">
+        <span class="scroll-icon">▲</span>
+        <span class="scroll-text">TOP</span>
     </button>
 
     <script src="script.js"></script>
