@@ -12,7 +12,7 @@
 
 class ThemeManager {
     constructor() {
-        this.currentTheme = this.getStoredTheme() || this.getSystemPreference();
+        this.currentTheme = this.getStoredTheme() || 'dark'; // Force dark mode by default
         this.themes = {
             dark: {
                 // Cyber Colors (Dark)
