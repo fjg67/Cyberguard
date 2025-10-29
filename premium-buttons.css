@@ -1,0 +1,343 @@
+/**
+ * ═══════════════════════════════════════════════════════════════
+ * PREMIUM BUTTONS - Ultra Premium Cyber Buttons
+ * ═══════════════════════════════════════════════════════════════
+ * Styles pour les 4 boutons principaux avec effets premium
+ */
+
+/* Base button styling - Ultra Premium */
+.btn-cyber.btn-scan,
+.btn-premium {
+    position: relative;
+    padding: 16px 48px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00ffff;
+    background: linear-gradient(135deg,
+        rgba(0, 255, 255, 0.1) 0%,
+        rgba(0, 136, 255, 0.1) 50%,
+        rgba(153, 51, 255, 0.1) 100%);
+    border: 2px solid #00ffff;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.3),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+    transform-style: preserve-3d;
+}
+
+/* Animated gradient background */
+.btn-cyber.btn-scan::before,
+.btn-premium::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 255, 255, 0.3) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+/* Scan lines effect */
+.btn-cyber.btn-scan::after,
+.btn-premium::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 255, 0.4),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+/* Corner brackets (cyberpunk style) */
+.btn-cyber.btn-scan,
+.btn-premium {
+    --corner-size: 12px;
+    --corner-width: 3px;
+}
+
+.btn-cyber.btn-scan > span,
+.btn-premium > span {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Hover state */
+.btn-cyber.btn-scan:hover,
+.btn-premium:hover {
+    transform: translateY(-3px) scale(1.02);
+    border-color: #ff00ff;
+    color: #ff00ff;
+    box-shadow:
+        0 0 40px rgba(255, 0, 255, 0.6),
+        0 0 80px rgba(0, 255, 255, 0.4),
+        inset 0 0 30px rgba(255, 0, 255, 0.2);
+    background: linear-gradient(135deg,
+        rgba(255, 0, 255, 0.15) 0%,
+        rgba(0, 255, 255, 0.15) 50%,
+        rgba(153, 51, 255, 0.15) 100%);
+}
+
+.btn-cyber.btn-scan:hover::before,
+.btn-premium:hover::before {
+    opacity: 1;
+    animation: shimmer 1.5s infinite;
+}
+
+.btn-cyber.btn-scan:hover::after,
+.btn-premium:hover::after {
+    left: 100%;
+}
+
+/* Active/Click state */
+.btn-cyber.btn-scan:active,
+.btn-premium:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.8),
+        inset 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Pulse animation for attention */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 20px rgba(0, 255, 255, 0.3),
+            inset 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 0 40px rgba(0, 255, 255, 0.6),
+            0 0 80px rgba(0, 255, 255, 0.3),
+            inset 0 0 30px rgba(0, 255, 255, 0.2);
+    }
+}
+
+.btn-cyber.btn-scan,
+.btn-premium {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.btn-cyber.btn-scan:hover,
+.btn-premium:hover {
+    animation: none; /* Stop pulse on hover */
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% {
+        transform: rotate(45deg) translate(-50%, -50%);
+    }
+    100% {
+        transform: rotate(45deg) translate(50%, 50%);
+    }
+}
+
+/* Corner decorations */
+.btn-cyber.btn-scan,
+.btn-premium {
+    clip-path: polygon(
+        0 8px,
+        8px 0,
+        calc(100% - 8px) 0,
+        100% 8px,
+        100% calc(100% - 8px),
+        calc(100% - 8px) 100%,
+        8px 100%,
+        0 calc(100% - 8px)
+    );
+}
+
+/* Icon animation */
+.btn-cyber.btn-scan > span::before,
+.btn-premium > span::before {
+    content: '»';
+    margin-right: 8px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn-cyber.btn-scan:hover > span::before,
+.btn-premium:hover > span::before {
+    transform: translateX(5px);
+    animation: arrow-pulse 0.6s ease infinite;
+}
+
+@keyframes arrow-pulse {
+    0%, 100% { transform: translateX(5px); }
+    50% { transform: translateX(10px); }
+}
+
+/* Specific button variants */
+
+/* SCANNER button */
+#scan-btn {
+    background: linear-gradient(135deg,
+        rgba(0, 255, 255, 0.15) 0%,
+        rgba(0, 136, 255, 0.15) 100%);
+    border-color: #00ffff;
+    color: #00ffff;
+}
+
+#scan-btn:hover {
+    border-color: #00ff88;
+    color: #00ff88;
+}
+
+/* GÉNÉRER button (password generator) */
+#generate-password-btn,
+.btn-generate {
+    background: linear-gradient(135deg,
+        rgba(255, 0, 255, 0.15) 0%,
+        rgba(153, 51, 255, 0.15) 100%);
+    border-color: #ff00ff;
+    color: #ff00ff;
+}
+
+#generate-password-btn:hover,
+.btn-generate:hover {
+    border-color: #ff88ff;
+    color: #ff88ff;
+    box-shadow:
+        0 0 40px rgba(255, 0, 255, 0.6),
+        0 0 80px rgba(255, 0, 255, 0.4),
+        inset 0 0 30px rgba(255, 0, 255, 0.2);
+}
+
+/* COMMENCER button (start quiz) */
+#start-quiz-btn,
+.btn-start {
+    background: linear-gradient(135deg,
+        rgba(0, 255, 136, 0.15) 0%,
+        rgba(0, 200, 255, 0.15) 100%);
+    border-color: #00ff88;
+    color: #00ff88;
+}
+
+#start-quiz-btn:hover,
+.btn-start:hover {
+    border-color: #00ffcc;
+    color: #00ffcc;
+    box-shadow:
+        0 0 40px rgba(0, 255, 136, 0.6),
+        0 0 80px rgba(0, 255, 136, 0.4),
+        inset 0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+/* VÉRIFIER button (check email breach) */
+#email-check-btn,
+.btn-verify {
+    background: linear-gradient(135deg,
+        rgba(255, 136, 0, 0.15) 0%,
+        rgba(255, 0, 136, 0.15) 100%);
+    border-color: #ff8800;
+    color: #ff8800;
+}
+
+#email-check-btn:hover,
+.btn-verify:hover {
+    border-color: #ffaa00;
+    color: #ffaa00;
+    box-shadow:
+        0 0 40px rgba(255, 136, 0, 0.6),
+        0 0 80px rgba(255, 136, 0, 0.4),
+        inset 0 0 30px rgba(255, 136, 0, 0.2);
+}
+
+/* Loading state */
+.btn-cyber.btn-scan.loading,
+.btn-premium.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-cyber.btn-scan.loading::before,
+.btn-premium.loading::before {
+    animation: shimmer 0.8s linear infinite;
+    opacity: 1;
+}
+
+/* Disabled state */
+.btn-cyber.btn-scan:disabled,
+.btn-premium:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    animation: none;
+}
+
+/* Particle effects on click */
+@keyframes particle-explosion {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .btn-cyber.btn-scan,
+    .btn-premium {
+        padding: 14px 32px;
+        font-size: 14px;
+        letter-spacing: 1.5px;
+    }
+
+    .btn-cyber.btn-scan:hover,
+    .btn-premium:hover {
+        transform: translateY(-2px) scale(1.01);
+    }
+}
+
+/* Accessibility - Focus state */
+.btn-cyber.btn-scan:focus,
+.btn-premium:focus {
+    outline: 3px solid rgba(0, 255, 255, 0.5);
+    outline-offset: 4px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .btn-cyber.btn-scan,
+    .btn-premium {
+        border-width: 3px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .btn-cyber.btn-scan,
+    .btn-premium,
+    .btn-cyber.btn-scan::before,
+    .btn-premium::before,
+    .btn-cyber.btn-scan::after,
+    .btn-premium::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
