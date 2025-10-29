@@ -9,7 +9,7 @@ Disallow: /test-*.html
 Disallow: /quiz-modal.html
 
 # Sitemap
-Sitemap: https://www.cyberguard-pro.com/sitemap.xml
+Sitemap: https://cyberguardpro-five.vercel.app/sitemap.xml
 
 # Crawl delay (secondes entre 2 pages)
 Crawl-delay: 1
