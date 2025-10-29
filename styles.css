@@ -1016,7 +1016,7 @@ body {
 
 /* ===== SECTIONS CYBER ===== */
 .section-cyber {
-    padding: 120px 0;
+    padding: 60px 0;
     position: relative;
 }
 
@@ -3452,7 +3452,7 @@ body {
 
 /* Attacks Map */
 .attacks-map-container {
-    margin: 50px 0;
+    margin: 50px 0 20px 0;
 }
 
 .map-title {
@@ -3686,7 +3686,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-    margin: 50px 0;
+    margin: 50px 0 20px 0;
 }
 
 .threat-card {
@@ -3769,7 +3769,7 @@ body {
 
 /* Real-time Stats */
 .realtime-stats {
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .stats-title {
@@ -3943,6 +3943,55 @@ body {
     gap: 20px;
     color: var(--text-dim);
     font-size: 11px;
+}
+
+/* Video Categories */
+.video-category {
+    margin-bottom: 50px;
+}
+
+.category-title {
+    font-size: 20px;
+    color: var(--cyber-cyan);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+    letter-spacing: 1px;
+}
+
+/* Recommended Channels */
+.recommended-channels {
+    margin-top: 50px;
+    padding: 30px;
+    background: var(--bg-card);
+    border: 2px solid rgba(153, 51, 255, 0.3);
+    border-radius: 10px;
+}
+
+.channels-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.channel-tag {
+    display: inline-block;
+    background: rgba(153, 51, 255, 0.1);
+    border: 1px solid rgba(153, 51, 255, 0.4);
+    color: var(--cyber-purple);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 13px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.channel-tag:hover {
+    background: rgba(153, 51, 255, 0.2);
+    border-color: var(--cyber-purple);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(153, 51, 255, 0.3);
 }
 
 /* Guides List */
