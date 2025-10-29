@@ -199,7 +199,13 @@ class RecommendationQuiz {
 
     init() {
         if (this.startBtn) {
-            this.startBtn.addEventListener('click', () => this.startQuiz());
+            console.log('✅ Recommendation Quiz: Bouton trouvé, event listener ajouté');
+            this.startBtn.addEventListener('click', () => {
+                console.log('🎯 Recommendation Quiz: Bouton cliqué, démarrage du quiz...');
+                this.startQuiz();
+            });
+        } else {
+            console.error('❌ Recommendation Quiz: Bouton #start-recommendation-quiz-btn introuvable');
         }
     }
 
@@ -531,6 +537,11 @@ class RecommendationQuiz {
 }
 
 // Initialiser le quiz quand le DOM est prêt
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new RecommendationQuiz();
+    });
+} else {
+    // DOM déjà chargé (defer script)
     new RecommendationQuiz();
-});
+}
