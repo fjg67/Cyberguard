@@ -2321,8 +2321,15 @@ body {
     margin: 20px 0;
 }
 
+.scanner-form .cyber-input,
+.email-form .cyber-input {
+    flex: 1;
+    min-width: 0; /* Allow flex item to shrink below content size */
+}
+
 .btn-scan {
     flex-shrink: 0;
+    white-space: nowrap; /* Prevent button text from wrapping */
 }
 
 .btn-small {
