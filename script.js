@@ -1183,6 +1183,15 @@ class URLScanner {
             }
         }));
 
+        // Track scan result in analytics
+        if (window.analyticsTracker) {
+            window.analyticsTracker.trackScanResult('url_scanner', {
+                safe: isSafe,
+                threatCount: results.threats.length,
+                duration: 0 // Could be tracked if needed
+            });
+        }
+
         if (isSafe) {
             this.scanStatus.textContent = '✓ SCAN COMPLETED';
             this.scanOutput.className = 'scan-output success';
