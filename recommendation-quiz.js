@@ -8,7 +8,7 @@ class RecommendationQuiz {
         this.currentQuestion = 0;
         this.answers = {};
         this.modal = null;
-        this.startBtn = document.getElementById('start-quiz-btn');
+        this.startBtn = document.getElementById('start-recommendation-quiz-btn');
 
         // Questions avec scoring pour chaque antivirus
         this.questions = [
