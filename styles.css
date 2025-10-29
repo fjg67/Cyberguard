@@ -2317,14 +2317,16 @@ body {
 .scanner-form,
 .email-form {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin: 20px 0;
 }
 
 .scanner-form .cyber-input,
 .email-form .cyber-input {
-    flex: 1;
-    min-width: 0; /* Allow flex item to shrink below content size */
+    flex: 1 1 auto;
+    min-width: 300px; /* Minimum width to show URLs */
+    max-width: none;
 }
 
 .btn-scan {
