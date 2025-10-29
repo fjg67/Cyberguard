@@ -42,6 +42,9 @@
 
     <title>⚡ CyberGuard Pro - Cybersécurité Premium | Scanner Gratuit</title>
 
+    <!-- Performance Optimizer (inline for immediate execution) -->
+    <script>document.documentElement.classList.add('js-loading');</script>
+
     <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://www.clarity.ms">
@@ -72,17 +75,33 @@
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="lazy-load-styles.css" as="style">
 
+    <!-- Critical CSS loaded immediately -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="lazy-load-styles.css">
-    <link rel="stylesheet" href="blog-styles.css">
-    <link rel="stylesheet" href="world-map-styles.css">
-    <link rel="stylesheet" href="quiz-styles.css">
-    <link rel="stylesheet" href="theme-styles.css">
-    <link rel="stylesheet" href="i18n-styles.css">
-    <link rel="stylesheet" href="achievement-styles.css">
-    <link rel="stylesheet" href="cyberguard-ai-styles.css">
-    <link rel="stylesheet" href="mobile-menu-styles.css">
-    <link rel="stylesheet" href="header-responsive-fix.css">
+
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="stylesheet" href="blog-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="world-map-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="quiz-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="theme-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="i18n-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="achievement-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="cyberguard-ai-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="mobile-menu-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="header-responsive-fix.css" media="print" onload="this.media='all'">
+
+    <!-- Fallback for browsers without JavaScript -->
+    <noscript>
+        <link rel="stylesheet" href="blog-styles.css">
+        <link rel="stylesheet" href="world-map-styles.css">
+        <link rel="stylesheet" href="quiz-styles.css">
+        <link rel="stylesheet" href="theme-styles.css">
+        <link rel="stylesheet" href="i18n-styles.css">
+        <link rel="stylesheet" href="achievement-styles.css">
+        <link rel="stylesheet" href="cyberguard-ai-styles.css">
+        <link rel="stylesheet" href="mobile-menu-styles.css">
+        <link rel="stylesheet" href="header-responsive-fix.css">
+    </noscript>
 
     <!-- Service Worker Registration -->
     <script>
@@ -101,6 +120,9 @@
     </script>
 </head>
 <body>
+    <!-- Performance Optimizer Script (critical) -->
+    <script src="performance-optimizer.js"></script>
+
     <!-- Effets de fond cyber -->
     <canvas id="matrix-canvas"></canvas>
     <canvas id="particles-canvas"></canvas>
@@ -2475,27 +2497,27 @@
     </div>
 
     <!-- API Client (doit être chargé en premier) -->
-    <script src="api-client.js"></script>
+    <script src="api-client.js" defer></script>
 
-    <script src="script.js"></script>
-    <script src="threats.js"></script>
-    <script src="world-map-interactive.js"></script>
-    <script src="blog.js"></script>
-    <script src="blog-renderer.js"></script>
-    <script src="comparator-data.js"></script>
-    <script src="comparator-enhanced.js"></script>
+    <script src="script.js" defer></script>
+    <script src="threats.js" defer></script>
+    <script src="world-map-interactive.js" defer></script>
+    <script src="blog.js" defer></script>
+    <script src="blog-renderer.js" defer></script>
+    <script src="comparator-data.js" defer></script>
+    <script src="comparator-enhanced.js" defer></script>
 
     <!-- UX Enhancement Systems -->
-    <script src="theme-manager.js"></script>
-    <script src="i18n.js"></script>
-    <script src="achievement-system.js"></script>
+    <script src="theme-manager.js" defer></script>
+    <script src="i18n.js" defer></script>
+    <script src="achievement-system.js" defer></script>
 
     <!-- CyberGuard AI Assistant -->
-    <script src="cyberguard-ai-assistant.js"></script>
+    <script src="cyberguard-ai-assistant.js" defer></script>
 
     <!-- Mobile Menu & Header Optimizer (MUST be last) -->
-    <script src="mobile-menu.js"></script>
-    <script src="header-optimizer.js"></script>
+    <script src="mobile-menu.js" defer></script>
+    <script src="header-optimizer.js" defer></script>
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -2573,9 +2595,9 @@
     </script>
 
     <!-- Analytics Events Tracker -->
-    <script src="analytics-events.js"></script>
+    <script src="analytics-events.js" defer></script>
 
     <!-- Lazy Loading Script -->
-    <script src="lazy-load.js"></script>
+    <script src="lazy-load.js" defer></script>
 </body>
 </html>
