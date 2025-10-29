@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512"><svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients Premium -->
+    <linearGradient id="SvgjsLinearGradient1024" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1"></stop>
+      <stop offset="50%" style="stop-color:#0088ff;stop-opacity:1"></stop>
+      <stop offset="100%" style="stop-color:#0044ff;stop-opacity:1"></stop>
+    </linearGradient>
+
+    <linearGradient id="SvgjsLinearGradient1023" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1"></stop>
+      <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0.8"></stop>
+    </linearGradient>
+
+    <linearGradient id="SvgjsLinearGradient1022" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.8"></stop>
+      <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:0.6"></stop>
+      <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0.8"></stop>
+    </linearGradient>
+
+    <!-- Filtres pour effets premium -->
+    <filter id="SvgjsFilter1021">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="coloredBlur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+
+    <filter id="SvgjsFilter1020">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"></feGaussianBlur>
+      <feOffset dx="0" dy="2" result="offsetblur"></feOffset>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"></feFuncA>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+
+    <!-- Motif hexagonal de fond -->
+    <pattern id="SvgjsPattern1019" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M20 5 L30 12.5 L30 27.5 L20 35 L10 27.5 L10 12.5 Z" fill="none" stroke="rgba(0, 255, 255, 0.1)" stroke-width="1"></path>
+    </pattern>
+  </defs>
+
+  <!-- Background avec gradient sombre -->
+  <rect width="512" height="512" fill="#0a0a1a"></rect>
+
+  <!-- Motif hexagonal de fond -->
+  <rect width="512" height="512" fill="url(#hexPattern)" opacity="0.3"></rect>
+
+  <!-- Cercle extérieur avec glow -->
+  <circle cx="256" cy="256" r="240" fill="none" stroke="url(#glowGradient)" stroke-width="3" opacity="0.4" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="rotate" from="0 256 256" to="360 256 256" dur="20s" repeatCount="indefinite"></animateTransform>
+  </circle>
+
+  <!-- Bouclier principal (forme premium) -->
+  <g transform="translate(256, 256)">
+    <!-- Ombre du bouclier -->
+    <path d="M 0,-180
+             C 80,-180 120,-160 120,-120
+             L 120,80
+             C 120,140 80,180 0,200
+             C -80,180 -120,140 -120,80
+             L -120,-120
+             C -120,-160 -80,-180 0,-180 Z" fill="rgba(0, 0, 0, 0.5)" transform="translate(5, 5)" filter="url(#glow)"></path>
+
+    <!-- Bouclier avec gradient -->
+    <path d="M 0,-180
+             C 80,-180 120,-160 120,-120
+             L 120,80
+             C 120,140 80,180 0,200
+             C -80,180 -120,140 -120,80
+             L -120,-120
+             C -120,-160 -80,-180 0,-180 Z" fill="url(#shieldGradient)" stroke="#00ffff" stroke-width="4" filter="url(#innerShadow)">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"></animate>
+    </path>
+
+    <!-- Lignes de détail du bouclier -->
+    <path d="M -100,-140 L -100,70 C -100,120 -70,150 0,165 C 70,150 100,120 100,70 L 100,-140" fill="none" stroke="rgba(255, 255, 255, 0.2)" stroke-width="2"></path>
+
+    <path d="M -80,-130 L -80,65 C -80,110 -60,135 0,150 C 60,135 80,110 80,65 L 80,-130" fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="2"></path>
+
+    <!-- Cadenas central ultra premium -->
+    <g transform="translate(0, 20)">
+      <!-- Corps du cadenas -->
+      <rect x="-50" y="0" width="100" height="80" rx="10" ry="10" fill="url(#lockGradient)" stroke="#00ffff" stroke-width="3" filter="url(#glow)"></rect>
+
+      <!-- Détails du cadenas -->
+      <rect x="-45" y="5" width="90" height="70" rx="8" ry="8" fill="rgba(0, 0, 0, 0.3)"></rect>
+
+      <!-- Anse du cadenas -->
+      <path d="M -35,-60
+               C -35,-90 -20,-100 0,-100
+               C 20,-100 35,-90 35,-60
+               L 35,0" fill="none" stroke="url(#lockGradient)" stroke-width="12" stroke-linecap="round"></path>
+
+      <!-- Anse intérieure -->
+      <path d="M -30,-60
+               C -30,-85 -15,-90 0,-90
+               C 15,-90 30,-85 30,-60
+               L 30,0" fill="none" stroke="rgba(0, 0, 0, 0.4)" stroke-width="8" stroke-linecap="round"></path>
+
+      <!-- Trou de serrure avec effet 3D -->
+      <circle cx="0" cy="30" r="12" fill="#0a0a1a" stroke="#00ffff" stroke-width="2">
+        <animate attributeName="r" values="12;14;12" dur="2s" repeatCount="indefinite"></animate>
+      </circle>
+
+      <path d="M 0,35 L -5,55 L 5,55 Z" fill="#0a0a1a" stroke="#00ffff" stroke-width="2"></path>
+    </g>
+
+    <!-- Particules flottantes autour -->
+    <circle cx="-100" cy="-100" r="3" fill="#00ffff" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"></animate>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 5,-5; 0,0" dur="3s" repeatCount="indefinite"></animateTransform>
+    </circle>
+
+    <circle cx="100" cy="-80" r="2" fill="#ff00ff" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"></animate>
+    </circle>
+
+    <circle cx="-90" cy="90" r="2.5" fill="#00ffff" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"></animate>
+    </circle>
+
+    <circle cx="95" cy="70" r="2" fill="#0088ff" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.8s" repeatCount="indefinite"></animate>
+    </circle>
+  </g>
+
+  <!-- Coins décoratifs cyber -->
+  <g stroke="#00ffff" stroke-width="3" fill="none" opacity="0.6">
+    <!-- Coin haut gauche -->
+    <path d="M 40,40 L 40,80 M 40,40 L 80,40"></path>
+    <path d="M 35,35 L 35,85 M 35,35 L 85,35" stroke-width="1" opacity="0.5"></path>
+
+    <!-- Coin haut droit -->
+    <path d="M 472,40 L 472,80 M 472,40 L 432,40"></path>
+    <path d="M 477,35 L 477,85 M 477,35 L 427,35" stroke-width="1" opacity="0.5"></path>
+
+    <!-- Coin bas gauche -->
+    <path d="M 40,472 L 40,432 M 40,472 L 80,472"></path>
+    <path d="M 35,477 L 35,427 M 35,477 L 85,477" stroke-width="1" opacity="0.5"></path>
+
+    <!-- Coin bas droit -->
+    <path d="M 472,472 L 472,432 M 472,472 L 432,472"></path>
+    <path d="M 477,477 L 477,427 M 477,477 L 427,477" stroke-width="1" opacity="0.5"></path>
+  </g>
+
+  <!-- Texte "CG" subtil en bas (optionnel) -->
+  <text x="256" y="450" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="url(#glowGradient)" text-anchor="middle" opacity="0.7">
+    CG
+  </text>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

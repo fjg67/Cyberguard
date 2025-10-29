@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients Premium -->
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0088ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0044ff;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="lockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0.8" />
+    </linearGradient>
+
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0.8" />
+    </linearGradient>
+
+    <!-- Filtres pour effets premium -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="innerShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Motif hexagonal de fond -->
+    <pattern id="hexPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M20 5 L30 12.5 L30 27.5 L20 35 L10 27.5 L10 12.5 Z"
+            fill="none"
+            stroke="rgba(0, 255, 255, 0.1)"
+            stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background avec gradient sombre -->
+  <rect width="512" height="512" fill="#0a0a1a"/>
+
+  <!-- Motif hexagonal de fond -->
+  <rect width="512" height="512" fill="url(#hexPattern)" opacity="0.3"/>
+
+  <!-- Cercle extérieur avec glow -->
+  <circle cx="256" cy="256" r="240"
+          fill="none"
+          stroke="url(#glowGradient)"
+          stroke-width="3"
+          opacity="0.4"
+          filter="url(#glow)">
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="0 256 256"
+      to="360 256 256"
+      dur="20s"
+      repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Bouclier principal (forme premium) -->
+  <g transform="translate(256, 256)">
+    <!-- Ombre du bouclier -->
+    <path d="M 0,-180
+             C 80,-180 120,-160 120,-120
+             L 120,80
+             C 120,140 80,180 0,200
+             C -80,180 -120,140 -120,80
+             L -120,-120
+             C -120,-160 -80,-180 0,-180 Z"
+          fill="rgba(0, 0, 0, 0.5)"
+          transform="translate(5, 5)"
+          filter="url(#glow)"/>
+
+    <!-- Bouclier avec gradient -->
+    <path d="M 0,-180
+             C 80,-180 120,-160 120,-120
+             L 120,80
+             C 120,140 80,180 0,200
+             C -80,180 -120,140 -120,80
+             L -120,-120
+             C -120,-160 -80,-180 0,-180 Z"
+          fill="url(#shieldGradient)"
+          stroke="#00ffff"
+          stroke-width="4"
+          filter="url(#innerShadow)">
+      <animate attributeName="opacity"
+               values="0.9;1;0.9"
+               dur="3s"
+               repeatCount="indefinite"/>
+    </path>
+
+    <!-- Lignes de détail du bouclier -->
+    <path d="M -100,-140 L -100,70 C -100,120 -70,150 0,165 C 70,150 100,120 100,70 L 100,-140"
+          fill="none"
+          stroke="rgba(255, 255, 255, 0.2)"
+          stroke-width="2"/>
+
+    <path d="M -80,-130 L -80,65 C -80,110 -60,135 0,150 C 60,135 80,110 80,65 L 80,-130"
+          fill="none"
+          stroke="rgba(255, 255, 255, 0.1)"
+          stroke-width="2"/>
+
+    <!-- Cadenas central ultra premium -->
+    <g transform="translate(0, 20)">
+      <!-- Corps du cadenas -->
+      <rect x="-50" y="0" width="100" height="80" rx="10" ry="10"
+            fill="url(#lockGradient)"
+            stroke="#00ffff"
+            stroke-width="3"
+            filter="url(#glow)"/>
+
+      <!-- Détails du cadenas -->
+      <rect x="-45" y="5" width="90" height="70" rx="8" ry="8"
+            fill="rgba(0, 0, 0, 0.3)"/>
+
+      <!-- Anse du cadenas -->
+      <path d="M -35,-60
+               C -35,-90 -20,-100 0,-100
+               C 20,-100 35,-90 35,-60
+               L 35,0"
+            fill="none"
+            stroke="url(#lockGradient)"
+            stroke-width="12"
+            stroke-linecap="round"/>
+
+      <!-- Anse intérieure -->
+      <path d="M -30,-60
+               C -30,-85 -15,-90 0,-90
+               C 15,-90 30,-85 30,-60
+               L 30,0"
+            fill="none"
+            stroke="rgba(0, 0, 0, 0.4)"
+            stroke-width="8"
+            stroke-linecap="round"/>
+
+      <!-- Trou de serrure avec effet 3D -->
+      <circle cx="0" cy="30" r="12"
+              fill="#0a0a1a"
+              stroke="#00ffff"
+              stroke-width="2">
+        <animate attributeName="r"
+                 values="12;14;12"
+                 dur="2s"
+                 repeatCount="indefinite"/>
+      </circle>
+
+      <path d="M 0,35 L -5,55 L 5,55 Z"
+            fill="#0a0a1a"
+            stroke="#00ffff"
+            stroke-width="2"/>
+    </g>
+
+    <!-- Particules flottantes autour -->
+    <circle cx="-100" cy="-100" r="3" fill="#00ffff" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate"
+                        values="0,0; 5,-5; 0,0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="100" cy="-80" r="2" fill="#ff00ff" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="-90" cy="90" r="2.5" fill="#00ffff" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="95" cy="70" r="2" fill="#0088ff" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Coins décoratifs cyber -->
+  <g stroke="#00ffff" stroke-width="3" fill="none" opacity="0.6">
+    <!-- Coin haut gauche -->
+    <path d="M 40,40 L 40,80 M 40,40 L 80,40"/>
+    <path d="M 35,35 L 35,85 M 35,35 L 85,35" stroke-width="1" opacity="0.5"/>
+
+    <!-- Coin haut droit -->
+    <path d="M 472,40 L 472,80 M 472,40 L 432,40"/>
+    <path d="M 477,35 L 477,85 M 477,35 L 427,35" stroke-width="1" opacity="0.5"/>
+
+    <!-- Coin bas gauche -->
+    <path d="M 40,472 L 40,432 M 40,472 L 80,472"/>
+    <path d="M 35,477 L 35,427 M 35,477 L 85,477" stroke-width="1" opacity="0.5"/>
+
+    <!-- Coin bas droit -->
+    <path d="M 472,472 L 472,432 M 472,472 L 432,472"/>
+    <path d="M 477,477 L 477,427 M 477,477 L 427,477" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- Texte "CG" subtil en bas (optionnel) -->
+  <text x="256" y="450"
+        font-family="Arial, sans-serif"
+        font-size="36"
+        font-weight="bold"
+        fill="url(#glowGradient)"
+        text-anchor="middle"
+        opacity="0.7">
+    CG
+  </text>
+</svg>
