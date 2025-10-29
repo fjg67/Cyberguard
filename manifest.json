@@ -1,0 +1,84 @@
+{
+  "name": "CyberGuard Pro - Cybersécurité Premium",
+  "short_name": "CyberGuard",
+  "description": "Plateforme complète de cybersécurité avec scanner de menaces, comparateur antivirus/VPN, blog éducatif et outils interactifs",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a1a",
+  "theme_color": "#00ffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["security", "utilities", "education"],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Scanner URL",
+      "short_name": "Scanner",
+      "description": "Scanne une URL pour détecter les menaces",
+      "url": "/#scan",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Comparateur",
+      "short_name": "Comparer",
+      "description": "Compare antivirus et VPN",
+      "url": "/#comparateur",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Blog Sécurité",
+      "short_name": "Blog",
+      "description": "Articles et guides cybersécurité",
+      "url": "/#blog",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": []
+}

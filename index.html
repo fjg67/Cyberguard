@@ -33,7 +33,19 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="theme-color" content="#0a0a1a">
 
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CyberGuard">
+
     <title>⚡ CyberGuard Pro - Cybersécurité Premium | Scanner Gratuit</title>
+
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.clarity.ms">
+    <link rel="dns-prefetch" href="https://safebrowsing.googleapis.com">
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC3BVQX51V"></script>
@@ -55,7 +67,13 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "txoihenyuy");
     </script>
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="lazy-load-styles.css" as="style">
+
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="lazy-load-styles.css">
     <link rel="stylesheet" href="blog-styles.css">
     <link rel="stylesheet" href="world-map-styles.css">
     <link rel="stylesheet" href="quiz-styles.css">
@@ -66,6 +84,22 @@
     <link rel="stylesheet" href="cyberguard-ai-styles.css">
     <link rel="stylesheet" href="mobile-menu-styles.css">
     <link rel="stylesheet" href="header-responsive-fix.css">
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Register Service Worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('✅ Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 </head>
 <body>
     <!-- Effets de fond cyber -->
@@ -2542,5 +2576,8 @@
 
     <!-- Analytics Events Tracker -->
     <script src="analytics-events.js"></script>
+
+    <!-- Lazy Loading Script -->
+    <script src="lazy-load.js"></script>
 </body>
 </html>
