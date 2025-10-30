@@ -61,8 +61,10 @@ class FileAnalyzer {
     }
 
     init() {
+        console.log('📁 File Analyzer initialized');
         this.loadHistory();
         this.setupEventListeners();
+        console.log('✅ File Analyzer ready');
     }
 
     setupEventListeners() {
@@ -91,8 +93,11 @@ class FileAnalyzer {
                 }
             });
 
-            dropZone.addEventListener('click', () => {
-                fileInput?.click();
+            dropZone.addEventListener('click', (e) => {
+                // Ne pas déclencher si on clique sur le bouton
+                if (!e.target.closest('#browse-files-btn')) {
+                    fileInput?.click();
+                }
             });
         }
 
@@ -100,22 +105,38 @@ class FileAnalyzer {
             fileInput.addEventListener('change', (e) => {
                 if (e.target.files.length > 0) {
                     this.handleFile(e.target.files[0]);
+                    // Reset l'input pour permettre de sélectionner le même fichier à nouveau
+                    e.target.value = '';
                 }
             });
         }
 
         if (browseBtn) {
-            browseBtn.addEventListener('click', () => {
+            browseBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Empêcher la propagation au dropZone
+                e.preventDefault();
+                console.log('🔍 Browse button clicked');
                 fileInput?.click();
             });
         }
+
+        console.log('📎 Event listeners setup complete:', {
+            dropZone: !!dropZone,
+            fileInput: !!fileInput,
+            browseBtn: !!browseBtn
+        });
     }
 
     async handleFile(file) {
+        console.log('📂 Handling file:', file.name, file.size, 'bytes');
+
         // Validation
         if (!this.validateFile(file)) {
+            console.warn('❌ File validation failed');
             return;
         }
+
+        console.log('✅ File validated successfully');
 
         // Afficher loader
         this.showLoader();

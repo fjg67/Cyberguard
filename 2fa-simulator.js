@@ -38,10 +38,13 @@ class TwoFactorAuthSimulator {
 
     setupEventListeners() {
         // Sélection de méthode
-        const methodButtons = document.querySelectorAll('.2fa-method-btn');
+        const methodButtons = document.querySelectorAll('.twofa-method-btn');
+        console.log(`🔘 Found ${methodButtons.length} method buttons`);
+
         methodButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const method = e.currentTarget.dataset.method;
+                console.log(`✅ Method selected: ${method}`);
                 this.selectMethod(method);
             });
         });
@@ -54,7 +57,7 @@ class TwoFactorAuthSimulator {
 
         // Vérification de code
         const verifyBtn = document.getElementById('verify-2fa-code-btn');
-        const codeInput = document.getElementById('2fa-code-input');
+        const codeInput = document.getElementById('twofa-code-input');
 
         if (verifyBtn) {
             verifyBtn.addEventListener('click', () => this.verifyCode());
@@ -81,19 +84,30 @@ class TwoFactorAuthSimulator {
     }
 
     selectMethod(method) {
+        console.log(`🎯 Selecting method: ${method}`);
         this.currentMethod = method;
 
-        // Mise à jour visuelle des boutons
-        document.querySelectorAll('.2fa-method-btn').forEach(btn => {
+        // Mise à jour visuelle des boutons avec animation
+        document.querySelectorAll('.twofa-method-btn').forEach(btn => {
             btn.classList.remove('active');
+            // Petit effet de scale pour le feedback visuel
+            btn.style.transform = '';
         });
 
         const activeBtn = document.querySelector(`[data-method="${method}"]`);
         if (activeBtn) {
             activeBtn.classList.add('active');
+            console.log(`✨ Button activated: ${method}`);
+
+            // Animation de feedback
+            activeBtn.style.animation = 'none';
+            setTimeout(() => {
+                activeBtn.style.animation = '';
+            }, 10);
         }
 
         this.updateMethodDisplay();
+        console.log(`📋 Method info updated for: ${method}`);
     }
 
     updateMethodDisplay() {
@@ -320,7 +334,7 @@ class TwoFactorAuthSimulator {
     }
 
     verifyCode() {
-        const inputElement = document.getElementById('2fa-code-input');
+        const inputElement = document.getElementById('twofa-code-input');
         if (!inputElement) return;
 
         const userInput = inputElement.value.replace(/\s/g, '');

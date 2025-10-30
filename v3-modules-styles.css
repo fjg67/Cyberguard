@@ -456,39 +456,44 @@
 
 /* ==================== BOUTONS ULTRA PREMIUM ==================== */
 
-/* Boutons Méthodes 2FA */
-.2fa-methods {
+/* Boutons Méthodes 2FA - ULTRA PREMIUM DESIGN */
+/* Échappement CSS pour les classes commençant par un chiffre */
+.twofa-methods {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2rem;
+    margin: 2.5rem 0;
+    padding: 1.5rem;
 }
 
-.2fa-method-btn {
+.twofa-method-btn {
     position: relative;
-    background: linear-gradient(135deg, rgba(0, 20, 40, 0.9), rgba(0, 10, 30, 0.9));
-    border: 2px solid rgba(0, 255, 65, 0.3);
-    border-radius: 15px;
-    padding: 1.5rem 1rem;
+    background: linear-gradient(135deg, rgba(0, 20, 40, 0.95), rgba(0, 10, 30, 0.95));
+    border: 3px solid rgba(0, 255, 65, 0.4);
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     overflow: hidden;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     font-family: 'Orbitron', monospace;
-    color: rgba(0, 255, 65, 0.7);
-    font-weight: 600;
+    color: rgba(0, 255, 65, 0.8);
+    font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 255, 65, 0.15),
+        inset 0 0 15px rgba(0, 255, 65, 0.05);
 }
 
 /* Border gradient animé */
-.2fa-method-btn::before {
+.fa-method-btn::before {
     content: '';
     position: absolute;
     inset: -2px;
@@ -506,12 +511,12 @@
     50% { background-position: 100% 50%; }
 }
 
-.2fa-method-btn:hover::before {
+.fa-method-btn:hover::before {
     opacity: 1;
 }
 
 /* Effet de scan */
-.2fa-method-btn::after {
+.fa-method-btn::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -523,7 +528,7 @@
     transition: opacity 0.4s ease;
 }
 
-.2fa-method-btn:hover::after {
+.fa-method-btn:hover::after {
     opacity: 1;
     animation: pulse 1.5s ease-in-out infinite;
 }
@@ -533,68 +538,120 @@
     50% { transform: scale(1.05); opacity: 0.8; }
 }
 
-.2fa-method-btn i {
-    font-size: 2.5rem;
+.fa-method-btn i {
+    font-size: 3rem;
     color: #00ff41;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.5));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.6));
     z-index: 1;
+    animation: iconFloat 3s ease-in-out infinite;
 }
 
-.2fa-method-btn span {
-    z-index: 1;
-    transition: all 0.3s ease;
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
 }
 
-.2fa-method-btn:hover {
+.fa-method-btn span {
+    z-index: 1;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.4);
+}
+
+.fa-method-btn:hover {
     border-color: #00ff41;
-    background: linear-gradient(135deg, rgba(0, 30, 60, 0.95), rgba(0, 20, 40, 0.95));
+    background: linear-gradient(135deg, rgba(0, 40, 80, 0.95), rgba(0, 30, 60, 0.95));
+    transform: translateY(-8px) scale(1.08);
+    box-shadow:
+        0 15px 50px rgba(0, 255, 65, 0.5),
+        0 0 40px rgba(0, 255, 65, 0.3),
+        inset 0 0 30px rgba(0, 255, 65, 0.15);
+}
+
+.fa-method-btn:hover i {
+    transform: scale(1.3) rotateY(360deg);
+    filter: drop-shadow(0 0 30px rgba(0, 255, 65, 1));
+    animation: none;
+}
+
+.fa-method-btn:hover span {
+    color: #00ff41;
+    text-shadow: 0 0 15px rgba(0, 255, 65, 1);
+    letter-spacing: 2px;
+}
+
+.fa-method-btn:active {
+    transform: translateY(-3px) scale(1.04);
+}
+
+/* État actif - ULTRA PREMIUM */
+.fa-method-btn.active {
+    border-color: #00ff41;
+    border-width: 4px;
+    background: linear-gradient(135deg, rgba(0, 255, 65, 0.25), rgba(0, 212, 255, 0.25));
+    box-shadow:
+        0 8px 35px rgba(0, 255, 65, 0.6),
+        0 0 50px rgba(0, 255, 65, 0.4),
+        inset 0 0 25px rgba(0, 255, 65, 0.3);
     transform: translateY(-5px) scale(1.05);
-    box-shadow:
-        0 10px 40px rgba(0, 255, 65, 0.3),
-        inset 0 0 20px rgba(0, 255, 65, 0.1);
 }
 
-.2fa-method-btn:hover i {
-    transform: scale(1.2) rotateY(360deg);
-    filter: drop-shadow(0 0 20px rgba(0, 255, 65, 0.8));
-}
-
-.2fa-method-btn:hover span {
-    color: #00ff41;
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
-}
-
-.2fa-method-btn:active {
-    transform: translateY(-2px) scale(1.02);
-}
-
-/* État actif */
-.2fa-method-btn.active {
-    border-color: #00ff41;
-    background: linear-gradient(135deg, rgba(0, 255, 65, 0.2), rgba(0, 212, 255, 0.2));
-    box-shadow:
-        0 0 30px rgba(0, 255, 65, 0.4),
-        inset 0 0 15px rgba(0, 255, 65, 0.2);
-}
-
-.2fa-method-btn.active::before {
+.fa-method-btn.active::before {
     opacity: 1;
 }
 
-.2fa-method-btn.active i {
+.fa-method-btn.active i {
     color: #00ff41;
-    animation: iconGlow 2s ease-in-out infinite;
+    font-size: 3.2rem;
+    animation: iconGlowPulse 2s ease-in-out infinite;
 }
 
-@keyframes iconGlow {
-    0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.5)); }
-    50% { filter: drop-shadow(0 0 20px rgba(0, 255, 65, 1)); }
+@keyframes iconGlowPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.8));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(0, 255, 65, 1));
+        transform: scale(1.1);
+    }
 }
 
-.2fa-method-btn.active span {
+.fa-method-btn.active span {
     color: #00ff41;
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 1rem;
+    text-shadow: 0 0 20px rgba(0, 255, 65, 1);
+    letter-spacing: 2px;
+}
+
+/* Animation de click pour feedback visuel */
+@keyframes buttonClick {
+    0% { transform: translateY(-5px) scale(1.05); }
+    50% { transform: translateY(-2px) scale(1.02); }
+    100% { transform: translateY(-5px) scale(1.05); }
+}
+
+.fa-method-btn.active {
+    animation: buttonClick 0.3s ease;
+}
+
+/* Effet ripple au clic */
+.fa-method-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(circle, rgba(0, 255, 65, 0.4) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.fa-method-btn:active::after {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0s, opacity 0s;
 }
 
 /* Bouton Primary Ultra Premium - EXCEPTIONAL DESIGN */
@@ -900,7 +957,8 @@
 .code-input-wrapper {
     position: relative;
     flex: 1;
-    max-width: 400px;
+    max-width: 500px;
+    width: 100%;
 }
 
 .code-input-wrapper::before {
@@ -928,43 +986,72 @@
     opacity: 1;
 }
 
-#2fa-code-input {
+#twofa-code-input {
     width: 100%;
-    padding: 1.5rem 2rem;
-    font-size: 2.2rem;
+    padding: 1.5rem 1.5rem;
+    font-size: 2rem;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     letter-spacing: 12px;
     text-align: center;
     background: linear-gradient(135deg, rgba(0, 20, 40, 0.98), rgba(0, 10, 30, 0.98));
-    border: 3px solid rgba(0, 255, 65, 0.3);
-    border-radius: 20px;
+    border: 4px solid rgba(0, 255, 65, 0.4);
+    border-radius: 22px;
     color: #00ff41;
     outline: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(20px);
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.6),
-        0 0 30px rgba(0, 255, 65, 0.2),
-        inset 0 0 20px rgba(0, 255, 65, 0.05);
-    font-weight: 700;
-    text-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+        0 10px 40px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(0, 255, 65, 0.3),
+        inset 0 0 25px rgba(0, 255, 65, 0.08);
+    font-weight: 800;
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.8);
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
 }
 
-#2fa-code-input:focus {
+#twofa-code-input:focus {
     border-color: #00ff41;
-    background: linear-gradient(135deg, rgba(0, 30, 50, 0.98), rgba(0, 20, 40, 0.98));
+    border-width: 5px;
+    background: linear-gradient(135deg, rgba(0, 40, 70, 0.98), rgba(0, 30, 50, 0.98));
     box-shadow:
-        0 12px 48px rgba(0, 0, 0, 0.8),
-        0 0 60px rgba(0, 255, 65, 0.6),
-        inset 0 0 40px rgba(0, 255, 65, 0.15);
-    transform: translateY(-4px) scale(1.05);
-    text-shadow: 0 0 25px rgba(0, 255, 65, 1);
+        0 15px 60px rgba(0, 0, 0, 0.9),
+        0 0 80px rgba(0, 255, 65, 0.8),
+        0 0 120px rgba(0, 255, 65, 0.4),
+        inset 0 0 50px rgba(0, 255, 65, 0.2);
+    transform: translateY(-6px) scale(1.05);
+    text-shadow:
+        0 0 30px rgba(0, 255, 65, 1),
+        0 0 50px rgba(0, 255, 65, 0.6);
+    letter-spacing: 14px;
 }
 
-#2fa-code-input::placeholder {
-    color: rgba(0, 255, 65, 0.25);
-    letter-spacing: 3px;
-    font-weight: 500;
+#twofa-code-input::placeholder {
+    color: rgba(0, 255, 65, 0.3);
+    letter-spacing: 4px;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+/* Animation de typing pour l'input */
+#twofa-code-input:not(:placeholder-shown) {
+    animation: inputGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes inputGlow {
+    0%, 100% {
+        box-shadow:
+            0 10px 40px rgba(0, 0, 0, 0.7),
+            0 0 40px rgba(0, 255, 65, 0.3),
+            inset 0 0 25px rgba(0, 255, 65, 0.08);
+    }
+    50% {
+        box-shadow:
+            0 10px 40px rgba(0, 0, 0, 0.7),
+            0 0 50px rgba(0, 255, 65, 0.5),
+            inset 0 0 30px rgba(0, 255, 65, 0.12);
+    }
 }
 
 /* Affichage du code */
@@ -1470,17 +1557,17 @@
 
 /* Responsive pour boutons 2FA */
 @media (max-width: 768px) {
-    .2fa-methods {
+    .fa-methods {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
-    .2fa-method-btn {
+    .fa-method-btn {
         padding: 1.2rem 0.8rem;
         font-size: 0.75rem;
     }
 
-    .2fa-method-btn i {
+    .fa-method-btn i {
         font-size: 2rem;
     }
 
@@ -1496,7 +1583,7 @@
         max-width: 100%;
     }
 
-    #2fa-code-input {
+    #twofa-code-input {
         font-size: 1.8rem;
         letter-spacing: 8px;
         padding: 1.2rem 1.5rem;
@@ -1509,7 +1596,7 @@
 }
 
 @media (max-width: 480px) {
-    .2fa-methods {
+    .fa-methods {
         grid-template-columns: 1fr;
     }
 
@@ -1522,7 +1609,7 @@
         letter-spacing: 1.5px;
     }
 
-    #2fa-code-input {
+    #twofa-code-input {
         font-size: 1.5rem;
         letter-spacing: 6px;
         padding: 1rem 1.2rem;
