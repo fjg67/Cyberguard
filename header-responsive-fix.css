@@ -5,11 +5,16 @@
  */
 
 /* Réorganisation du header pour plus d'espace */
+.cyber-header .container {
+    max-width: 98% !important;
+    padding: 0 1.5rem !important;
+}
+
 .header-content {
     display: grid !important;
     grid-template-columns: auto 1fr auto !important;
     grid-template-rows: auto;
-    gap: 1.5rem !important;
+    gap: 1rem !important;
     align-items: center !important;
 }
 
@@ -111,18 +116,47 @@
     font-size: 0.75rem !important;
 }
 
-/* Navigation links plus compacts */
+/* Navigation links plus compacts avec scroll horizontal si nécessaire */
+.nav-menu {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 65, 0.3) transparent;
+}
+
+.nav-menu::-webkit-scrollbar {
+    height: 4px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 65, 0.3);
+    border-radius: 10px;
+}
+
+.nav-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 65, 0.5);
+}
+
 .nav-menu ul {
-    gap: 1rem !important;
+    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap;
 }
 
 .nav-link {
-    font-size: 0.85rem !important;
-    padding: 0.5rem 0.75rem !important;
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.6rem !important;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
 }
 
 /* Responsive - Desktop Large (pour garantir tout rentre) */
-@media (min-width: 1400px) {
+@media (min-width: 1600px) {
     .header-content {
         gap: 2rem !important;
     }
@@ -141,9 +175,24 @@
         font-size: 0.9rem !important;
     }
 
+    .nav-menu ul {
+        gap: 0.75rem !important;
+    }
+
     .nav-link {
-        font-size: 0.9rem !important;
-        padding: 0.6rem 1rem !important;
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.8rem !important;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1599px) {
+    .nav-menu ul {
+        gap: 0.6rem !important;
+    }
+
+    .nav-link {
+        font-size: 0.78rem !important;
+        padding: 0.45rem 0.7rem !important;
     }
 }
 

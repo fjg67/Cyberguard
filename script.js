@@ -4,14 +4,21 @@
 class BootScreen {
     constructor() {
         this.bootScreen = document.getElementById('boot-screen');
+        if (!this.bootScreen) {
+            console.warn('Boot screen element not found');
+            return;
+        }
         this.init();
     }
 
     init() {
+        console.log('Boot screen initialized');
         setTimeout(() => {
+            console.log('Hiding boot screen...');
             this.bootScreen.style.opacity = '0';
             setTimeout(() => {
                 this.bootScreen.style.display = 'none';
+                console.log('Boot screen hidden');
             }, 500);
         }, 3000);
     }

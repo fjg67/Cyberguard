@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberGuard Pro v3.0 - Démo</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="v3-modules-styles.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a1a;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .demo-header {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 212, 255, 0.1));
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .demo-header h1 {
+            color: #00ff41;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+
+        .demo-header p {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+
+        .demo-nav {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .demo-nav a {
+            background: rgba(0, 255, 65, 0.2);
+            color: #00ff41;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .demo-nav a:hover {
+            background: rgba(0, 255, 65, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            margin: 3rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="demo-header">
+            <h1>🚀 CyberGuard Pro v3.0</h1>
+            <p>Démo des Nouvelles Fonctionnalités</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="demo-nav">
+            <a href="#passphrase">🔑 Passphrase</a>
+            <a href="#strength">📊 Force MDP</a>
+            <a href="#2fa">🛡️ 2FA</a>
+            <a href="#ssl">🔒 SSL</a>
+            <a href="#ssh">⚡ SSH</a>
+            <a href="#dashboard">📈 Dashboard</a>
+            <a href="#gamification">🎮 Gamification</a>
+            <a href="#threats">🌐 Menaces</a>
+            <a href="#files">📁 Fichiers</a>
+        </div>
+
+        <!-- 1. Générateur de Passphrase -->
+        <section id="passphrase-generator-section" class="tool-section">
+            <div class="tool-header">
+                <h2><i class="fas fa-key"></i> Générateur de Passphrase Diceware</h2>
+                <p>Générez des passphrases mémorables et sécurisées</p>
+            </div>
+
+            <div class="tool-controls">
+                <div class="control-group">
+                    <label for="passphrase-word-count">Nombre de mots: <span id="word-count-value">5</span></label>
+                    <input type="range" id="passphrase-word-count" min="3" max="8" value="5">
+                </div>
+                <div class="control-group">
+                    <label for="passphrase-separator">Séparateur:</label>
+                    <select id="passphrase-separator">
+                        <option value="-">Tiret (-)</option>
+                        <option value="_">Underscore (_)</option>
+                        <option value=" ">Espace</option>
+                        <option value=".">Point (.)</option>
+                    </select>
+                </div>
+                <div class="control-group checkbox-group">
+                    <label><input type="checkbox" id="passphrase-capitalize"> Capitaliser</label>
+                    <label><input type="checkbox" id="passphrase-add-number"> Ajouter nombre</label>
+                </div>
+            </div>
+
+            <button id="generate-passphrase-btn" class="btn-primary">
+                <i class="fas fa-refresh"></i> Générer Passphrase
+            </button>
+
+            <div id="passphrase-output" class="output-display"></div>
+            <div id="passphrase-entropy" class="info-box"></div>
+            <div id="passphrase-stats" class="stats-box"></div>
+
+            <button id="copy-passphrase-btn" class="btn-secondary">
+                <i class="fas fa-copy"></i> Copier
+            </button>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 2. Analyseur de Force de MDP -->
+        <section id="password-strength-analyzer-section" class="tool-section">
+            <div class="tool-header">
+                <h2><i class="fas fa-chart-line"></i> Analyseur de Force de Mot de Passe</h2>
+                <p>Testez la robustesse de vos mots de passe</p>
+            </div>
+
+            <div class="password-input-container" style="display: flex; gap: 0.5rem; margin: 1rem 0;">
+                <input type="password" id="password-strength-input"
+                       placeholder="Entrez un mot de passe..."
+                       style="flex: 1; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,255,65,0.3); border-radius: 5px; color: #fff;">
+                <button id="show-password-toggle" class="btn-icon">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+
+            <div class="strength-display-container">
+                <div id="strength-label" class="strength-label" style="text-align: center; font-size: 1.2rem; color: #888; margin: 1rem 0;">
+                    <i class="fas fa-shield"></i> Entrez un mot de passe
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div id="strength-progress-bar" class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div id="strength-score" class="score-display" style="text-align: center; font-size: 1.5rem; color: #00ff41; margin: 0.5rem 0;">0/100</div>
+            </div>
+
+            <canvas id="strength-visualization-canvas" width="300" height="300" style="display: block; margin: 2rem auto;"></canvas>
+
+            <div id="strength-details" class="details-box"></div>
+            <div id="strength-warnings" class="warnings-box" style="display: none;"></div>
+            <div id="strength-suggestions" class="suggestions-box"></div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 3. Simulateur 2FA -->
+        <section id="2fa-simulator-section" class="tool-section">
+            <div class="tool-header">
+                <h2><i class="fas fa-shield-halved"></i> Simulateur 2FA/MFA</h2>
+                <p>Testez les différentes méthodes d'authentification</p>
+            </div>
+
+            <div class="2fa-methods" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
+                <button class="2fa-method-btn btn-secondary active" data-method="totp">
+                    <i class="fas fa-mobile-alt"></i> TOTP
+                </button>
+                <button class="2fa-method-btn btn-secondary" data-method="sms">
+                    <i class="fas fa-sms"></i> SMS
+                </button>
+                <button class="2fa-method-btn btn-secondary" data-method="email">
+                    <i class="fas fa-envelope"></i> Email
+                </button>
+                <button class="2fa-method-btn btn-secondary" data-method="hardware">
+                    <i class="fas fa-key"></i> Clé
+                </button>
+                <button class="2fa-method-btn btn-secondary" data-method="biometric">
+                    <i class="fas fa-fingerprint"></i> Bio
+                </button>
+            </div>
+
+            <div id="2fa-method-info" class="method-info-container"></div>
+
+            <button id="generate-2fa-code-btn" class="btn-primary">
+                <i class="fas fa-key"></i> Générer Code
+            </button>
+
+            <div id="2fa-code-display" class="code-display"></div>
+
+            <div class="verification-section" style="display: flex; gap: 1rem; margin: 1rem 0; justify-content: center;">
+                <input type="text" id="2fa-code-input" placeholder="Entrez le code..." maxlength="6"
+                       style="padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,255,65,0.3); border-radius: 5px; color: #fff; text-align: center; font-size: 1.2rem; letter-spacing: 0.2rem;">
+                <button id="verify-2fa-code-btn" class="btn-primary">
+                    <i class="fas fa-check"></i> Vérifier
+                </button>
+            </div>
+
+            <div id="2fa-verification-result" class="result-display"></div>
+
+            <button id="test-2fa-attack-btn" class="btn-danger" style="display: block; margin: 1rem auto;">
+                <i class="fas fa-virus"></i> Simuler Attaque
+            </button>
+
+            <div id="2fa-attack-simulation" class="attack-display"></div>
+            <div id="2fa-stats-display" class="stats-display"></div>
+            <div id="2fa-simulator-container" style="position: relative;"></div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Instructions -->
+        <div style="text-align: center; margin: 3rem 0; padding: 2rem; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 10px;">
+            <h3 style="color: #00d4ff; margin-bottom: 1rem;">📚 Documentation Complète</h3>
+            <p style="margin-bottom: 1rem;">Les 3 premiers outils sont fonctionnels sur cette page de démo !</p>
+            <p style="margin-bottom: 1rem;">Pour voir TOUS les outils (SSL, SSH, Dashboard, Gamification, etc.)</p>
+            <p>Consultez : <a href="INTEGRATION_GUIDE.md" style="color: #00ff41;">INTEGRATION_GUIDE.md</a></p>
+            <div style="margin-top: 1.5rem;">
+                <a href="README_v3.md" class="btn-secondary" style="margin: 0.5rem;">📖 README</a>
+                <a href="TEST_INSTRUCTIONS.md" class="btn-secondary" style="margin: 0.5rem;">🧪 Tests</a>
+                <a href="NOUVELLES_FONCTIONNALITES.md" class="btn-secondary" style="margin: 0.5rem;">📝 Doc Complète</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="passphrase-generator.js"></script>
+    <script src="password-strength-analyzer.js"></script>
+    <script src="2fa-simulator.js"></script>
+
+    <script>
+        console.log('🚀 CyberGuard Pro v3.0 - Page de Démo');
+        console.log('✅ Passphrase Generator:', typeof window.passphraseGenerator);
+        console.log('✅ Password Analyzer:', typeof window.passwordStrengthAnalyzer);
+        console.log('✅ 2FA Simulator:', typeof window.twoFactorAuthSimulator);
+        console.log('');
+        console.log('📖 Consultez les fichiers MD pour plus d\'infos:');
+        console.log('   - README_v3.md (démarrage rapide)');
+        console.log('   - TEST_INSTRUCTIONS.md (tests détaillés)');
+        console.log('   - INTEGRATION_GUIDE.md (HTML complet)');
+    </script>
+</body>
+</html>

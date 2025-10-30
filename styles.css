@@ -161,6 +161,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 40px;
+    transition: opacity 0.5s ease;
+    opacity: 1;
 }
 
 .terminal {
@@ -223,6 +225,13 @@ body {
 @keyframes loading {
     from { width: 0; }
     to { width: 100%; }
+}
+
+/* Bouton skip boot */
+#skip-boot:hover {
+    background: rgba(0,255,65,0.4) !important;
+    box-shadow: 0 0 20px rgba(0,255,65,0.6) !important;
+    transform: scale(1.05);
 }
 
 /* ===== CONTAINER ===== */

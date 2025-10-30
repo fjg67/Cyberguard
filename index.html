@@ -71,6 +71,9 @@
         })(window, document, "clarity", "script", "txoihenyuy");
     </script>
 
+    <!-- Chart.js pour les graphiques (v3.0) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
     <!-- Preload critical CSS -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="lazy-load-styles.css" as="style">
@@ -81,13 +84,17 @@
     <link rel="stylesheet" href="premium-buttons.css">
     <link rel="stylesheet" href="recommendation-quiz-styles.css">
 
+    <!-- v3.0 Modules Styles -->
+    <link rel="stylesheet" href="v3-modules-styles.css">
+    <link rel="stylesheet" href="content-enriched-styles.css">
+
     <!-- Non-critical CSS loaded asynchronously -->
     <link rel="stylesheet" href="blog-styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="world-map-styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="quiz-styles.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="theme-styles.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="i18n-styles.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="achievement-styles.css" media="print" onload="this.media='all'">
+    <!-- <link rel="stylesheet" href="theme-styles.css" media="print" onload="this.media='all'"> -->
+    <!-- <link rel="stylesheet" href="i18n-styles.css" media="print" onload="this.media='all'"> -->
+    <!-- <link rel="stylesheet" href="achievement-styles.css" media="print" onload="this.media='all'"> -->
     <link rel="stylesheet" href="cyberguard-ai-styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="mobile-menu-styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="header-responsive-fix.css" media="print" onload="this.media='all'">
@@ -97,9 +104,9 @@
         <link rel="stylesheet" href="blog-styles.css">
         <link rel="stylesheet" href="world-map-styles.css">
         <link rel="stylesheet" href="quiz-styles.css">
-        <link rel="stylesheet" href="theme-styles.css">
-        <link rel="stylesheet" href="i18n-styles.css">
-        <link rel="stylesheet" href="achievement-styles.css">
+        <!-- <link rel="stylesheet" href="theme-styles.css"> -->
+        <!-- <link rel="stylesheet" href="i18n-styles.css"> -->
+        <!-- <link rel="stylesheet" href="achievement-styles.css"> -->
         <link rel="stylesheet" href="cyberguard-ai-styles.css">
         <link rel="stylesheet" href="mobile-menu-styles.css">
         <link rel="stylesheet" href="header-responsive-fix.css">
@@ -122,8 +129,32 @@
     </script>
 </head>
 <body>
+    <!-- Debug Script pour Chrome -->
+    <script>
+        console.log('=== PAGE LOAD START ===');
+        console.log('User Agent:', navigator.userAgent);
+        console.log('Body loaded:', !!document.body);
+
+        // Force le boot screen à se cacher après 3 secondes en backup
+        window.addEventListener('load', function() {
+            console.log('Window fully loaded');
+            setTimeout(function() {
+                var bootScreen = document.getElementById('boot-screen');
+                if (bootScreen) {
+                    console.log('Force hiding boot screen...');
+                    bootScreen.style.opacity = '0';
+                    setTimeout(function() {
+                        bootScreen.style.display = 'none';
+                        console.log('Boot screen force hidden');
+                    }, 500);
+                }
+            }, 3000);
+        });
+    </script>
+
     <!-- Performance Optimizer Script (critical) -->
-    <script src="performance-optimizer.js"></script>
+    <!-- Temporairement désactivé pour debug Chrome -->
+    <!-- <script src="performance-optimizer.js"></script> -->
 
     <!-- Effets de fond cyber -->
     <canvas id="matrix-canvas"></canvas>
@@ -144,6 +175,9 @@
         <div class="loading-bar">
             <div class="loading-progress"></div>
         </div>
+        <button id="skip-boot" onclick="document.getElementById('boot-screen').style.display='none'" style="position: absolute; bottom: 30px; padding: 10px 20px; background: rgba(0,255,65,0.2); border: 1px solid #00ff41; color: #00ff41; border-radius: 5px; cursor: pointer; font-family: 'Orbitron', monospace; transition: all 0.3s;">
+            Passer l'intro (Cliquez ici)
+        </button>
     </div>
 
     <!-- Header avec effet holographique -->
@@ -228,6 +262,7 @@
                         <li><a href="#comparateur" class="nav-link" data-text="COMPARATEUR">COMPARATEUR</a></li>
                         <li><a href="#menaces" class="nav-link" data-text="MENACES">MENACES</a></li>
                         <li><a href="#guides" class="nav-link" data-text="GUIDES">GUIDES</a></li>
+                        <li><a href="#outils" class="nav-link" data-text="OUTILS">OUTILS</a></li>
                         <li><a href="#temoignages" class="nav-link" data-text="AVIS">AVIS</a></li>
                         <li><a href="#contact" class="nav-link cyber-button" data-text="CONNEXION">
                             <span class="button-content">CONNEXION</span>
@@ -750,6 +785,136 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ========== OUTILS DE VÉRIFICATION AVANCÉS ========== -->
+            <div class="advanced-verification-tools" data-aos="fade-up">
+                <div class="tools-section-header">
+                    <h3 class="tools-section-title">
+                        <span class="section-icon">🔐</span>
+                        <span class="section-text">OUTILS DE VÉRIFICATION AVANCÉS</span>
+                    </h3>
+                    <p class="tools-section-subtitle">Testez et analysez vos systèmes de sécurité</p>
+                </div>
+
+                <!-- Simulateur 2FA -->
+                <div id="2fa-simulator-section" class="interactive-tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-shield-halved"></i> Simulateur de Test 2FA/MFA</h4>
+                        <p>Découvrez les différentes méthodes d'authentification à deux facteurs</p>
+                    </div>
+
+                    <div class="2fa-methods">
+                        <button class="2fa-method-btn active" data-method="totp">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>TOTP</span>
+                        </button>
+                        <button class="2fa-method-btn" data-method="sms">
+                            <i class="fas fa-sms"></i>
+                            <span>SMS</span>
+                        </button>
+                        <button class="2fa-method-btn" data-method="email">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </button>
+                        <button class="2fa-method-btn" data-method="hardware">
+                            <i class="fas fa-key"></i>
+                            <span>Clé Matérielle</span>
+                        </button>
+                        <button class="2fa-method-btn" data-method="biometric">
+                            <i class="fas fa-fingerprint"></i>
+                            <span>Biométrie</span>
+                        </button>
+                    </div>
+
+                    <div id="2fa-method-info" class="method-info-container"></div>
+
+                    <button id="generate-2fa-code-btn" class="btn-primary">
+                        <i class="fas fa-key"></i> Générer Code
+                    </button>
+
+                    <div id="2fa-code-display" class="code-display"></div>
+
+                    <div class="verification-section">
+                        <div class="code-input-wrapper">
+                            <input type="text" id="2fa-code-input" placeholder="Entrez le code..." maxlength="6">
+                        </div>
+                        <button id="verify-2fa-code-btn" class="btn-secondary">
+                            <i class="fas fa-check-circle"></i> Vérifier
+                        </button>
+                    </div>
+
+                    <div id="2fa-verification-result" class="result-display"></div>
+
+                    <button id="test-2fa-attack-btn" class="btn-danger">
+                        <i class="fas fa-virus"></i> Simuler Attaque
+                    </button>
+
+                    <div id="2fa-attack-simulation" class="attack-display"></div>
+                    <div id="2fa-stats-display" class="stats-display"></div>
+                </div>
+
+                <!-- Vérificateur SSL -->
+                <div id="ssl-checker-section" class="interactive-tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-certificate"></i> Vérificateur de Certificat SSL</h4>
+                        <p>Analysez la sécurité des certificats SSL/TLS</p>
+                    </div>
+
+                    <div class="url-input-container">
+                        <input type="text" id="ssl-url-input" placeholder="https://example.com">
+                        <button id="check-ssl-btn" class="btn-primary">
+                            <i class="fas fa-search"></i> Vérifier
+                        </button>
+                        <button id="ssl-demo-btn" class="btn-secondary">
+                            <i class="fas fa-flask"></i> Démo
+                        </button>
+                    </div>
+
+                    <div id="ssl-loader" class="loader" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Analyse en cours...</p>
+                    </div>
+
+                    <div id="ssl-results" class="results-container"></div>
+                    <div id="ssl-stats-display" class="stats-display"></div>
+                </div>
+
+                <!-- Analyseur de Fichiers -->
+                <div id="file-analyzer-section" class="interactive-tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-file-shield"></i> Analyseur de Fichiers Suspects</h4>
+                        <p>Analysez vos fichiers pour détecter les menaces</p>
+                    </div>
+
+                    <!-- Zone de Drop -->
+                    <div id="file-drop-zone" class="drop-zone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Glissez-déposez un fichier ici</h3>
+                        <p>ou</p>
+                        <button id="browse-files-btn" class="btn-primary">
+                            <i class="fas fa-folder-open"></i> Parcourir
+                        </button>
+                        <input type="file" id="file-input" style="display: none;">
+                        <p class="file-limit">Taille maximale: 50 MB</p>
+                    </div>
+
+                    <!-- Loader -->
+                    <div id="file-analysis-loader" class="loader" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Analyse en cours...</p>
+                        <small>Scan antivirus, détection de macros, analyse de contenu...</small>
+                    </div>
+
+                    <!-- Résultats -->
+                    <div id="file-analysis-results" class="analysis-results"></div>
+
+                    <!-- Historique -->
+                    <div class="history-section">
+                        <h3><i class="fas fa-history"></i> Historique des Analyses</h3>
+                        <div id="file-analysis-history" class="analysis-history"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1033,6 +1198,97 @@
                     </button>
                 </div>
             </div>
+
+            <!-- ========== DASHBOARD AMÉLIORÉ ========== -->
+            <div id="enhanced-dashboard-section" class="enhanced-dashboard-wrapper" data-aos="fade-up">
+                <div class="tools-section-header">
+                    <h3 class="tools-section-title">
+                        <span class="section-icon">📊</span>
+                        <span class="section-text">STATISTIQUES AVANCÉES</span>
+                    </h3>
+                    <p class="tools-section-subtitle">Vue d'ensemble détaillée de votre activité de sécurité</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card" id="total-scans">
+                        <div class="stat-card-value">0</div>
+                        <div class="stat-card-label">Scans Total</div>
+                    </div>
+                    <div class="stat-card" id="passwords-generated">
+                        <div class="stat-card-value">0</div>
+                        <div class="stat-card-label">Mots de passe</div>
+                    </div>
+                    <div class="stat-card" id="quizzes-taken">
+                        <div class="stat-card-value">0</div>
+                        <div class="stat-card-label">Quiz complétés</div>
+                    </div>
+                    <div class="stat-card" id="achievements">
+                        <div class="stat-card-value">0</div>
+                        <div class="stat-card-label">Achievements</div>
+                    </div>
+                </div>
+
+                <div id="security-score-display" class="score-display-large"></div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <canvas id="activity-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="security-score-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="threat-distribution-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="weekly-activity-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="history-section">
+                    <h3><i class="fas fa-history"></i> Historique des Scans</h3>
+                    <div id="scan-history-container"></div>
+                </div>
+            </div>
+
+            <!-- ========== GAMIFICATION ========== -->
+            <div id="gamification-section" class="gamification-wrapper" data-aos="fade-up">
+                <div class="tools-section-header">
+                    <h3 class="tools-section-title">
+                        <span class="section-icon">🏆</span>
+                        <span class="section-text">PROGRESSION & ACHIEVEMENTS</span>
+                    </h3>
+                    <p class="tools-section-subtitle">Suivez vos accomplissements en cybersécurité</p>
+                </div>
+
+                <!-- Niveau & XP -->
+                <div class="level-container">
+                    <div id="user-level-display" class="level-display"></div>
+                    <div id="user-xp-display" class="xp-display"></div>
+                    <div id="streak-display" class="streak-display"></div>
+                </div>
+
+                <!-- Challenge Hebdomadaire -->
+                <div id="weekly-challenge-container" class="challenge-container"></div>
+
+                <!-- Achievements -->
+                <div class="achievements-section">
+                    <h3><i class="fas fa-star"></i> Achievements</h3>
+                    <div id="achievements-container" class="achievements-container"></div>
+                </div>
+
+                <!-- Badges -->
+                <div class="badges-section">
+                    <h3><i class="fas fa-award"></i> Mes Badges</h3>
+                    <div id="badges-display" class="badges-display"></div>
+                </div>
+
+                <!-- Leaderboard -->
+                <div class="leaderboard-section">
+                    <h3><i class="fas fa-ranking-star"></i> Classement</h3>
+                    <div id="leaderboard-container" class="leaderboard-container"></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1083,6 +1339,9 @@
             <div class="featured-article" id="featured-article" data-aos="fade-up">
                 <!-- Will be populated by JavaScript -->
             </div>
+
+            <!-- NOUVEAU: Widget de recherche enrichi -->
+            <div id="blog-search-enhanced"></div>
 
             <!-- Articles Grid -->
             <div class="blog-grid" id="blog-articles-grid">
@@ -1542,6 +1801,83 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ========== CARTE DES MENACES AMÉLIORÉE ========== -->
+            <div id="threat-map-enhanced-section" class="threat-map-wrapper" data-aos="fade-up">
+                <div class="tools-section-header">
+                    <h3 class="tools-section-title">
+                        <span class="section-icon">🌍</span>
+                        <span class="section-text">CARTE DES MENACES EN TEMPS RÉEL</span>
+                    </h3>
+                    <div class="map-controls">
+                        <label>
+                            <input type="checkbox" id="auto-refresh-toggle" checked>
+                            Auto-refresh
+                        </label>
+                        <select id="threat-time-range">
+                            <option value="24h" selected>Dernières 24h</option>
+                            <option value="7d">Derniers 7 jours</option>
+                            <option value="30d">Derniers 30 jours</option>
+                        </select>
+                        <button id="refresh-threats-btn" class="btn-icon">
+                            <i class="fas fa-sync"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Alertes Critiques -->
+                <div id="critical-alerts-container" class="alerts-container">
+                    <div class="alerts-header">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Alertes Critiques</h3>
+                        <button id="clear-alerts-btn" class="btn-secondary">
+                            <i class="fas fa-check"></i> Tout masquer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filtres par Type -->
+                <div class="threat-filters">
+                    <button class="threat-filter-btn active" data-type="ddos">
+                        <i class="fas fa-bolt"></i> DDoS
+                    </button>
+                    <button class="threat-filter-btn active" data-type="malware">
+                        <i class="fas fa-virus"></i> Malware
+                    </button>
+                    <button class="threat-filter-btn active" data-type="phishing">
+                        <i class="fas fa-fish"></i> Phishing
+                    </button>
+                    <button class="threat-filter-btn active" data-type="ransomware">
+                        <i class="fas fa-lock"></i> Ransomware
+                    </button>
+                    <button class="threat-filter-btn active" data-type="databreach">
+                        <i class="fas fa-database"></i> Data Breach
+                    </button>
+                    <button class="threat-filter-btn active" data-type="botnet">
+                        <i class="fas fa-network-wired"></i> Botnet
+                    </button>
+                </div>
+
+                <!-- Compteurs -->
+                <div id="threat-counters" class="threat-counters"></div>
+
+                <!-- Graphique Historique -->
+                <div class="history-chart-container">
+                    <h3>Historique des Menaces</h3>
+                    <div id="threat-history-chart" style="height: 300px;"></div>
+                </div>
+
+                <!-- Liste des Menaces -->
+                <div class="threats-list-container">
+                    <h3>Menaces Actives</h3>
+                    <div id="threats-list" class="threats-list"></div>
+                </div>
+
+                <!-- Carte Visuelle (Canvas) -->
+                <div class="map-visualization">
+                    <canvas id="threat-map-canvas" width="800" height="400"></canvas>
+                    <div id="map-overlay-count" class="map-overlay"></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1564,227 +1900,9 @@
             <div class="tutorials-section" data-aos="fade-up">
                 <h3 class="section-subtitle">📹 TUTORIELS VIDÉO RECOMMANDÉS</h3>
 
-                <!-- Niveau Débutant -->
-                <div class="video-category">
-                    <h4 class="category-title">🔰 NIVEAU DÉBUTANT</h4>
-                    <div class="tutorials-grid">
-                        <div class="tutorial-card" data-url="https://www.youtube.com/watch?v=ckZGQ5cLIfs">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/ckZGQ5cLIfs/maxresdefault.jpg" alt="Micode VPN" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">~15 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>NordVPN vous ment (analyse critique)</h4>
-                                <p>Analyse honnête et non sponsorisée des VPN - Ce qu'on ne vous dit pas</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Micode</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- NOUVEAU: Container pour vidéos enrichies -->
+                <div id="tutorials-video-container"></div>
 
-                        <div class="tutorial-card" data-search="Micode VPN serveur 5 minutes">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="VPN serveur" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">~10 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Créer son propre serveur VPN</h4>
-                                <p>Tutoriel pour monter votre propre VPN en quelques minutes</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Micode</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-card" data-search="Comment reconnaître email phishing français">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Phishing detection" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">10-15 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Détecter le Phishing</h4>
-                                <p>Apprenez à reconnaître les emails et sites frauduleux</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Cyril MP / Cookie Connecté</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-card" data-search="Bitdefender installation tutoriel français 2024">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Bitdefender install" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">10-15 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Configuration Bitdefender</h4>
-                                <p>Installer et configurer Bitdefender 2024 - Tutoriel complet</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 HT Pratique / SOSVirus</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Niveau Intermédiaire -->
-                <div class="video-category">
-                    <h4 class="category-title">🔧 NIVEAU INTERMÉDIAIRE</h4>
-                    <div class="tutorials-grid">
-                        <div class="tutorial-card" data-search="VirusTotal tutoriel français scanner fichier 2024">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="VirusTotal tutorial" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">8-10 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Utiliser VirusTotal</h4>
-                                <p>Scanner et analyser des fichiers suspects avec VirusTotal</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Le Crabe Info / Malekal.com</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-card" data-search="IT-Connect Bitwarden">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Bitwarden tutorial" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">15-20 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Gestionnaire de mots de passe Bitwarden</h4>
-                                <p>Tutoriel complet : gérez tous vos mots de passe en toute sécurité</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 IT-Connect / Underscore_</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-card" data-search="Micode extensions navigateur sécurité 2024">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Browser extensions" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">12-15 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Sécuriser son navigateur</h4>
-                                <p>Les meilleures extensions pour naviguer en toute sécurité</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Micode</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-card" data-search="HT Pratique Windows Defender configuration">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Windows Defender" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">10-15 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Configurer Windows Defender</h4>
-                                <p>Optimisez la protection native de Windows 10/11</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 HT Pratique / Formation Informatique</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Niveau Avancé -->
-                <div class="video-category">
-                    <h4 class="category-title">⚡ NIVEAU AVANCÉ</h4>
-                    <div class="tutorials-grid">
-                        <div class="tutorial-card" data-search="Cookie Connecté malware analyse sandbox">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Malware analysis" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">15-25 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Analyser un malware</h4>
-                                <p>Techniques d'analyse de malware en environnement sandbox sécurisé</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Cookie Connecté / Processus Thief</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-card" data-search="Underscore VPN configuration avancée kill switch">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Advanced VPN" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">12-18 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>VPN avancé et Kill Switch</h4>
-                                <p>Configuration avancée : Kill Switch, DNS leak protection, Double VPN</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Underscore_</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-card" data-search="Micode dark web navigation sécurisée Tor">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Dark Web security" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">15-20 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Dark Web et sécurité</h4>
-                                <p>Navigation sécurisée sur le Dark Web avec Tor et protocoles de sécurité</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Micode / Underscore_</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tutorial-card" data-search="Science4All cryptographie comprendre chiffrement">
-                            <div class="tutorial-video">
-                                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Cryptography basics" class="video-thumbnail">
-                                <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <div class="video-duration">15-25 min</div>
-                                </div>
-                            </div>
-                            <div class="tutorial-content">
-                                <h4>Cryptographie et chiffrement</h4>
-                                <p>Comprendre les bases de la cryptographie moderne : RSA, AES, etc.</p>
-                                <div class="tutorial-meta">
-                                    <span>📺 Science4All / Cookie Connecté</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Chaînes recommandées -->
                 <div class="recommended-channels" data-aos="fade-up">
@@ -2266,6 +2384,154 @@
                 </div>
             </div>
 
+            <!-- ========== OUTILS INTERACTIFS ========== -->
+            <div class="interactive-tools-wrapper" data-aos="fade-up">
+                <div class="tools-section-header">
+                    <h3 class="tools-section-title">
+                        <span class="section-icon">🔧</span>
+                        <span class="section-text">OUTILS INTERACTIFS DE SÉCURITÉ</span>
+                    </h3>
+                    <p class="tools-section-subtitle">Générez et testez vos éléments de sécurité</p>
+                </div>
+
+                <!-- Générateur de Passphrase -->
+                <div id="passphrase-generator-section" class="interactive-tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-key"></i> Générateur de Passphrase Diceware</h4>
+                        <p>Générez des passphrases mémorables et sécurisées</p>
+                    </div>
+
+                    <div class="tool-controls">
+                        <div class="control-group">
+                            <label for="passphrase-word-count">Nombre de mots: <span id="word-count-value">5</span></label>
+                            <input type="range" id="passphrase-word-count" min="3" max="8" value="5" step="1">
+                        </div>
+
+                        <div class="control-group">
+                            <label for="passphrase-separator">Séparateur:</label>
+                            <select id="passphrase-separator">
+                                <option value="-">Tiret (-)</option>
+                                <option value="_">Underscore (_)</option>
+                                <option value=" ">Espace</option>
+                                <option value=".">Point (.)</option>
+                                <option value="">Aucun</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="passphrase-capitalize">
+                                Capitaliser les mots
+                            </label>
+                            <label>
+                                <input type="checkbox" id="passphrase-add-number">
+                                Ajouter un nombre
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="generate-passphrase-btn" class="btn-primary">
+                        <i class="fas fa-refresh"></i> Générer Passphrase
+                    </button>
+
+                    <div id="passphrase-output" class="output-display"></div>
+                    <div id="passphrase-entropy" class="info-box"></div>
+                    <div id="passphrase-stats" class="stats-box"></div>
+
+                    <button id="copy-passphrase-btn" class="btn-secondary">
+                        <i class="fas fa-copy"></i> Copier
+                    </button>
+                </div>
+
+                <!-- Analyseur de Force de Mot de Passe -->
+                <div id="password-strength-analyzer-section" class="interactive-tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-chart-line"></i> Analyseur de Force de Mot de Passe</h4>
+                        <p>Testez la robustesse de vos mots de passe en temps réel</p>
+                    </div>
+
+                    <div class="password-input-container">
+                        <div class="password-input-group">
+                            <input type="password" id="password-strength-input"
+                                   placeholder="Entrez un mot de passe à analyser...">
+                            <button id="show-password-toggle" class="btn-icon">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="strength-display-container">
+                        <div id="strength-label" class="strength-label">
+                            <i class="fas fa-shield"></i> Entrez un mot de passe
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar">
+                                <div id="strength-progress-bar" class="progress-fill"></div>
+                            </div>
+                        </div>
+                        <div id="strength-score" class="score-display">0/100</div>
+                    </div>
+
+                    <canvas id="strength-visualization-canvas" width="300" height="300"></canvas>
+
+                    <div id="strength-details" class="details-box"></div>
+                    <div id="strength-warnings" class="warnings-box"></div>
+                    <div id="strength-suggestions" class="suggestions-box"></div>
+                </div>
+
+                <!-- Générateur de Clés SSH -->
+                <div id="ssh-key-generator-section" class="interactive-tool-card">
+                    <div class="tool-header">
+                        <h4><i class="fas fa-terminal"></i> Générateur de Clés SSH</h4>
+                        <p>Générez des paires de clés SSH sécurisées</p>
+                    </div>
+
+                    <div class="ssh-config">
+                        <div class="control-group">
+                            <label for="ssh-key-type-select">Type de clé:</label>
+                            <select id="ssh-key-type-select">
+                                <option value="ed25519" selected>Ed25519 (Recommandé)</option>
+                                <option value="rsa-4096">RSA 4096</option>
+                                <option value="rsa-2048">RSA 2048</option>
+                                <option value="ecdsa-384">ECDSA P-384</option>
+                                <option value="ecdsa-256">ECDSA P-256</option>
+                            </select>
+                        </div>
+
+                        <div id="ssh-key-type-info" class="info-display"></div>
+
+                        <div class="control-group">
+                            <label for="ssh-key-comment">Commentaire:</label>
+                            <input type="text" id="ssh-key-comment" placeholder="user@hostname">
+                        </div>
+
+                        <div class="control-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="ssh-use-passphrase">
+                                Protéger avec une passphrase
+                            </label>
+                        </div>
+
+                        <div class="control-group" id="ssh-passphrase-group" style="display: none;">
+                            <label for="ssh-passphrase-input">Passphrase:</label>
+                            <input type="password" id="ssh-passphrase-input" placeholder="Entrez une passphrase">
+                        </div>
+                    </div>
+
+                    <button id="generate-ssh-key-btn" class="btn-primary">
+                        <i class="fas fa-key"></i> Générer Clés SSH
+                    </button>
+
+                    <div id="ssh-loader" class="loader" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Génération en cours...</p>
+                    </div>
+
+                    <div id="ssh-keys-display" class="keys-display"></div>
+                    <div id="ssh-stats-display" class="stats-display"></div>
+                </div>
+            </div>
+
             <!-- Protocole de sécurité -->
             <div class="security-protocol" data-aos="fade-up">
                 <div class="protocol-header">
@@ -2679,6 +2945,7 @@
         </div>
     </div>
 
+
     <!-- Tutorial Video Search Handler -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -2723,14 +2990,21 @@
     <script src="world-map-interactive.js" defer></script>
     <script src="blog.js" defer></script>
     <script src="blog-renderer.js" defer></script>
+
+    <!-- ========== CONTENU ENRICHI v3.0 ========== -->
+    <script src="blog-enriched-articles.js" defer></script>
+    <script src="blog-case-studies.js" defer></script>
+    <script src="video-tutorials-enhanced.js" defer></script>
+    <script src="content-integration.js" defer></script>
+
     <script src="comparator-data.js" defer></script>
     <script src="comparator-enhanced.js" defer></script>
     <script src="recommendation-quiz.js" defer></script>
 
     <!-- UX Enhancement Systems -->
-    <script src="theme-manager.js" defer></script>
-    <script src="i18n.js" defer></script>
-    <script src="achievement-system.js" defer></script>
+    <!-- <script src="theme-manager.js" defer></script> -->
+    <!-- <script src="i18n.js" defer></script> -->
+    <!-- <script src="achievement-system.js" defer></script> -->
 
     <!-- CyberGuard AI Assistant -->
     <script src="cyberguard-ai-assistant.js" defer></script>
@@ -2738,6 +3012,97 @@
     <!-- Mobile Menu & Header Optimizer (MUST be last) -->
     <script src="mobile-menu.js" defer></script>
     <script src="header-optimizer.js" defer></script>
+
+    <!-- ========== NOUVEAUX MODULES v3.0 ========== -->
+    <!-- Outils de Sécurité Avancés -->
+    <script src="passphrase-generator.js" defer></script>
+    <script src="password-strength-analyzer.js" defer></script>
+    <script src="2fa-simulator.js" defer></script>
+    <script src="ssl-checker.js" defer></script>
+    <script src="ssh-key-generator.js" defer></script>
+
+    <!-- Dashboard & Analytics -->
+    <script src="dashboard-enhanced.js" defer></script>
+
+    <!-- Gamification -->
+    <script src="gamification-system.js" defer></script>
+
+    <!-- Menaces & Analyse -->
+    <script src="threat-map-enhanced.js" defer></script>
+    <script src="file-analyzer.js" defer></script>
+
+    <!-- Initialisation et connexion des modules -->
+    <script>
+        // Initialisation globale CyberGuard Pro v3.0
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 CyberGuard Pro v3.0 - Initialisation...');
+
+            // Attendre que tous les modules soient chargés
+            setTimeout(() => {
+                // Connexion Dashboard ↔ Gamification
+                if (window.enhancedDashboard && window.gamificationSystem) {
+                    console.log('✅ Dashboard & Gamification connectés');
+
+                    // Hook pour les scans
+                    const originalRecordScan = window.enhancedDashboard.recordScan.bind(window.enhancedDashboard);
+                    window.enhancedDashboard.recordScan = function(...args) {
+                        originalRecordScan(...args);
+                        window.gamificationSystem.recordAction('scan');
+                    };
+
+                    // Hook pour les mots de passe
+                    window.addEventListener('password-generated', () => {
+                        window.enhancedDashboard.recordPasswordGeneration();
+                        window.gamificationSystem.recordAction('password');
+                    });
+
+                    // Hook pour les quiz
+                    window.addEventListener('quiz-completed', () => {
+                        window.enhancedDashboard.recordQuizCompletion();
+                        window.gamificationSystem.recordAction('quiz');
+                    });
+                }
+
+                // Connexion Gamification → Achievements existants
+                if (window.gamificationSystem && window.achievementSystem) {
+                    console.log('✅ Gamification & Achievements connectés');
+                }
+
+                // Vérifier les premiers achievements au chargement
+                if (window.gamificationSystem) {
+                    // Achievement "Explorateur" si toutes sections visitées
+                    if (!window.gamificationSystem.achievements['explorer'].unlocked) {
+                        window.gamificationSystem.unlockAchievement('explorer');
+                    }
+
+                    // Achievement "first-scan" sera débloqué au premier scan
+                }
+
+                // Mettre à jour le leaderboard
+                if (window.gamificationSystem) {
+                    window.gamificationSystem.updateLeaderboard();
+                }
+
+                console.log('✅ Tous les modules v3.0 sont prêts !');
+            }, 1000);
+        });
+
+        // Event dispatchers pour les modules
+        function dispatchPasswordGenerated() {
+            window.dispatchEvent(new Event('password-generated'));
+        }
+
+        function dispatchQuizCompleted() {
+            window.dispatchEvent(new Event('quiz-completed'));
+        }
+
+        // Exposer globalement pour usage par d'autres scripts
+        window.CyberGuard = {
+            version: '3.0.0',
+            dispatchPasswordGenerated,
+            dispatchQuizCompleted
+        };
+    </script>
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -2819,5 +3184,13 @@
 
     <!-- Lazy Loading Script -->
     <script src="lazy-load.js" defer></script>
+
+    <!-- MODAL VIDÉO YOUTUBE -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="window.hideVideoModal()">&times;</button>
+            <div id="video-modal-player"></div>
+        </div>
+    </div>
 </body>
 </html>
