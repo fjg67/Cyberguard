@@ -96,6 +96,7 @@
     <!-- <link rel="stylesheet" href="i18n-styles.css" media="print" onload="this.media='all'"> -->
     <!-- <link rel="stylesheet" href="achievement-styles.css" media="print" onload="this.media='all'"> -->
     <link rel="stylesheet" href="gamification-premium.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="threat-map-cyber-premium.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="cyberguard-ai-styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="mobile-menu-styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="header-responsive-fix.css" media="print" onload="this.media='all'">
@@ -109,6 +110,7 @@
         <!-- <link rel="stylesheet" href="i18n-styles.css"> -->
         <!-- <link rel="stylesheet" href="achievement-styles.css"> -->
         <link rel="stylesheet" href="gamification-premium.css">
+        <link rel="stylesheet" href="threat-map-cyber-premium.css">
         <link rel="stylesheet" href="cyberguard-ai-styles.css">
         <link rel="stylesheet" href="mobile-menu-styles.css">
         <link rel="stylesheet" href="header-responsive-fix.css">
@@ -1972,6 +1974,21 @@
                             <i class="fas fa-check"></i> Tout masquer
                         </button>
                     </div>
+                    <div id="alerts-list">
+                        <!-- Alerts will be populated by JavaScript -->
+                        <div class="alert-item" data-severity="critical">
+                            <div class="alert-type">CRITICAL ALERT</div>
+                            <div class="alert-details">Attaque DDoS détectée • DE 🇩🇪 IN 🇮🇳 IoT Devices • 1571+ systèmes affectés</div>
+                        </div>
+                        <div class="alert-item" data-severity="critical">
+                            <div class="alert-type">CRITICAL ALERT</div>
+                            <div class="alert-details">Attaque DDoS détectée • JP 🇯🇵 GB 🇬🇧 IoT Devices • 1476+ systèmes affectés</div>
+                        </div>
+                        <div class="alert-item" data-severity="critical">
+                            <div class="alert-type">CRITICAL ALERT</div>
+                            <div class="alert-details">Attaque Phishing détectée • US 🇺🇸 AU 🇦🇺 Email Campaign • 789+ victimes potentielles</div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Filtres par Type -->
@@ -3169,6 +3186,7 @@
 
     <!-- Menaces & Analyse -->
     <script src="threat-map-enhanced.js" defer></script>
+    <script src="threat-map-cyber-animations.js" defer></script>
     <script src="file-analyzer.js" defer></script>
 
     <!-- Initialisation et connexion des modules -->
