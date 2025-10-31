@@ -28,20 +28,20 @@
 #ssh-keygen-email {
     flex: 1;
     min-width: 250px;
-    padding: 1rem 1.5rem;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #00ff41;
-    border-left: 4px solid #00ff41;
-    border-radius: 0;
-    color: #00ffff;
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    letter-spacing: 1px;
+    padding: 1rem 1.5rem !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 2px solid #00ff41 !important;
+    border-left: 4px solid #00ff41 !important;
+    border-radius: 0 !important;
+    color: #00ffff !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 1rem !important;
+    letter-spacing: 1px !important;
     transition: all 0.3s ease;
     position: relative;
     box-shadow: 
         0 0 20px rgba(0, 255, 65, 0.2),
-        inset 0 0 30px rgba(0, 255, 65, 0.05);
+        inset 0 0 30px rgba(0, 255, 65, 0.05) !important;
 }
 
 .url-input-container input::placeholder,
@@ -99,23 +99,23 @@
 #scan-url-btn,
 #generate-ssh-btn,
 .btn-primary {
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, rgba(0, 255, 65, 0.2), rgba(0, 255, 255, 0.2));
-    border: 2px solid #00ff41;
-    border-radius: 0;
-    color: #00ff41;
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    padding: 1rem 2rem !important;
+    background: linear-gradient(135deg, rgba(0, 255, 65, 0.2), rgba(0, 255, 255, 0.2)) !important;
+    border: 2px solid #00ff41 !important;
+    border-radius: 0 !important;
+    color: #00ff41 !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 
         0 0 20px rgba(0, 255, 65, 0.3),
-        inset 0 0 20px rgba(0, 255, 65, 0.05);
+        inset 0 0 20px rgba(0, 255, 65, 0.05) !important;
 }
 
 /* Scan line effect on button */
@@ -180,23 +180,23 @@
 #password-demo-btn,
 #url-demo-btn,
 .btn-secondary {
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(153, 51, 255, 0.2));
-    border: 2px solid #00ffff;
-    border-radius: 0;
-    color: #00ffff;
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    padding: 1rem 2rem !important;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(153, 51, 255, 0.2)) !important;
+    border: 2px solid #00ffff !important;
+    border-radius: 0 !important;
+    color: #00ffff !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 
         0 0 20px rgba(0, 255, 255, 0.3),
-        inset 0 0 20px rgba(0, 255, 255, 0.05);
+        inset 0 0 20px rgba(0, 255, 255, 0.05) !important;
 }
 
 .url-input-container .btn-secondary::before,
