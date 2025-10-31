@@ -238,39 +238,125 @@
     transform: scale(1.05);
 }
 
-/* ========== CRITICAL ALERTS ========== */
+/* ========== CRITICAL ALERTS - ULTRA PREMIUM ========== */
 .alerts-container {
     margin-bottom: 2rem;
+    position: relative;
+}
+
+.alerts-container::before {
+    content: '⚠ ALERTE ⚠';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff0000;
+    color: #000;
+    padding: 0.3rem 1.5rem;
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    z-index: 10;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 1);
+    animation: alertPulseTop 0.5s infinite;
+}
+
+@keyframes alertPulseTop {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 30px rgba(255, 0, 0, 1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 0 50px rgba(255, 0, 0, 1);
+    }
 }
 
 .alerts-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
-    background: rgba(255, 0, 0, 0.1);
-    border: 2px solid #ff0000;
-    border-left: 4px solid #ff0000;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, 
+        rgba(255, 0, 0, 0.15) 0%,
+        rgba(255, 50, 0, 0.1) 50%,
+        rgba(255, 0, 0, 0.15) 100%);
+    background-size: 200% 200%;
+    border: 3px solid #ff0000;
+    border-left: 6px solid #ff0000;
     border-radius: 0;
     margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 0 40px rgba(255, 0, 0, 0.5),
+        inset 0 0 60px rgba(255, 0, 0, 0.1);
+    animation: alertGradient 3s ease infinite;
+}
+
+@keyframes alertGradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.alerts-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 0, 0, 0.4),
+        transparent);
+    animation: alertSweep 2s linear infinite;
+}
+
+@keyframes alertSweep {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
 .alerts-header h3 {
     color: #ff0000;
     font-family: 'Courier New', monospace;
     text-transform: uppercase;
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
-    animation: criticalBlink 1s infinite;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-shadow: 
+        0 0 10px rgba(255, 0, 0, 1),
+        0 0 20px rgba(255, 0, 0, 0.8),
+        0 0 30px rgba(255, 0, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: criticalBlink 0.8s infinite;
+    position: relative;
+    z-index: 2;
 }
 
 @keyframes criticalBlink {
-    0%, 50%, 100% {
+    0%, 40%, 100% {
         opacity: 1;
+        text-shadow: 
+            0 0 10px rgba(255, 0, 0, 1),
+            0 0 20px rgba(255, 0, 0, 0.8),
+            0 0 30px rgba(255, 0, 0, 0.6);
     }
-    25%, 75% {
-        opacity: 0.7;
+    20%, 60% {
+        opacity: 0.8;
+        text-shadow: 
+            0 0 15px rgba(255, 0, 0, 1),
+            0 0 30px rgba(255, 0, 0, 0.8);
     }
 }
 
@@ -290,46 +376,146 @@
     box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
 }
 
-/* Alert items */
+/* Alert items - ULTRA PREMIUM */
 .alert-item {
-    padding: 1rem 1.5rem;
-    background: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem 2rem;
+    background: linear-gradient(90deg, 
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(50, 0, 0, 0.9) 50%,
+        rgba(0, 0, 0, 0.95) 100%);
+    background-size: 200% 100%;
     border: 2px solid #ff0000;
-    border-left: 4px solid #ff0000;
+    border-left: 6px solid #ff0000;
     border-radius: 0;
     margin-bottom: 1rem;
     font-family: 'Courier New', monospace;
-    color: #ff6666;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
     box-shadow: 
-        0 0 20px rgba(255, 0, 0, 0.3),
-        inset 0 0 30px rgba(255, 0, 0, 0.05);
-    animation: alertPulse 2s ease-in-out infinite;
+        0 0 30px rgba(255, 0, 0, 0.6),
+        inset 0 0 40px rgba(255, 0, 0, 0.1),
+        0 5px 20px rgba(0, 0, 0, 0.8);
+    animation: alertPulse 2s ease-in-out infinite, alertSlide 5s linear infinite;
+    transition: all 0.3s ease;
+}
+
+.alert-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        transparent,
+        #ff0000,
+        transparent);
+    animation: borderScan 2s linear infinite;
+}
+
+@keyframes borderScan {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.alert-item::after {
+    content: '◢';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ff0000;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: iconPulse 1s infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+.alert-item:hover {
+    transform: translateX(5px);
+    border-color: #ff3333;
+    box-shadow: 
+        0 0 50px rgba(255, 0, 0, 0.8),
+        inset 0 0 60px rgba(255, 0, 0, 0.15),
+        0 10px 30px rgba(0, 0, 0, 0.9);
 }
 
 @keyframes alertPulse {
     0%, 100% {
         box-shadow: 
-            0 0 20px rgba(255, 0, 0, 0.3),
-            inset 0 0 30px rgba(255, 0, 0, 0.05);
+            0 0 30px rgba(255, 0, 0, 0.6),
+            inset 0 0 40px rgba(255, 0, 0, 0.1),
+            0 5px 20px rgba(0, 0, 0, 0.8);
     }
     50% {
         box-shadow: 
-            0 0 30px rgba(255, 0, 0, 0.5),
-            inset 0 0 40px rgba(255, 0, 0, 0.1);
+            0 0 50px rgba(255, 0, 0, 0.8),
+            inset 0 0 60px rgba(255, 0, 0, 0.15),
+            0 5px 20px rgba(0, 0, 0, 0.8);
+    }
+}
+
+@keyframes alertSlide {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
     }
 }
 
 .alert-item .alert-type {
     color: #ff0000;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+    text-shadow: 
+        0 0 10px rgba(255, 0, 0, 1),
+        0 0 20px rgba(255, 0, 0, 0.5),
+        2px 2px 4px rgba(0, 0, 0, 1);
+    position: relative;
+    z-index: 2;
+}
+
+.alert-item .alert-type::before {
+    content: '▸ ';
+    color: #ff0000;
+    margin-right: 0.5rem;
+    animation: arrowBlink 1s infinite;
+}
+
+@keyframes arrowBlink {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0.3;
+    }
 }
 
 .alert-item .alert-details {
     color: #00ffff;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    position: relative;
+    z-index: 2;
 }
 
 /* ========== THREAT FILTERS ========== */
