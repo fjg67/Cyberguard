@@ -133,12 +133,12 @@ class GamificationPremium {
 
     createParticle(container) {
         const particle = document.createElement('div');
-        const size = Math.random() * 4 + 2;
+        const size = Math.random() * 3 + 1;
         const x = Math.random() * 100;
-        const duration = Math.random() * 10 + 10;
+        const duration = Math.random() * 15 + 15;
         const delay = Math.random() * 5;
         
-        const colors = ['#00ffff', '#ffd700', '#ff00ff', '#00ff00'];
+        const colors = ['#00ff41', '#00ffff', '#00ff41', '#00ffff'];
         const color = colors[Math.floor(Math.random() * colors.length)];
         
         particle.style.cssText = `
@@ -233,7 +233,7 @@ class GamificationPremium {
             width: ${size}px;
             height: ${size}px;
             border-radius: 50%;
-            background: rgba(0, 255, 255, 0.5);
+            background: rgba(0, 255, 65, 0.5);
             left: ${x}px;
             top: ${y}px;
             transform: scale(0);
@@ -320,12 +320,12 @@ class GamificationPremium {
             top: ${y}%;
             width: 4px;
             height: 4px;
-            background: #ffd700;
+            background: #00ff41;
             border-radius: 50%;
             pointer-events: none;
             animation: sparkleEffect 1s ease-out;
             z-index: 10;
-            box-shadow: 0 0 10px #ffd700;
+            box-shadow: 0 0 10px #00ff41;
         `;
         
         element.appendChild(sparkle);
@@ -379,7 +379,7 @@ class GamificationPremium {
 
     createConfetti(element) {
         const confetti = document.createElement('div');
-        const colors = ['#ffd700', '#00ffff', '#ff00ff', '#00ff00'];
+        const colors = ['#00ff41', '#00ffff', '#00ff41', '#00ffff'];
         const color = colors[Math.floor(Math.random() * colors.length)];
         const size = Math.random() * 8 + 4;
         
