@@ -95,6 +95,7 @@
     <!-- <link rel="stylesheet" href="theme-styles.css" media="print" onload="this.media='all'"> -->
     <!-- <link rel="stylesheet" href="i18n-styles.css" media="print" onload="this.media='all'"> -->
     <!-- <link rel="stylesheet" href="achievement-styles.css" media="print" onload="this.media='all'"> -->
+    <link rel="stylesheet" href="gamification-premium.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="cyberguard-ai-styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="mobile-menu-styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="header-responsive-fix.css" media="print" onload="this.media='all'">
@@ -107,6 +108,7 @@
         <!-- <link rel="stylesheet" href="theme-styles.css"> -->
         <!-- <link rel="stylesheet" href="i18n-styles.css"> -->
         <!-- <link rel="stylesheet" href="achievement-styles.css"> -->
+        <link rel="stylesheet" href="gamification-premium.css">
         <link rel="stylesheet" href="cyberguard-ai-styles.css">
         <link rel="stylesheet" href="mobile-menu-styles.css">
         <link rel="stylesheet" href="header-responsive-fix.css">
@@ -1251,7 +1253,7 @@
                 </div>
             </div>
 
-            <!-- ========== GAMIFICATION ========== -->
+            <!-- ========== GAMIFICATION - ULTRA PREMIUM ========== -->
             <div id="gamification-section" class="gamification-wrapper" data-aos="fade-up">
                 <div class="tools-section-header">
                     <h3 class="tools-section-title">
@@ -1263,30 +1265,167 @@
 
                 <!-- Niveau & XP -->
                 <div class="level-container">
-                    <div id="user-level-display" class="level-display"></div>
-                    <div id="user-xp-display" class="xp-display"></div>
-                    <div id="streak-display" class="streak-display"></div>
+                    <div id="user-level-display" class="level-display">
+                        <div class="level-icon">⭐</div>
+                        <div class="level-number">1</div>
+                        <div class="level-title">Initié</div>
+                        <div class="level-subtitle">90 XP jusqu'au niveau 3</div>
+                    </div>
+                    <div id="user-xp-display" class="xp-display">
+                        <div class="xp-icon">💎</div>
+                        <div class="xp-info">
+                            <div class="xp-label">Points d'Expérience</div>
+                            <div class="xp-value">210 / 300 XP</div>
+                        </div>
+                        <div class="xp-progress-container">
+                            <div class="xp-progress-bar">
+                                <div class="xp-progress-fill" style="width: 70%"></div>
+                                <div class="xp-progress-text">70%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="streak-display" class="streak-display">
+                        <div class="streak-icon">🔥</div>
+                        <div class="streak-number">2</div>
+                        <div class="streak-label">jours</div>
+                        <div class="streak-subtitle">Continue ta série !</div>
+                    </div>
                 </div>
 
                 <!-- Challenge Hebdomadaire -->
-                <div id="weekly-challenge-container" class="challenge-container"></div>
+                <div id="weekly-challenge-container" class="challenge-container">
+                    <div class="challenge-header">
+                        <div class="challenge-badge">⚡ DÉFI</div>
+                        <div class="challenge-timer">⏱ 5 jours restants</div>
+                    </div>
+                    <h4 class="challenge-title">Apprenti Cyber</h4>
+                    <p class="challenge-description">Complétez tous les objectifs pour gagner des récompenses</p>
+                    <div class="challenge-objectives">
+                        <div class="challenge-objective completed">
+                            <span class="objective-icon">✓</span>
+                            <span class="objective-text">Quiz complétés 0 / 5</span>
+                            <span class="objective-reward">+40 XP</span>
+                        </div>
+                        <div class="challenge-objective">
+                            <span class="objective-icon">○</span>
+                            <span class="objective-text">Articles lus 0 / 8</span>
+                            <span class="objective-reward">+35 XP</span>
+                        </div>
+                    </div>
+                    <div class="challenge-progress">
+                        <div class="challenge-progress-bar">
+                            <div class="challenge-progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="challenge-progress-text">Récompense Totale: 75 XP</div>
+                    </div>
+                </div>
 
                 <!-- Achievements -->
                 <div class="achievements-section">
-                    <h3><i class="fas fa-star"></i> Achievements</h3>
-                    <div id="achievements-container" class="achievements-container"></div>
+                    <h3>⭐ Accomplissements</h3>
+                    <div id="achievements-container" class="achievements-container">
+                        <!-- Premier Scan -->
+                        <div class="achievement-card unlocked" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="achievement-icon">🛡️</div>
+                            <div class="achievement-name">Premier Scan</div>
+                            <div class="achievement-description">Effectuer votre premier scan de sécurité</div>
+                            <div class="achievement-points">+10 points</div>
+                            <div class="achievement-date">Débloqué aujourd'hui</div>
+                        </div>
+                        
+                        <!-- Apprenti Cyber -->
+                        <div class="achievement-card locked" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="achievement-icon">🔒</div>
+                            <div class="achievement-name">Apprenti Cyber</div>
+                            <div class="achievement-description">Complétez tous les objectifs pour gagner des récompenses</div>
+                            <div class="achievement-points">+40 points</div>
+                        </div>
+                        
+                        <!-- Lecteur Assidu -->
+                        <div class="achievement-card locked" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="achievement-icon">🔒</div>
+                            <div class="achievement-name">Lecteur Assidu</div>
+                            <div class="achievement-description">Articles lus 0 / 8</div>
+                            <div class="achievement-points">+35 points</div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Badges -->
                 <div class="badges-section">
-                    <h3><i class="fas fa-award"></i> Mes Badges</h3>
-                    <div id="badges-display" class="badges-display"></div>
+                    <h3>🏅 Mes Badges</h3>
+                    <div id="badges-display" class="badges-display">
+                        <div class="badge-item" data-aos="flip-left" data-aos-delay="100">
+                            <div class="badge-inner">
+                                <div class="badge-front">🛡️</div>
+                                <div class="badge-back">
+                                    <div class="badge-name">Sécurité</div>
+                                    <div class="badge-desc">Initié</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="badge-item" data-aos="flip-left" data-aos-delay="200">
+                            <div class="badge-inner">
+                                <div class="badge-front">💎</div>
+                                <div class="badge-back">
+                                    <div class="badge-name">Points</div>
+                                    <div class="badge-desc">Collectionneur</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="badge-item" data-aos="flip-left" data-aos-delay="300">
+                            <div class="badge-inner">
+                                <div class="badge-front">🔥</div>
+                                <div class="badge-back">
+                                    <div class="badge-name">Série</div>
+                                    <div class="badge-desc">2 jours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Leaderboard -->
                 <div class="leaderboard-section">
-                    <h3><i class="fas fa-ranking-star"></i> Classement</h3>
-                    <div id="leaderboard-container" class="leaderboard-container"></div>
+                    <h3>👑 Classement</h3>
+                    <div id="leaderboard-container" class="leaderboard-container">
+                        <div class="leaderboard-item" data-aos="fade-right" data-aos-delay="100">
+                            <div class="leaderboard-rank">1</div>
+                            <div class="leaderboard-avatar">🥇</div>
+                            <div class="leaderboard-info">
+                                <div class="leaderboard-name">CyberMaster</div>
+                                <div class="leaderboard-level">Niveau 15 • Elite Guardian</div>
+                            </div>
+                            <div class="leaderboard-score">2,547 pts</div>
+                        </div>
+                        <div class="leaderboard-item" data-aos="fade-right" data-aos-delay="200">
+                            <div class="leaderboard-rank">2</div>
+                            <div class="leaderboard-avatar">🥈</div>
+                            <div class="leaderboard-info">
+                                <div class="leaderboard-name">SecureNinja</div>
+                                <div class="leaderboard-level">Niveau 12 • Guardian</div>
+                            </div>
+                            <div class="leaderboard-score">1,892 pts</div>
+                        </div>
+                        <div class="leaderboard-item" data-aos="fade-right" data-aos-delay="300">
+                            <div class="leaderboard-rank">3</div>
+                            <div class="leaderboard-avatar">🥉</div>
+                            <div class="leaderboard-info">
+                                <div class="leaderboard-name">ByteDefender</div>
+                                <div class="leaderboard-level">Niveau 10 • Guardian Apprentice</div>
+                            </div>
+                            <div class="leaderboard-score">1,456 pts</div>
+                        </div>
+                        <div class="leaderboard-item current-user" data-aos="fade-right" data-aos-delay="400">
+                            <div class="leaderboard-rank">47</div>
+                            <div class="leaderboard-avatar">⭐</div>
+                            <div class="leaderboard-info">
+                                <div class="leaderboard-name">Vous</div>
+                                <div class="leaderboard-level">Niveau 1 • Initié</div>
+                            </div>
+                            <div class="leaderboard-score">75 pts</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3026,6 +3165,7 @@
 
     <!-- Gamification -->
     <script src="gamification-system.js" defer></script>
+    <script src="gamification-premium.js" defer></script>
 
     <!-- Menaces & Analyse -->
     <script src="threat-map-enhanced.js" defer></script>
