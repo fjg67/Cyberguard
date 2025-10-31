@@ -1220,19 +1220,19 @@
 
                 <div class="stats-grid">
                     <div class="stat-card" id="total-scans">
-                        <div class="stat-card-value">0</div>
+                        <div class="stat-card-value" id="scans-total" data-stat="scans">0</div>
                         <div class="stat-card-label">Scans Total</div>
                     </div>
-                    <div class="stat-card" id="passwords-generated">
-                        <div class="stat-card-value">0</div>
+                    <div class="stat-card" id="passwords-card">
+                        <div class="stat-card-value" id="passwords-generated" data-stat="passwords">0</div>
                         <div class="stat-card-label">Mots de passe</div>
                     </div>
                     <div class="stat-card" id="quizzes-taken">
-                        <div class="stat-card-value">0</div>
+                        <div class="stat-card-value" id="quiz-completed" data-stat="quiz">0</div>
                         <div class="stat-card-label">Quiz complétés</div>
                     </div>
                     <div class="stat-card" id="achievements">
-                        <div class="stat-card-value">0</div>
+                        <div class="stat-card-value" id="achievements-count" data-stat="achievements">0</div>
                         <div class="stat-card-label">Achievements</div>
                     </div>
                 </div>
@@ -3186,6 +3186,7 @@
     <script src="premium-inputs.js" defer></script>
 
     <!-- Dashboard & Analytics -->
+    <script src="user-stats-tracker.js" defer></script>
     <script src="dashboard-enhanced.js" defer></script>
     <script src="persistent-history.js" defer></script>
 
