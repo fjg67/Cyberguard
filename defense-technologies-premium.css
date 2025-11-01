@@ -1,0 +1,701 @@
+/**
+ * ═══════════════════════════════════════════════════════════════
+ * DEFENSE TECHNOLOGIES - EXCEPTIONNEL 3D GRID INTERACTIVE
+ * ═══════════════════════════════════════════════════════════════
+ * Features:
+ * - Grille 3D interactive avec effet hover
+ * - Icônes animées (Lucide/Font Awesome)
+ * - Micro-animations (compteurs, progress bars)
+ * - Badges "En temps réel" / "IA"
+ * - Effets glow/neon subtils cyber
+ * - Modal/accordéon "Comment ça marche"
+ */
+
+/* ========== SECTION HEADER - EXCEPTIONNEL ========== */
+.defense-technologies-section {
+    position: relative;
+    padding: 6rem 0;
+    background: linear-gradient(135deg, 
+        #0F172A 0%,
+        #1E293B 30%,
+        #334155 60%,
+        #1E293B 90%,
+        #0F172A 100%);
+    background-size: 400% 400%;
+    animation: defenseBackground 20s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes defenseBackground {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.defense-section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+.defense-section-tag {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #3B82F6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    animation: tagPulse 3s ease-in-out infinite;
+}
+
+@keyframes tagPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+    }
+}
+
+.defense-section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, 
+        #3B82F6 0%,
+        #06B6D4 25%,
+        #10B981 50%,
+        #06B6D4 75%,
+        #3B82F6 100%);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGradient 4s ease infinite;
+}
+
+@keyframes titleGradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.defense-section-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ========== GRILLE 3D INTERACTIVE ========== */
+.defense-grid-3d {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+    margin-bottom: 3rem;
+}
+
+/* ========== CARDS 3D EXCEPTIONNELLES ========== */
+.defense-card-3d {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.defense-card-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3B82F6, #06B6D4, #10B981);
+    animation: cardBorderPulse 3s ease-in-out infinite;
+}
+
+@keyframes cardBorderPulse {
+    0%, 100% {
+        opacity: 0.8;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(59, 130, 246, 1);
+    }
+}
+
+.defense-card-3d:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 
+        0 20px 40px rgba(59, 130, 246, 0.3),
+        0 0 60px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* ========== CARD HEADER - ICONES ANIMÉES ========== */
+.defense-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.defense-card-icon {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.2) 0%,
+        rgba(6, 182, 212, 0.2) 50%,
+        rgba(16, 185, 129, 0.2) 100%);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 16px;
+    font-size: 1.8rem;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+}
+
+.defense-card-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #3B82F6, #06B6D4, #10B981, #3B82F6);
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0;
+    animation: iconGlow 2s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+}
+
+/* ========== BADGES IA/TEMPS RÉEL ========== */
+.defense-card-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.defense-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 12px;
+    padding: 0.3rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: #10B981;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+.defense-badge.ia {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.3);
+    color: #8B5CF6;
+}
+
+.defense-badge.realtime {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #EF4444;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ========== CARD CONTENT ========== */
+.defense-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.defense-card-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* ========== MICRO-ANIMATIONS - COMPTEURS ========== */
+.defense-card-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.defense-stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.defense-stat-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #3B82F6;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+}
+
+.defense-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========== BARRES DE PROGRESSION ========== */
+.defense-progress-container {
+    margin-bottom: 1.5rem;
+}
+
+.defense-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.defense-progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.defense-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3B82F6, #06B6D4, #10B981);
+    border-radius: 4px;
+    position: relative;
+    animation: progressGlow 2s ease-in-out infinite;
+}
+
+.defense-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent);
+    animation: progressSweep 2s linear infinite;
+}
+
+@keyframes progressGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    }
+}
+
+@keyframes progressSweep {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ========== BOUTON COMMENT ÇA MARCHE ========== */
+.defense-card-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(6, 182, 212, 0.1) 50%,
+        rgba(16, 185, 129, 0.1) 100%);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 12px;
+    color: #3B82F6;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.defense-card-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(59, 130, 246, 0.2),
+        transparent);
+    transition: left 0.5s ease;
+}
+
+.defense-card-button:hover {
+    background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.2) 0%,
+        rgba(6, 182, 212, 0.2) 50%,
+        rgba(16, 185, 129, 0.2) 100%);
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+}
+
+.defense-card-button:hover::before {
+    left: 100%;
+}
+
+/* ========== MODAL COMMENT ÇA MARCHE ========== */
+.defense-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.defense-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.defense-modal-content {
+    background: linear-gradient(135deg, 
+        #1E293B 0%,
+        #334155 50%,
+        #1E293B 100%);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.defense-modal.active .defense-modal-content {
+    transform: scale(1);
+}
+
+.defense-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #EF4444;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.defense-modal-close:hover {
+    background: rgba(239, 68, 68, 0.2);
+    transform: rotate(90deg);
+}
+
+.defense-modal-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.defense-modal-body {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.defense-modal-section {
+    margin-bottom: 2rem;
+}
+
+.defense-modal-section h3 {
+    color: #3B82F6;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.defense-modal-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.defense-modal-section li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.defense-modal-section li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #10B981;
+    font-weight: bold;
+}
+
+/* ========== ACCORDÉON ALTERNATIVE ========== */
+.defense-accordion {
+    margin-top: 1rem;
+}
+
+.defense-accordion-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.defense-accordion-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.defense-accordion-header:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.defense-accordion-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #3B82F6;
+}
+
+.defense-accordion-icon {
+    font-size: 1.2rem;
+    color: #3B82F6;
+    transition: transform 0.3s ease;
+}
+
+.defense-accordion-item.active .defense-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.defense-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.defense-accordion-item.active .defense-accordion-content {
+    max-height: 500px;
+}
+
+.defense-accordion-body {
+    padding: 0 1rem 1rem;
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .defense-technologies-section {
+        padding: 4rem 0;
+    }
+    
+    .defense-grid-3d {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .defense-card-3d {
+        padding: 1.5rem;
+    }
+    
+    .defense-card-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .defense-modal-content {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .defense-modal-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .defense-technologies-section {
+        padding: 3rem 0;
+    }
+    
+    .defense-card-3d {
+        padding: 1rem;
+    }
+    
+    .defense-card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .defense-card-title {
+        font-size: 1.3rem;
+    }
+    
+    .defense-modal-content {
+        padding: 1.5rem;
+    }
+}
+
+/* ========== PERFORMANCE OPTIMIZATION ========== */
+.defense-card-3d {
+    will-change: transform, box-shadow;
+    contain: layout style paint;
+}
+
+.defense-card-icon {
+    will-change: transform;
+}
+
+.defense-progress-fill {
+    will-change: box-shadow, transform;
+}
+
+/* ========== ACCESSIBILITY ========== */
+@media (prefers-reduced-motion: reduce) {
+    .defense-technologies-section,
+    .defense-card-3d,
+    .defense-card-icon,
+    .defense-badge,
+    .defense-progress-fill,
+    .defense-modal-content {
+        animation: none;
+        transition: none;
+    }
+}
+
+.defense-card-3d:focus-visible {
+    outline: 3px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+.defense-card-button:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+.defense-modal-close:focus-visible {
+    outline: 2px solid #EF4444;
+    outline-offset: 2px;
+}
